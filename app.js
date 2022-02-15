@@ -10,6 +10,9 @@ const nodemailer = require("nodemailer");
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
+
+mongoose.connect("mongodb://localhost:27017/placementDB", { useNewUrlParser: true });
+
 //For json
 app.use(bodyParser.json());
 
