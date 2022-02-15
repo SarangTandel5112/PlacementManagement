@@ -11,10 +11,8 @@ const nodemailer = require("nodemailer");
 app.use(bodyParser.urlencoded({ extended: true }));
 
 
-mongoose.connect("mongodb://localhost:27017/placementDB", { useNewUrlParser: true , useUnifiedTopology: true });
-const db = mongoose.connection
-db.on('error', error => console.error(error))
-db.once('open', MONGO_URI => console.log('Connected to Database'))
+mongoose.connect("mongodb://localhost:27017/placementDB", { useNewUrlParser: true });
+
 //For json
 app.use(bodyParser.json());
 
