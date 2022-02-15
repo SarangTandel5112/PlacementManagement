@@ -6,7 +6,7 @@ function Header() {
     <div className="frontpage">
       <section id="title">
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-          <button
+          <button 
             className="navbar-toggler "
             type="button"
             data-toggle="collapse"
