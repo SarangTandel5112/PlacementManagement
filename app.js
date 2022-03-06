@@ -11,8 +11,10 @@ const nodemailer = require("nodemailer");
 app.use(bodyParser.urlencoded({ extended: true }));
 
 
-mongoose.connect("mongodb://localhost:27017/placementDB", { useNewUrlParser: true });
-
+mongoose.connect("mongodb://localhost:27017/placementDB", { useNewUrlParser: true , useUnifiedTopology: true });
+const db = mongoose.connection
+db.on('error', error => console.error(error))
+db.once('open', MONGO_URI => console.log('Connected to Database'))
 //For json
 app.use(bodyParser.json());
 
@@ -28,13 +30,13 @@ const tpo_email = "tpo@test.com";
 
 app.use(express.static("public"));
 
-mongoose.connect(
-  "mongoDB URI",
-  {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  }
-);
+// mongoose.connect(
+//   "mongoDB URI",
+//   {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true,
+//   }
+// );
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
@@ -149,6 +151,7 @@ app.post("/login", function (req, res) {
 
   if (type === "tpo") {
     Tpo.find({ email: name }, function (err, userfounds) {
+      console.log("tpofound")
       if (userfounds.length === 0 || err) {
         res.send({ err: "incorrect username!!", user: userfounds });
         console.log("incorrect username!!");

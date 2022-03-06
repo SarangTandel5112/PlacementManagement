@@ -57,7 +57,7 @@ function Login() {
 
         console.log(formdata.type[0]);
         if (formdata.type[0] === "tpo") {
-          history.push("/tpoDashboard");
+          history.push("/tpo");
         }
 
         console.log(response.data.user[0]);
