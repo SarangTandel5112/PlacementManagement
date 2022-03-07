@@ -18,6 +18,12 @@ function Tpomiddle() {
         <Link to="/tpoIncomingRequest">
           <button className="btn btn-large btn-dark">Request</button>
         </Link>
+        <h3>
+          <b>View Student request....</b>
+        </h3>
+        <Link to="/stuudentrequesttpo">
+          <button className="btn btn-large btn-dark">Request</button>
+        </Link>
       </div>
       <div className="col-lg-8 container-fluid">
         <img className="img-fluid" src="../../Photos/tpo.png" />
