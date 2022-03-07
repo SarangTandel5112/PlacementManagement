@@ -213,6 +213,7 @@ app.post("/requestToAddJob", function (req, res) {
 
 app.post("/studentrequesttpo",function(req,res){
   Student.find({status:"Pending"},function(err,studentfound){
+    res.send({"user":studentfound})
     console.log(studentfound);
   })
 })
