@@ -48,25 +48,13 @@ function Page() {
         <Route exact path="/jobs" component={StudentJobPage} />
       </Switch>
       <Switch>
-        <Route
-          exact
-          path="/tpoIncomingRequest"
-          component={TpoIncomingRequest}
-        />
+        <Route exact path="/tpoIncomingRequest" component={TpoIncomingRequest} />
       </Switch>
       <Switch>
-        <Route
-          exact
-          path="/tpoAcceptedRequest"
-          component={TpoAcceptedRequest}
-        />
+        <Route exact path="/tpoAcceptedRequest" component={TpoAcceptedRequest} />
       </Switch>
       <Switch>
-        <Route
-          exact
-          path="/companyPreviousRequest"
-          component={Companydetails}
-        />
+        <Route exact path="/companyPreviousRequest" component={Companydetails} />
       </Switch>
       <Switch>
         <Route exact path="/tpoHome" component={TpoDashboard} />

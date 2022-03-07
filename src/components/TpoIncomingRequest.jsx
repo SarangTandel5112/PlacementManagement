@@ -8,22 +8,25 @@ function Tpodetails() {
   const [incomingRequest, setIncomingRequest] = useState([]);
   const fetchJob = async () => {
     const response = await axios.post("/getIncomingRequest");
-    console.log(response.data.alljob);
+    
+    console.log(response.data.alljob , "before state");
     setIncomingRequest(response.data.alljob);
+    console.log(incomingRequest,"after state");
   };
 
-  function changeState(event) {
-    const setData = async () => {
-      const resp = await axios.post("/setdetails", {
-        jname: event.target.name,
-        jid: event.target.value,
-      });
-    };
-    setData();
-    fetchJob();
-  }
+  // function changeState(event) {
+  //   const setData = async () => {
+  //     const resp = await axios.post("/setdetails", {
+  //       jname: event.target.name,
+  //       jid: event.target.value,
+  //     });
+  //   };
+  //   setData();
+  //   fetchJob();
+  // }
 
   useEffect(() => {
+    console.log("Use effect qwad");
     fetchJob();
   }, []);
 
@@ -88,6 +91,7 @@ function Tpodetails() {
         pauseOnHover
       />
       <h3 className="main-heading">New requests</h3>
+      {console.log(incomingRequest,"DOM RE")}
       {incomingRequest.length === 0 && <p className="main-heading">No new Request</p>}
 
       {incomingRequest.length >= 0 &&
