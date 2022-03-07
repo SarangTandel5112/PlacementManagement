@@ -183,3 +183,29 @@ Link {
   width: 200%;
 }
 
+.hometext{
+  padding: 2% 8%;
+  margin: 0% 0%;
+}
+
+.outertext{
+  padding:  10% 0%;
+  
+}
+
+.mainimg1{
+  padding: 5% 5%;
+}
+.mainimg1 img{
+  
+}
+
+
+
+.mainbg{
+  width: 100.90vw;
+  background-image: url("../Photos/images.jpeg") ;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;  
+}

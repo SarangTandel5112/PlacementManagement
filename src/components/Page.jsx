@@ -17,6 +17,7 @@ import StudentProfile from "./StudentProfile";
 import Studentregister from "./Studentregister"
 import StudentRequest from "./StudentRequest";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Home from "./Home";
 
 function Page() {
   return (
@@ -70,6 +71,9 @@ function Page() {
       </Switch>
       <Switch>
         <Route exact path="/stuudentrequesttpo" component={StudentRequest} />
+      </Switch>
+      <Switch>
+        <Route exact path="/home" component={Home} />
       </Switch>
     </Router>
   );
