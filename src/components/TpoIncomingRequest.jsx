@@ -97,7 +97,7 @@ function Tpodetails() {
       {incomingRequest.length >= 0 &&
         incomingRequest.map((job) => (
           <div className="dbox" key={job._id}>
-            <div className="sbox">
+            <div className="sbox">job.jobTitle
               <b>JobTitle:</b>
               {job.jobTitle}
             </div>
