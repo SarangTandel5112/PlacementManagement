@@ -31,46 +31,47 @@ function StudentRequest() {
     return (
         <div>
             <Header />
-            {studentData.length === 0 && <p className="main-heading">No new Request</p>}
 
-            {console.log(studentData, "dom")}
-            {studentData.length >= 0 && studentData.map((student) => {
-                <div className="dbox" key="">
-                    <div className="sbox">
-                        <b>JobTitle:{ }</b> job.jobTitle
-                    </div>
-                    <div className="sbox">
-                        <b>JobDescription:</b> job.jobDescription
-                    </div>
-                    <div className="sbox">
-                        <b>Number Of Opening :</b> job.numberOfOpening
-                    </div>
-                    <div className="sbox">
-                        <b>Ctc Range :</b> job.ctcRange
-                    </div>
-                    <div className="sbox">
-                        <b>Job Location :</b>
-                        job.jobLocation
-                    </div>
-                    <button
-                        className="btn btn-large btn-success dbtn"
-                        onClick=""
-                        name="accept"
-                    >
-                        <i className="fas fa-check"></i> Accept{" "}
-                    </button>
+            {studentData.length >= 0 &&
+                studentData.map((job) => (
+                    <div className="dbox" key={job._id}>
+                        <div className="sbox">
+                            <b>Student Name: </b>
+                            {job.name}
+                        </div>
+                        <div className="sbox">
+                            <b>Student Email : </b> {job.email}
+                        </div>
+                        <div className="sbox">
+                            <b>Student Phone :</b> {job.phno}
+                        </div>
+                        <div className="sbox">
+                            <b>College :</b> {job.collegename}
+                        </div>
+                        <div className="sbox">
+                            <b>CGPA :</b>
+                            {job.cgpa}
+                        </div>
+                        
+                        <button
+                            className="btn btn-large btn-success dbtn"
+                            onClick=""
+                            name="accept"
+                        >
+                            <i className="fas fa-check"></i> Accept{" "}
+                        </button>
 
-                    <button
-                        className="btn btn-large btn-danger dbtn"
-                        onClick={setData()}
-                        name="reject"
-                        value=""
-                    >
-                        <i className="fas fa-times"></i> Decline{" "}
-                    </button>
-                </div>
+                        <button
+                            className="btn btn-large btn-danger dbtn"
+                            onClick=""
+                            name="reject"
+                            value={job._id}
+                        >
+                            <i className="fas fa-times"></i> Decline{" "}
+                        </button>
+                    </div>
+                ))}
 
-            })}
 
         </div>
     )
