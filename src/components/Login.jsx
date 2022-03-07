@@ -34,11 +34,14 @@ function Login() {
           setvalue(check);
         }
         else if (check === "student") {
-          if(response.data.user.status !=="Pending"){
+          if(response.data.user.status ==="Accepted"){
           console.log("IF vloc")
 
             history.push("/");
-          }else{
+          }else if(response.data.user.status==="Rejected"){
+            setvalue("Your Request Is Rejected By TPO! Kindly Ask Them")
+          }
+          else{
             console.log("ela")
             setvalue("Your Request is Still, Please Get Approved From TPO")
           }

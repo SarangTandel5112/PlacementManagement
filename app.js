@@ -255,6 +255,45 @@ app.post("/AcceptJobRequest", (req, res) => {
     }
   );
 });
+app.post("/setstudentstatus", async (req, res) => {
+  let id=req.body.vid;
+  let status=req.body.val;
+
+  if(status==="accept"){
+    Student.findOneAndUpdate({_id:id},{status:"Accpted"},(err,success)=>{
+      if(err){
+        res.json({status:"eror"})
+      }
+    })
+    let pendingStudents=Student.find({status:"Pending"});
+    res.json(pendingStudents);
+
+  }else if(status==="reject"){
+    Student.findOneAndUpdate({_id:id},{status:"Rejected"},(err,success)=>{
+      if(err){
+        res.json({status:"eror"})
+      }
+    })
+    let pendingStudents=Student.find({status:"Pending"});
+    res.json(pendingStudents);
+
+
+  }
+
+  Student.findOneAndUpdate(
+    { _id: req.body.val },
+    { status: req.body.vid },
+    function (err, success) {
+      if (err) {
+        res.json({ status: "error", error: err });
+        console.log(err);
+      } else {
+        res.json({ status: "OK" });
+        console.log(success);
+      }
+    }
+  );
+});
 
 app.post("/RejectJobRequest", (req, res) => {
   Job.findOneAndUpdate(
