@@ -43,7 +43,7 @@ function Login() {
           }
           else{
             console.log("ela")
-            setvalue("Your Request is Still, Please Get Approved From TPO")
+            setvalue("Your Request is Still Pending, Please Get Approved From TPO")
           }
         } else if (check === "company") {
           history.push("/companyDashboard");
