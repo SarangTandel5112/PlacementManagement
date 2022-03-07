@@ -210,6 +210,13 @@ app.post("/requestToAddJob", function (req, res) {
   res.json({ status: "OK" });
 });
 
+
+app.post("/studentrequesttpo",function(req,res){
+  Student.find({status:"Pending"},function(err,studentfound){
+    console.log(studentfound);
+  })
+})
+
 app.post("/getIncomingRequest", function (req, res) {
   Job.find({ status: "waiting" }, function (err, jobfound) {
     if (err) {

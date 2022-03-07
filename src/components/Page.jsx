@@ -15,6 +15,7 @@ import TpoAcceptedRequest from "./TpoAcceptedRequest";
 import AddStudent from "./AddStudent";
 import StudentProfile from "./StudentProfile";
 import Studentregister from "./Studentregister"
+import StudentRequest from "./StudentRequest";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 function Page() {
@@ -78,6 +79,9 @@ function Page() {
       </Switch>
       <Switch>
         <Route exact path="/Studentregister" component={Studentregister} />
+      </Switch>
+      <Switch>
+        <Route exact path="/stuudentrequesttpo" component={StudentRequest} />
       </Switch>
     </Router>
   );
