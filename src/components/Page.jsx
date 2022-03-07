@@ -14,6 +14,7 @@ import CompanyAllRequest from "./CompanyAllRequest";
 import TpoAcceptedRequest from "./TpoAcceptedRequest";
 import AddStudent from "./AddStudent";
 import StudentProfile from "./StudentProfile";
+import Studentregister from "./Studentregister"
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 function Page() {
@@ -24,7 +25,7 @@ function Page() {
         <Route exact path="/login" component={Login} />
       </Switch>
       <Switch>
-        <Route exact path="/register" component={Register} />
+        <Route exact path="/registercompany" component={Register} />
       </Switch>
       <Switch>
         <Route exact path="/companyHome" component={CompanyHome} />
@@ -74,6 +75,9 @@ function Page() {
       </Switch>
       <Switch>
         <Route exact path="/StudentProfile" component={StudentProfile} />
+      </Switch>
+      <Switch>
+        <Route exact path="/Studentregister" component={Studentregister} />
       </Switch>
     </Router>
   );
