@@ -1,4 +1,5 @@
 import axios from "axios";
+import { event } from "jquery";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Header from "./StudentHeader";
@@ -20,8 +21,13 @@ function StudentRequest() {
 
     }
 
-    function setData() {
-
+    async function setstatus(event) {
+        console.log("r");
+        var val=event.target.value;
+        var vid=event.target.name;
+        var res=await axios.post("/setstudentstatus",{val,vid})  
+        console.log(res.data);
+        setStudentdata(res.data);
     }
 
     useEffect(() => {
@@ -55,15 +61,16 @@ function StudentRequest() {
                         
                         <button
                             className="btn btn-large btn-success dbtn"
-                            onClick=""
+                            onClick={setstatus}
                             name="accept"
+                            value={job._id}
                         >
                             <i className="fas fa-check"></i> Accept{" "}
                         </button>
 
                         <button
                             className="btn btn-large btn-danger dbtn"
-                            onClick=""
+                            onClick={setstatus}
                             name="reject"
                             value={job._id}
                         >
