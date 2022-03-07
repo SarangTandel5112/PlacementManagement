@@ -63,3 +63,8 @@
 .rbtn1{
     margin-right: 2%;
 }
+
+
+.errstatus{
+    color: red;
+}

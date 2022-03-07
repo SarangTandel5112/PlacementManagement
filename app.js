@@ -277,7 +277,7 @@ app.post("/setstudentstatus", async (req, res) => {
   }else if(status==="reject"){
     Student.findOneAndUpdate({_id:id},{status:"Rejected"},(err,success)=>{
       if(err){
-        res.json({status:"eror"})
+        res.json({status:"error"})
       }
     })
     let pendingStudents=Student.find({status:"Pending"});

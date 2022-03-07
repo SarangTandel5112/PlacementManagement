@@ -21,11 +21,13 @@ function StudentRequest() {
 
     }
 
-    function setstatus(event) {
+    async function setstatus(event) {
         console.log("r");
         var val=event.target.value;
         var vid=event.target.name;
-        var res=axios.post("/setstudentstatus",{val,vid})        
+        var res=await axios.post("/setstudentstatus",{val,vid})  
+        console.log(res.data);
+        setStudentdata(res.data);
     }
 
     useEffect(() => {

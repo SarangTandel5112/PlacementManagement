@@ -34,16 +34,16 @@ function Login() {
           setvalue(check);
         }
         else if (check === "student") {
-          if(response.data.user.status ==="Accepted"){
+          if(response.data.user.status ==="accept"){
           console.log("IF vloc")
 
             history.push("/");
-          }else if(response.data.user.status==="Rejected"){
+          }else if(response.data.user.status==="reject"){
             setvalue("Your Request Is Rejected By TPO! Kindly Ask Them")
           }
           else{
             console.log("ela")
-            setvalue("Your Request is Still, Please Get Approved From TPO")
+            setvalue("Your Request is Still Pending, Please Get Approved From TPO")
           }
         } else if (check === "company") {
           history.push("/companyDashboard");
@@ -108,7 +108,7 @@ function Login() {
             required
           />
         </div>
-        <p>{wrong}</p>
+        <p className="errstatus">{wrong}</p>
 
         <div className="option">
           <h5 className="">Login As :</h5>
