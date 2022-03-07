@@ -121,14 +121,14 @@ app.post("/login", function (req, res) {
   if (type === "student") {
     Student.find({ email: name }, function (err, userfounds) {
       if (userfounds.length === 0 || err) {
-        res.send({ err: "incorrect username!!", user: userfounds });
+        res.send({ err: "incorrect username!!", user: userfounds[0] });
         console.log("incorrect username!!");
       } else if (userfounds[0].password === lpassword) {
-        res.send({ err: req.body.type[0], user: userfounds });
+        res.send({ err: req.body.type[0], user: userfounds[0] });
         logindatauser = userfounds;
         console.log(logindatauser);
       } else {
-        res.send({ err: "incorrect password!!", user: userfounds });
+        res.send({ err: "incorrect password!!", user: userfounds[0] });
         console.log("incorrect password!!");
       }
     });

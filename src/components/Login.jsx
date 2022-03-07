@@ -25,13 +25,23 @@ function Login() {
       .post("/login", finaldata)
       .then((response) => {
         var check = response.data.err;
+        console.log(response.data)
+        console.log(response.data.user.status);
+
         if (check === "incorrect username!!") {
           setvalue(check);
         } else if (check === "incorrect password!!") {
           setvalue(check);
         }
         else if (check === "student") {
-          history.push("/");
+          if(response.data.user.status !=="Pending"){
+          console.log("IF vloc")
+
+            history.push("/");
+          }else{
+            console.log("ela")
+            setvalue("Your Request is Still, Please Get Approved From TPO")
+          }
         } else if (check === "company") {
           history.push("/companyDashboard");
         }
@@ -61,7 +71,7 @@ function Login() {
         //   history.push("/tpo");
         // }
 
-        console.log(response.data.user[0]);
+        
       })
 
       .catch(() => {
