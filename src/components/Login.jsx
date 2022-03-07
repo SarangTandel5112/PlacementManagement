@@ -29,36 +29,37 @@ function Login() {
           setvalue(check);
         } else if (check === "incorrect password!!") {
           setvalue(check);
-        } else if (check === "student") {
-          history.push("/");
-        } else if (check === "teacher") {
-          history.push("/teacher");
         }
-
-        if (formdata.type[0] === "company") {
-          localStorage.setItem(
-            "company_id",
-            response.data.user[0]._id.toString()
-          );
+        else if (check === "student") {
+          history.push("/");
+        } else if (check === "company") {
           history.push("/companyDashboard");
         }
 
-        if (formdata.type[0] === "student") {
-          localStorage.setItem(
-            "student_id",
-            response.data.user[0]._id.toString()
-          );
-          localStorage.setItem(
-            "student_email",
-            response.data.user[0].email.toString()
-          );
-          history.push("/");
-        }
+        // if (formdata.type[0] === "company") {
+        //   localStorage.setItem(
+        //     "company_id",
+        //     response.data.user[0]._id.toString()
+        //   );
+        //   history.push("/companyDashboard");
+        // }
 
-        console.log(formdata.type[0]);
-        if (formdata.type[0] === "tpo") {
-          history.push("/tpo");
-        }
+        // if (formdata.type[0] === "student") {
+        //   localStorage.setItem(
+        //     "student_id",
+        //     response.data.user[0]._id.toString()
+        //   );
+        //   localStorage.setItem(
+        //     "student_email",
+        //     response.data.user[0].email.toString()
+        //   );
+        //   history.push("/");
+        // }
+
+        // console.log(formdata.type[0]);
+        // if (formdata.type[0] === "tpo") {
+        //   history.push("/tpo");
+        // }
 
         console.log(response.data.user[0]);
       })
@@ -140,16 +141,65 @@ function Login() {
       </form>
 
       <div className="rform">
-        <p className="signup">Need an Account For Company?</p>
+        <p className="signup">Need an Account ?</p>
+        <div className="row">
+          <div className="col-lg-6 col-md-4 col-sm-3">
+            <Link to="/registercompany">
 
-        <Link to="/register">
-          <input
-            type="submit"
-            className="btn-primary btn-sm logbtn"
-            value="Register Company"
-            name="Register Company"
-          />
-        </Link>
+              <input
+                type="submit"
+                className="btn-primary  btn-sm regbtn mr-2"
+                value="Register Company"
+                name="Register Company"
+              />
+
+            </Link>
+          </div>
+          <div className="col-lg-6 col-md-4 col-sm-3">
+            <Link to="/Studentregister">
+
+              <input
+                type="submit"
+                className="btn-primary btn-sm regbtn"
+                value="Register Student"
+                name="Register Student"
+              />
+
+
+            </Link>
+          </div>
+
+
+        </div>
+        {/* <div className="container">
+          
+            <Link to="/register">
+
+              <input
+                type="submit"
+                className="btn-primary  regbtn mr-2"
+                value="Register Company"
+                name="Register Company"
+              />
+
+            </Link>
+          
+          
+            <Link to="/register">
+
+              <input
+                type="submit"
+                className="btn-primary regbtn"
+                value="Register Student"
+                name="Register Student"
+              />
+
+
+            </Link>        
+
+
+        </div> */}
+
       </div>
     </div>
   );

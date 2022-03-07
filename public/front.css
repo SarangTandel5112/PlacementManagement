@@ -158,3 +158,28 @@ Link {
   display: flex;
   margin-top:10px;
 }
+
+
+.regbtn{
+  width: 200px;
+  padding: 0% 15%;
+  
+}
+
+.tr{
+  border: 2px solid red;
+}
+
+.container{
+  display: flex;
+}
+
+.container input:first-child {
+  width: 100%;
+}
+
+.container input:last-child {
+  
+  width: 200%;
+}
+

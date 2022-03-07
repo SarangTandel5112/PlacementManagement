@@ -12,9 +12,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 
 mongoose.connect("mongodb://localhost:27017/placementDB", { useNewUrlParser: true , useUnifiedTopology: true });
-const db = mongoose.connection
-db.on('error', error => console.error(error))
-db.once('open', MONGO_URI => console.log('Connected to Database'))
+// const db = mongoose.connection
+// db.on('error', error => console.error(error))
+// db.once('open', MONGO_URI => console.log('Connected to Database'))
 //For json
 app.use(bodyParser.json());
 
@@ -65,20 +65,17 @@ const companyschema = {
 const company = mongoose.model("company", companyschema);
 
 const studentSchema = {
+  name:String,
   email: String,
+  phno:Number,
+  collegename:String,
+  cgpa: Number,
   password: String,
   appliedJobs: [jobSchema],
-  name: String,
-  cgpa: Number,
-  college_id: String,
-  branch: String,
-  resumeLink: String,
-  linkedin_profile: String,
-  codechef_profile: String,
-  leetcode_profile: String,
+  status:String
 };
 
-const Student = mongoose.model("student", studentSchema);
+const Student = mongoose.model("Student", studentSchema);
 
 const tpoSchema = {
   email: String,
@@ -166,9 +163,32 @@ app.post("/login", function (req, res) {
   }
 });
 
+
+
+app.post("/registerstudent",function(req,res){
+  var s1=new Student({
+    name:req.body.name[0],
+    email:req.body.email[0],
+    phno:req.body.phno[0],
+    collegename:req.body.collegename[0],
+    cgpa:req.body.cgpa[0],
+    password:req.body.password[0],
+    appliedJobs:[],
+    status:"Pending"
+    
+  });
+  s1.save();
+  console.log(s1);
+  
+  
+  res.send("data received")
+})
+
 /* /////////////////////////////////////////////////////////////////////////////////// */
 
 /* When Company want to add new Job */
+
+
 app.post("/requestToAddJob", function (req, res) {
 
   const newJob = new Job({
