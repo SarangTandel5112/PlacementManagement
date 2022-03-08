@@ -196,16 +196,69 @@ Link {
 .mainimg1{
   padding: 5% 5%;
 }
-.mainimg1 img{
-  
-}
-
 
 
 .mainbg{
-  width: 100.90vw;
+  width: 99.80vw;
   background-image: url("../Photos/images.jpeg") ;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;  
+}
+
+
+.featurehome{
+  width: 99.80vw;
+  padding: 2% 5%;
+  text-align: center;
+}
+
+
+.centertext{
+  text-align: center;
+  display: inline-block;
+  border-bottom: 2px solid rgb(255, 187, 0);
+  margin-top: 5% ;
+  padding: 2% 0%;
+}
+
+.featureimg{
+  padding: 2%;
+  height: 250px;
+  width: auto;
+}
+
+.featureimgout{
+  background: white;
+  border: 1px solid rgb(244,241,255);
+  box-shadow: rgb(0 0 0 / 5%) 0px 4px 10px;
+  border-radius: 10px;
+}
+
+
+.subtxt{
+  border: 2x solid red;
+  margin: 5% 0%;
+}
+
+.clientheader{
+  text-align: center;
+  margin-top: 5%;
+  border-bottom: 2px solid rgb(255, 187, 0);
+  padding: 2% 0%;
+  
+}
+
+.clientmain{
+  
+  padding: 2% 5%;
+  text-align: center;  
+}
+
+.featurename{
+  border-bottom: 2px solid rgb(255, 187, 0);
+  
+  margin: 0% 10%;
+  margin-bottom: 5%;
+  padding-bottom: 3%;
 }
