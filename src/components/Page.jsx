@@ -22,7 +22,7 @@ import Home from "./Home";
 function Page() {
   return (
     <Router>
-      <Route exact path="/" component={StudentHome} />
+      <Route exact path="/studentHome" component={StudentHome} />
       <Switch>
         <Route exact path="/login" component={Login} />
       </Switch>
@@ -73,7 +73,7 @@ function Page() {
         <Route exact path="/stuudentrequesttpo" component={StudentRequest} />
       </Switch>
       <Switch>
-        <Route exact path="/home" component={Home} />
+        <Route exact path="/" component={Home} />
       </Switch>
     </Router>
   );
