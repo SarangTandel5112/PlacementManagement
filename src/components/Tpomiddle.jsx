@@ -26,7 +26,7 @@ function Tpomiddle() {
         </Link>
       </div>
       <div className="col-lg-8 container-fluid">
-        <img className="img-fluid" src="../../Photos/tpo.png" />
+        <img className="img-fluid" alt="tpo" src="../../Photos/tpo.png" />
       </div>
     </div>
   );

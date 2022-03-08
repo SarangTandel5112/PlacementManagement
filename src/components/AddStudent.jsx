@@ -5,7 +5,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 function AddStudent() {
   const fileUploadRef = useRef();
-  const [disableAdd, setDisableAdd] = useState(false);
+  // const [disableAdd, setDisableAdd] = useState(false);
   const [data, setData] = useState({
     email: "",
   });
@@ -59,7 +59,7 @@ function AddStudent() {
   }
 
   function errorHandler(evt) {
-    if (evt.target.error.name == "NotReadableError") {
+    if (evt.target.error.name === "NotReadableError") {
       alert("Canno't read file !");
     }
   }

@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import CompanyHeader from "./CompanyHeader";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 function Companydetails() {
   const [jobs, setJobs] = useState([]);

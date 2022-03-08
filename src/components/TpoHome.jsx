@@ -1,10 +1,10 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
+// import axios from "axios";
+import React, {  useState } from "react";
 import TpoHeader from "./TpoHeader";
 import { Link } from "react-router-dom";
 
 function Tpoalldetails() {
-  const [requestJobs, setRequestJobs] = useState([]);
+  // const [requestJobs, setRequestJobs] = useState([]);
 
   /* const fetchJob = async () => {
     const response = await axios.post("/tpoRequestedJobs");
@@ -51,7 +51,7 @@ function Tpoalldetails() {
           </Link>
         </div>
         <div className="col-lg-8 container-fluid">
-          <img className="img-fluid" src="../../Photos/company.png" />
+          <img className="img-fluid" alt="company" src="../../Photos/company.png" />
         </div>
       </div>
     </div>

@@ -81,7 +81,7 @@ function Login() {
         console.log("Data Has not been send, Internal Server Error");
       });
   }
-  const { email, password, type } = formdata;
+  const { email, password} = formdata;
   return (
     <div className="loginform container-fluid full-height">
       <form className="lform" onSubmit={submitData}>
