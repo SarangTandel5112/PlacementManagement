@@ -7,6 +7,7 @@ const app = express();
 const router = express.Router();
 const crypto = require("crypto");
 const nodemailer = require("nodemailer");
+const { getMaxListeners } = require("process");
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -85,9 +86,10 @@ const tpoSchema = {
   email: String,
   password: String,
 };
+Tpo=mongoose.model("Tpo",tpoSchema)
 
-const Tpo = mongoose.model("Tpo", tpoSchema);
-
+// tpo@getMaxListeners.com 
+// Tpopass
 app.post("/register", function (req, res) {
   console.log(req.body);
 
