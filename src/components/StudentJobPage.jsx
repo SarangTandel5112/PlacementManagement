@@ -44,7 +44,7 @@ function Details() {
       {jobs.length > 0 && jobs.map((job) => (
         
         <div className="dbox" id={job._id} key={job._id} >
-          {new Date(job.deadline)-a}
+
           <div className="sbox">
             <b>JobTitle:</b> {job.jobTitle}
           </div>
@@ -70,7 +70,7 @@ function Details() {
             setTimeout(()=>{
               let ab=document.getElementById(job._id);
               ab.remove();
-              
+              axios.post('/settimestatus',{jid:job._id});
             },new Date(job.deadline)-a)
             
           }
