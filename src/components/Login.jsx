@@ -25,7 +25,7 @@ function Login() {
       .post("/login", finaldata)
       .then((response) => {
         var check = response.data.err;
-        console.log(response.data)
+        console.log(response.data.err)
         console.log(response.data.user.status);
 
         if (check === "incorrect username!!") {
@@ -47,6 +47,9 @@ function Login() {
           }
         } else if (check === "company") {
           history.push("/companyDashboard");
+        }else if(check==="tpo"){
+
+          history.push("/tpo")
         }
 
         // if (formdata.type[0] === "company") {
