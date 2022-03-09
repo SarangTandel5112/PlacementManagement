@@ -18,6 +18,7 @@ import Studentregister from "./Studentregister"
 import StudentRequest from "./StudentRequest";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./Home";
+import tpodashboard from "./Tpodashboard";
 
 function Page() {
   return (
@@ -40,7 +41,10 @@ function Page() {
       </Switch>
 
       <Switch>
-        <Route exact path="/tpo" component={Tpo} />
+        <Route exact path="/tpo" component={tpodashboard} />
+      </Switch>
+      <Switch>
+        <Route exact path="/tporequests" component={Tpo} />
       </Switch>
       <Switch>
         <Route exact path="/companyNewRequest" component={CompanyNewRequest} />

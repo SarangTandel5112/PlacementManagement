@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -47,7 +47,7 @@ function Studentregister() {
     setformdata({ ...formdata, [event.target.name]: [event.target.value] });
   }
 
-  const { name, email, phno, collegename, cgpa, password, password1 } = formdata;
+  const {  password, password1 } = formdata;
 
   return (
     <div>

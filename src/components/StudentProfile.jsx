@@ -72,7 +72,7 @@ function Form() {
 
   function submitform(event) {
    
-    const finaldata = formData;
+    // const finaldata = formData;
     console.log(formData);
     
     axios
@@ -292,7 +292,7 @@ function Form() {
                 value={formData.name}
                 type="submit"
                 class="btn-primary btn-lg accbtn"
-                value="Save"
+              
                 name="Log in"
                 onClick={changedata}
               />

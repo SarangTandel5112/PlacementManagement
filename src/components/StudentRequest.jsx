@@ -1,21 +1,20 @@
 import axios from "axios";
-import { event } from "jquery";
+// import { event } from "jquery";
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import Header from "./StudentHeader";
 
 
 
 function StudentRequest() {
-    var std;
+    
     const [studentData, setStudentdata] = useState([]);
     async function studentreq() {
 
         var studentdata1 = await axios.post("/studentrequesttpo");
-        std = studentdata1.data.user;
+      
         console.log(studentdata1.data.user);
         setStudentdata(studentdata1.data.user);
-
         console.log(studentData, "1");
 
 

@@ -472,6 +472,18 @@ app.post("/setdetails", function (req, res) {
     redfound[0].save();
   });
 });
+app.get("/tpodata",async (req,res)=>{
+  console.log("Reqeust Recived")
+  let slen= await Student.find({status:"accept"});
+  slen=slen.length
+  let clen=await company.find();
+  clen=clen.length
+  res.json({
+    slen:slen,
+    clen:clen
+  })
+  
+})
 
 app.listen(5000, () => {
   console.log("Server started at port 5000");

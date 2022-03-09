@@ -18,7 +18,7 @@ function Front() {
           </Link>
         </div>
         <div className="col-lg-8 container-fluid">
-          <img className="img-fluid" src="../../Photos/coding.png" />
+          <img className="img-fluid" alt="coding" src="../../Photos/coding.png" />
         </div>
       </div>
     </div>
