@@ -211,6 +211,7 @@ Link {
   width: 99.80vw;
   padding: 2% 5%;
   text-align: center;
+  background-color: rgb(241, 241, 241);
 }
 
 
@@ -249,16 +250,54 @@ Link {
   
 }
 
-.clientmain{
-  
+.clientmain{  
   padding: 2% 5%;
-  text-align: center;  
+  text-align: center;
+  background-color:rgb(240, 240, 240);
 }
 
 .featurename{
-  border-bottom: 2px solid rgb(255, 187, 0);
-  
+  border-bottom: 2px solid rgb(255, 187, 0);  
   margin: 0% 10%;
   margin-bottom: 5%;
   padding-bottom: 3%;
 }
+
+
+.roundimg{
+  border-radius: 50%;  
+  border: 2px solid red;
+  width: 500px;
+  height: 500px;
+}
+
+
+.aboutus{
+  
+  
+}
+
+
+.abouttext{
+  border-bottom: 2px solid rgb(255, 187, 0);
+  margin: 0% 10%;
+  margin-bottom: 5%;
+  padding-bottom: 2%;
+  padding-top: 5%;
+  text-align: center;
+  
+}
+
+
+.abouttext1{
+  padding: 2% 1%;
+
+}
+
+
+.aboutteextout{
+
+}
+
+
+

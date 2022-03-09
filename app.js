@@ -50,8 +50,9 @@ const jobSchema = {
   ctcRange: String,
   jobLocation: String,
   status: String,
-  company_id: String,
+  deadline:String,
   candidates: [String],
+  timestatus:String,
 };
 
 const Job = mongoose.model("Job", jobSchema);
@@ -193,7 +194,7 @@ app.post("/registerstudent",function(req,res){
 
 
 app.post("/requestToAddJob", function (req, res) {
-
+  
   const newJob = new Job({
     jobTitle: req.body.title[0],
     jobDescription: req.body.description[0],
@@ -201,8 +202,9 @@ app.post("/requestToAddJob", function (req, res) {
     ctcRange: req.body.ctcRange[0],
     jobLocation: req.body.jobLocation[0],
     status: "waiting",
-    company_id: req.body.company_id,
+    deadline:req.body.deadline[0],
     candidates: [],
+    timestatus:"active"
   });
 
   newJob.save();
@@ -236,10 +238,17 @@ app.post("/getIncomingRequest", function (req, res) {
 });
 
 app.post("/getAvailableJobForStudent", function (req, res) {
+  Job.find({ status: "accepted" },function(err,statusupdate){
+    for(let i=0;i<statusupdate.length;i++){
+      console.log(statusupdate[i]);
+    }
+  })
+
   Job.find({ status: "accepted" }, function (err, jobfound) {
     if (err) {
       res.json({ status: "error" });
     } else {
+
       res.send({ alljob: jobfound });
       console.log(jobfound);
     }

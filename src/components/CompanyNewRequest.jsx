@@ -8,7 +8,7 @@ function Companyhire() {
     numberOfOpening: "",
     ctcRange: "",
     jobLocation: "",
-    company_id: localStorage.getItem("company_id"),
+    deadline:""
   });
 
   function submitform(event) {
@@ -88,6 +88,9 @@ function Companyhire() {
               placeholder="Job Location"
               required
             />
+          </div>
+          <div>
+            <input type="datetime-local" className="phno1" name="deadline" onChange={handleChange} required/>
           </div>
 
           <br />
