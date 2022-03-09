@@ -4,29 +4,31 @@ import StudentHeader from "./StudentHeader";
 
 function Details() {
   const [jobs, setJobs] = useState([]);
+  
+  var a=new Date();
   const fetchJob = async () => {
     const response = await axios.post("/getAvailableJobForStudent");
     console.log(response.data.alljob);
     setJobs(response.data.alljob);
 
-    axios.get("/isAuthenticate",{})
-    .then(res => console.log(res))
-    .catch(err => console.log(err))
+    axios.get("/isAuthenticate", {})
+      .then(res => console.log(res))
+      .catch(err => console.log(err))
   };
 
   const applyForJob = (e, job_id) => {
     e.preventDefault();
-    axios.post("/addStudentToJob",{
+    axios.post("/addStudentToJob", {
       job_id,
-      student_email:localStorage.getItem("student_email")
+      student_email: localStorage.getItem("student_email")
     })
-    .then(res => {
-      console.log(res);
-      fetchJob();
-    })
-    .catch(err => {
-      console.log(err);
-    })
+      .then(res => {
+        console.log(res);
+        fetchJob();
+      })
+      .catch(err => {
+        console.log(err);
+      })
   }
 
   useEffect(() => {
@@ -40,7 +42,9 @@ function Details() {
       <h3 className="main-heading">All Jobs</h3>
       {jobs.length === 0 && <h4 className="main-heading">No new Jobs</h4>}
       {jobs.length > 0 && jobs.map((job) => (
-        <div className="dbox" key={job._id}>
+        
+        <div className="dbox" id={job._id} key={job._id} >
+          {new Date(job.deadline)-a}
           <div className="sbox">
             <b>JobTitle:</b> {job.jobTitle}
           </div>
@@ -59,10 +63,21 @@ function Details() {
           </div>
           {
             job.candidates.findIndex(email => email === localStorage.getItem("student_email")) !== -1 ?
-            <button className="btn btn-large btn-success" disabled={true} > Applied </button> :
-            <button className="btn btn-large btn-success " onClick={(e) => applyForJob(e,job._id)}> Apply </button>
+              <button className="btn btn-large btn-success" disabled={true} > Applied </button> :
+              <button className="btn btn-large btn-success " onClick={(e) => applyForJob(e, job._id)}> Apply </button>
           }
-          </div>
+          {
+            setTimeout(()=>{
+              let ab=document.getElementById(job._id);
+              ab.remove();
+              
+            },new Date(job.deadline)-a)
+            
+          }
+          
+
+        </div>
+
       ))}
     </div>
   );

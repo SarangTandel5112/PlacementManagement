@@ -3,7 +3,7 @@ import React from "react";
 // import TpoHeader from "./TpoHeader";
 // import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Header from "./TpoHeader";
+import Header from "./Header";
 
 
 function Home() {
@@ -40,6 +40,21 @@ function Home() {
             </div>
             <div className="clientmain">
                 <h1 className="clientheader"><b>Our Client</b></h1>
+                <div>
+                    <img className="roundimg " src="../../Photos/companyround.png" />
+                </div>
+
+
+            </div>
+            <div className="aboutus container row">
+                <h1 className="abouttext"><b>About Us :</b></h1>
+                <div className="col-lg-6">
+                    <img className="img-fluid" src="../../Photos/aboutimg.svg" />
+                </div>
+                <p className="abouttext1 col-lg-6">&nbsp; &nbsp; &nbsp; &nbsp;The Placement Cell at DDU is a concept in its own form. It has the following structure comprising of three important parts viz. the placement office comprising of the Manager (Placements) and placement secretary, the faculty members and finally the student representatives from each stream. The structure aims at touching all the aspects required for the smooth functioning of placement process.</p>
+            </div>
+            <div>
+                
             </div>
         </div>
 
