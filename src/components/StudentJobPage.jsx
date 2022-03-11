@@ -44,7 +44,7 @@ function Details() {
       {jobs.length > 0 && jobs.map((job) => (
         
         <div className="dbox" id={job._id} key={job._id} >
-          {new Date(job.deadline)-a}
+
           <div className="sbox">
             <b>JobTitle:</b> {job.jobTitle}
           </div>
@@ -61,6 +61,9 @@ function Details() {
             <b>Job Location :</b>
             {job.jobLocation}
           </div>
+          <div className="sbox">
+            <b>Last Day For Apply : </b>{job.deadline.split('T').join(" ")}
+          </div>
           {
             job.candidates.findIndex(email => email === localStorage.getItem("student_email")) !== -1 ?
               <button className="btn btn-large btn-success" disabled={true} > Applied </button> :
@@ -70,7 +73,7 @@ function Details() {
             setTimeout(()=>{
               let ab=document.getElementById(job._id);
               ab.remove();
-              
+              axios.post('/settimestatus',{jid:job._id});
             },new Date(job.deadline)-a)
             
           }
