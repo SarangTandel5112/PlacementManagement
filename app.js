@@ -30,7 +30,7 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-const tpo_email = "tpo@test.com";
+
 
 app.use(express.static("public"));
 
@@ -88,8 +88,7 @@ const tpoSchema = {
 };
 Tpo=mongoose.model("Tpo",tpoSchema)
 
-// tpo@getMaxListeners.com 
-// Tpopass
+
 app.post("/register", function (req, res) {
   console.log(req.body);
 
@@ -239,20 +238,23 @@ app.post("/getIncomingRequest", function (req, res) {
   });
 });
 
-app.post("/getAvailableJobForStudent", function (req, res) {
-  Job.find({ status: "accepted" },function(err,statusupdate){
-    for(let i=0;i<statusupdate.length;i++){
-      console.log(statusupdate[i]);
-    }
+app.post('/settimestatus',function(req,res){
+  Job.find({_id:req.body.jid},function(err,timeuser){
+    timeuser[0].timestatus='timeout';
+    timeuser[0].save();
   })
+})
 
-  Job.find({ status: "accepted" }, function (err, jobfound) {
+
+app.post("/getAvailableJobForStudent", function (req, res) {
+  
+  Job.find({ status: "accepted" ,timestatus:"active"}, function (err, jobfound) {
+    console.log(jobfound);
     if (err) {
       res.json({ status: "error" });
     } else {
 
       res.send({ alljob: jobfound });
-      console.log(jobfound);
     }
   });
 });
