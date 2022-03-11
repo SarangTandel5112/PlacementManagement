@@ -61,9 +61,10 @@ const Job = mongoose.model("Job", jobSchema);
 const companyschema = {
   name: String,
   email: String,
-  number: Number,
+  number: Number,  
   ceo: String,
   hr: String,
+  jobsposted:[String],
   address: String,
   password: String,
 };
@@ -76,7 +77,6 @@ const studentSchema = {
   collegename:String,
   cgpa: Number,
   password: String,
-  appliedJobs: [jobSchema],
   status:String
 };
 
@@ -475,7 +475,7 @@ app.post("/setdetails", function (req, res) {
   });
 });
 app.get("/tpodata",async (req,res)=>{
-  console.log("Reqeust Recived")
+  
   let slen= await Student.find({status:"accept"});
   slen=slen.length
   let clen=await company.find();
