@@ -61,6 +61,9 @@ function Details() {
             <b>Job Location :</b>
             {job.jobLocation}
           </div>
+          <div className="sbox">
+            <b>Last Day For Apply : </b>{job.deadline.split('T').join(" ")}
+          </div>
           {
             job.candidates.findIndex(email => email === localStorage.getItem("student_email")) !== -1 ?
               <button className="btn btn-large btn-success" disabled={true} > Applied </button> :

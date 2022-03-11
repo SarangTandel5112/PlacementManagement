@@ -30,7 +30,7 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-const tpo_email = "tpo@test.com";
+
 
 app.use(express.static("public"));
 
@@ -88,8 +88,7 @@ const tpoSchema = {
 };
 Tpo=mongoose.model("Tpo",tpoSchema)
 
-// tpo@getMaxListeners.com 
-// Tpopass
+
 app.post("/register", function (req, res) {
   console.log(req.body);
 
