@@ -208,7 +208,7 @@ Link {
 
 
 .featurehome{
-  width: 99.80vw;
+  width: 100vw;
   padding: 2% 5%;
   text-align: center;
   background-color: rgb(241, 241, 241);
@@ -252,14 +252,59 @@ Link {
 }
 
 
+.siderec{
+  background-color: #e2e2e2;
+  border-radius: 10px;
+  position:relative;
+  z-index:1;
+  padding: 2% 5%;
+  margin-left: -4%;
+
+}
+
+
+.companyimg1{
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin: 2%;
+  margin-left: 60%;
+  position:relative;
+  z-index:2;
+  border: 2px solid rgb(255, 196, 0);
+}
+.companyformatout{
+  padding: 5% 8%;
+}
+
+.cominnertext{
+  margin-left: 14%;
+  
+  display: block;
+}
+
+
 .setsize1{
   font-size: 50px;
+  
 }
 
 
 .trytext1{
   color: black;
+  font-family: 'Lobster', cursive;
+  
 }
+
+
+
+.trytext2{
+  color: black;
+  font-size: 100px;
+  font-family: 'Lobster', cursive;
+}
+
+
 
 .subtxt{
   border: 2x solid red;
@@ -348,7 +393,7 @@ Link {
 
 
 .clientmainpage{
-  width: 98.50vw;
+  width: 97.70vw;
 
 }
 

@@ -1,11 +1,15 @@
 import React from "react";
 import StudentHeader from "./StudentHeader";
 import { Link } from "react-router-dom";
+import Header1 from "./Header1";
+import Navbarbottom from "./Navbarbottom";
+import Studentnavbottom from "./Studentnavbottom";
 
 function Front() {
   return (
     <div>
-      <StudentHeader />
+      <Header1 />
+      <Studentnavbottom />
       <div className="row container-fluid">
         <div className="col-lg-4 container-fluid text">
           <h1>
