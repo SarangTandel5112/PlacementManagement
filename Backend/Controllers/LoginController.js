@@ -59,6 +59,17 @@ class LoginController{
   }
 
     }
+    static getTpoData = async(req,res)=>{
+     
+      let slen = await Student.find({ status: "accept" });
+      slen = slen.length;
+      let clen = await Company.find();
+      clen = clen.length;
+      res.json({
+        slen: slen,
+        clen: clen,
+      });
+  }
 }
 module.exports=LoginController;
 /*

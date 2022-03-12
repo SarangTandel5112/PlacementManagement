@@ -5,17 +5,18 @@ const Route = require("./Routes/Route");
 // const multer = require("multer");
 const app = express();
 // const crypto = require("crypto");
-const nodemailer = require("nodemailer");
-const { getMaxListeners } = require("process");
+// const nodemailer = require("nodemailer");
+// const { getMaxListeners } = require("process");
 mongoose.connect("mongodb://localhost:27017/placementDB", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
 //For json
-app.use(bodyParser.json());
+// app.use(bodyParser.json());
 app.use(express.static("public"));
-app.use(express.urlencoded({ extended: false }));
+app.use(express.json())
 
+// app.use(express.urlencoded());
 app.use("/", Route);
 
 app.listen(5000, () => {
