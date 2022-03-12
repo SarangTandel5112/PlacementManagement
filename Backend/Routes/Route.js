@@ -15,5 +15,14 @@ router.post("/addStudent", StudentController.addStudent());
 
 // Job Rotues
 router.post("/requestToAddJob", JobControlller.requestToAddJob());
+router.post("/getIncomingRequest", JobControlller.getIncomingRequest());
+router.post("/settimestatus", JobControlller.settimestatus());
+router.post("/getAvailableJobForStudent", JobControlller.getAvailableJobForStudent());
+router.post("/AcceptJobRequest", JobControlller.AcceptJobRequest());
+router.post("/RejectJobRequest", JobControlller.RejectJobRequest());
+router.post("/addStudentToJob", JobControlller.addStudentToJob());
+router.post("/GetAllJobsOfCompany", JobControlller.GetAllJobsOfCompany());
+router.post("/setdetails", JobControlller.setdetails());
+router.post("/tpoRequestedJobs", JobControlller.tpoRequestedJobs());
 
 module.exports=router;
