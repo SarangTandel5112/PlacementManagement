@@ -12,5 +12,5 @@ const companyschema = new Schema({
     password: String,
   });
 
-  const Company = mongoose.model("company", companyschema);
-  modules.exports=Company;
+  const Company = mongoose.model("Company", companyschema);
+  module.exports=Company;

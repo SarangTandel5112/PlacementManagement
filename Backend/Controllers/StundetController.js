@@ -1,3 +1,4 @@
+
 const Student=require("../Models/Student");
 class StudentController{
     static register=(req,res)=>{

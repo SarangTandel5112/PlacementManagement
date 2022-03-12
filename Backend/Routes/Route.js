@@ -2,6 +2,9 @@ const express=require("express");
 const router =express.router(); 
 const StudentController=require("../Controllers/StundetController");
 const JobControlller = require("../Controllers/JobController");
+const CompanyController=require("../Controllers/CompanyController");
+const TpoController=require("../Controllers/TpoController");
+const LoginController=require("../Controllers/LoginController");
 
 
 // Student Routes
@@ -24,5 +27,15 @@ router.post("/addStudentToJob", JobControlller.addStudentToJob());
 router.post("/GetAllJobsOfCompany", JobControlller.GetAllJobsOfCompany());
 router.post("/setdetails", JobControlller.setdetails());
 router.post("/tpoRequestedJobs", JobControlller.tpoRequestedJobs());
+
+
+//Company Routes
+router.post("/register", CompanyController.registerCompany());
+
+//Tpo Routes
+router.get("/tpodata", TpoController.getTpoData());
+
+//Login Request
+router.post("/login", LoginController.loginFunction());
 
 module.exports=router;
