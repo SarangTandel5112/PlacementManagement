@@ -211,11 +211,19 @@ Link {
   width: 100vw;
   padding: 2% 5%;
   text-align: center;
-  background-color: rgb(241, 241, 241);
+  background-color:rgb(240, 240, 240);
   text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+
+
+.stuhomecomp{
+  width: 100vw;
+  background-color: #ffffffe7;
+  padding: 0% 5%;
 }
 
 
@@ -232,6 +240,15 @@ Link {
   height: 250px;
   width: auto;
 }
+
+
+
+.tpodata{
+  padding-bottom: 8%;
+}
+
+
+
 
 .featureimgout{
   background: white;
@@ -262,6 +279,20 @@ Link {
 
 }
 
+.tpofeature1{
+margin: 2% 2%;
+margin-top: 100px;
+
+}
+
+
+
+
+.tpotext{
+  margin-bottom: 5%;
+}
+
+
 
 .companyimg1{
   width: 150px;
@@ -274,7 +305,7 @@ Link {
   border: 2px solid rgb(255, 196, 0);
 }
 .companyformatout{
-  padding: 5% 8%;
+  padding: 2% 8%;
 }
 
 .cominnertext{
@@ -333,6 +364,14 @@ Link {
 }
 
 
+.reqinfo{
+  text-align: center;
+  color: black;
+  background-color: white;
+  padding: 3%;
+  border-radius: 100%;
+}
+
 
 .roundimg{
   border-radius: 50%;  
@@ -363,6 +402,14 @@ Link {
   padding: 2% 1%;
 
 }
+
+
+
+.tpocombtn{
+  margin-bottom: 5%;
+}
+
+
 
 
 .aboutteextout{

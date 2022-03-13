@@ -6,23 +6,16 @@ function Tpomiddle() {
     <div className="row container-fluid">
       <div className="col-lg-4 container-fluid text">
         <h3>
-          <b>View upcoming companies ....</b>
-        </h3>
-        <Link to="/tpoDashboard">
-          <button className="btn btn-large btn-dark">Company</button>
-        </Link>
-
-        <h3>
           <b>View companies request....</b>
         </h3>
         <Link to="/tpoIncomingRequest">
-          <button className="btn btn-large btn-dark">Request</button>
+          <button className="btn btn-large btn-dark">Company Request</button>
         </Link>
         <h3>
           <b>View Student request....</b>
         </h3>
         <Link to="/stuudentrequesttpo">
-          <button className="btn btn-large btn-dark">Request</button>
+          <button className="btn btn-large btn-dark">Student Request</button>
         </Link>
       </div>
       <div className="col-lg-8 container-fluid">
