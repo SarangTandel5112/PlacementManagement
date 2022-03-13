@@ -29,17 +29,22 @@ class StudentController{
     }
 
     static setStudentStatus= async (req,res)=>{
-        let id = req.body.vid;
-        let status = req.body.val;
+      let id = req.body.val;
+      let status = req.body.vid;
+      console.log(req.body)
+      console.log(status)
         if(status==="accept"){
             Student.findOneAndUpdate(
                 {_id:id},
-                {Status:"Accpted"},
-                (err,success)=>{
+                {status:"Accpted"},
+                (err,success)=>
+                {
                     if(err){
                         res.json({status:"error"});
                     }
+                    console.log(success)
                 }
+                // res.json()
             )
             let pendingStudents = await Student.find({ status: "Pending" });
             res.json(pendingStudents);

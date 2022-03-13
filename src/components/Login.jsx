@@ -34,11 +34,11 @@ function Login() {
           setvalue(check);
         }
         else if (check === "student") {
-          if(response.data.user.status ==="accept"){
+          if(response.data.user.status ==="Accpted"){
           console.log("IF vloc")
 
             history.push("/studentHome");
-          }else if(response.data.user.status==="reject"){
+          }else if(response.data.user.status==="Rejected"){
             setvalue("Your Request Is Rejected By TPO! Kindly Ask Them")
           }
           else{
