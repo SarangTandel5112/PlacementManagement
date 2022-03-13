@@ -61,7 +61,7 @@ class LoginController{
     }
     static getTpoData = async(req,res)=>{
      
-      let slen = await Student.find({ status: "accept" });
+      let slen = await Student.find({ status: "Accpted" });
       slen = slen.length;
       let clen = await Company.find();
       clen = clen.length;
