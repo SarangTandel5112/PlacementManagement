@@ -16,7 +16,7 @@ mongoose.connect("mongodb://localhost:27017/placementDB", {
 app.use(express.static("public"));
 app.use(express.json())
 
-// app.use(express.urlencoded());
+app.use(bodyParser.urlencoded());
 app.use("/", Route);
 
 app.listen(5000, () => {
