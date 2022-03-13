@@ -15,7 +15,7 @@ export default function Tpodashboard() {
     const [clen, setclen] = useState(0)
     async function fetchdata() {
         console.log("Used")
-        let response = axios.get("/tpodata").then((res) => { setslen(res.data.slen); setclen(res.data.clen) });
+        axios.get("/tpodata").then((res) => { setslen(res.data.slen); setclen(res.data.clen) });
 
 
     }
@@ -52,7 +52,7 @@ export default function Tpodashboard() {
             <div>
                 <div className="row featurehome tpodata">
                     <h1 className="centertext"> <b>Quick Insights</b></h1>
-                    <h4 className="subtxt"></h4>
+                    {/* <h4 className="subtxt"></h4> */}
                     <div className="col-lg-3 ml-5 featureimgout1 ">
                         <h1 className="setsize1">{slen}</h1>
                         <h3 className="featurename">Total Students</h3>

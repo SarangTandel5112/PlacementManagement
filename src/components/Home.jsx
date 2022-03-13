@@ -1,12 +1,11 @@
 // import axios from "axios";
 import axios from "axios";
-import { data } from "jquery";
 import React from "react";
 import { useEffect, useState } from "react";
 // import TpoHeader from "./TpoHeader";
 // import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Header from "./Header";
+
 import Navbarbottom from "./Navbarbottom"
 import { Link } from "react-router-dom"; 
 import Footer from './Footer'
@@ -246,7 +245,7 @@ function Home() {
 
             <div className="row featurehome">
                 <h1 className="centertext"> <b>Quick Insights</b></h1>
-                <h4 className="subtxt"></h4>
+                
                 <div className="col-lg-3 ml-5 featureimgout1 ">
                     <h1 className="setsize1">{slen}</h1>
                     <h3 className="featurename">Total Students</h3>
@@ -266,30 +265,30 @@ function Home() {
                 <div className="clientmain row">
                     <h1 className="clientheader"><b>Our Recruiters</b></h1>
                     <div className="col-lg-3 col-md-6">
-                        <img className=" companyimg" src="../../Photos/company2.png" />
+                        <img className=" companyimg" alt="company" src="../../Photos/company2.png" />
                     </div>
                     <div className="col-lg-3 col-md-6">
-                        <img className=" companyimg" src="../../Photos/company1.png" />
+                        <img className=" companyimg" alt="company" src="../../Photos/company1.png" />
                     </div>
                     <div className="col-lg-3 col-md-6">
-                        <img className=" companyimg" src="../../Photos/company3.png" />
+                        <img className=" companyimg" alt="company" src="../../Photos/company3.png" />
                     </div>
                     <div className="col-lg-3 col-md-6">
-                        <img className=" companyimg" src="../../Photos/company4.png" />
+                        <img className=" companyimg" alt="company" src="../../Photos/company4.png" />
                     </div>
                 </div>
                 <div className="clientmain row">
                     <div className="col-lg-3 col-md-6">
-                        <img className=" companyimg" src="../../Photos/company5.png" />
+                        <img className=" companyimg" alt="company" src="../../Photos/company5.png" />
                     </div>
                     <div className="col-lg-3 col-md-6">
-                        <img className=" companyimg" src="../../Photos/company6.png" />
+                        <img className=" companyimg" alt="company" src="../../Photos/company6.png" />
                     </div>
                     <div className="col-lg-3 col-md-6">
-                        <img className=" companyimg" src="../../Photos/company7.png" />
+                        <img className=" companyimg" alt="company" src="../../Photos/company7.png" />
                     </div>
                     <div className="col-lg-3 col-md-6">
-                        <img className=" companyimg" src="../../Photos/company8.png" />
+                        <img className=" companyimg" alt="company" src="../../Photos/company8.png" />
                     </div>
                 </div>
             </div>

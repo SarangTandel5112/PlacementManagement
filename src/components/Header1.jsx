@@ -1,5 +1,4 @@
 import React from "react";
-import StudentHeader from "./StudentHeader";
 import { Link } from "react-router-dom";
 
 function Header1() {

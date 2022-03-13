@@ -31,6 +31,7 @@ function StudentRequest() {
 
     useEffect(() => {
         studentreq();
+        // eslint-disable-next-line
     }, [])
 
     return (
