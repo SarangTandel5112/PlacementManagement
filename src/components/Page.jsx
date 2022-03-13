@@ -19,6 +19,8 @@ import StudentRequest from "./StudentRequest";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./Home";
 import tpodashboard from "./Tpodashboard";
+import Companyformat from "./Companyformat"
+ 
 
 function Page() {
   return (
@@ -78,6 +80,9 @@ function Page() {
       </Switch>
       <Switch>
         <Route exact path="/" component={Home} />
+      </Switch>
+      <Switch>
+        <Route exact path="/companyformat" component={Companyformat} />
       </Switch>
     </Router>
   );

@@ -208,14 +208,22 @@ Link {
 
 
 .featurehome{
-  width: 99.80vw;
+  width: 100vw;
   padding: 2% 5%;
   text-align: center;
-  background-color: rgb(241, 241, 241);
+  background-color:rgb(240, 240, 240);
   text-align: center;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+
+
+.stuhomecomp{
+  width: 100vw;
+  background-color: #ffffffe7;
+  padding: 0% 5%;
 }
 
 
@@ -232,6 +240,15 @@ Link {
   height: 250px;
   width: auto;
 }
+
+
+
+.tpodata{
+  padding-bottom: 8%;
+}
+
+
+
 
 .featureimgout{
   background: white;
@@ -252,14 +269,73 @@ Link {
 }
 
 
+.siderec{
+  background-color: #e2e2e2;
+  border-radius: 10px;
+  position:relative;
+  z-index:1;
+  padding: 2% 5%;
+  margin-left: -4%;
+
+}
+
+.tpofeature1{
+margin: 2% 2%;
+margin-top: 100px;
+
+}
+
+
+
+
+.tpotext{
+  margin-bottom: 5%;
+}
+
+
+
+.companyimg1{
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin: 2%;
+  margin-left: 60%;
+  position:relative;
+  z-index:2;
+  border: 2px solid rgb(255, 196, 0);
+}
+.companyformatout{
+  padding: 2% 8%;
+}
+
+.cominnertext{
+  margin-left: 14%;
+  
+  display: block;
+}
+
+
 .setsize1{
   font-size: 50px;
+  
 }
 
 
 .trytext1{
   color: black;
+  font-family: 'Lobster', cursive;
+  
 }
+
+
+
+.trytext2{
+  color: black;
+  font-size: 100px;
+  font-family: 'Lobster', cursive;
+}
+
+
 
 .subtxt{
   border: 2x solid red;
@@ -287,6 +363,14 @@ Link {
   padding-bottom: 3%;
 }
 
+
+.reqinfo{
+  text-align: center;
+  color: black;
+  background-color: white;
+  padding: 3%;
+  border-radius: 100%;
+}
 
 
 .roundimg{
@@ -320,6 +404,14 @@ Link {
 }
 
 
+
+.tpocombtn{
+  margin-bottom: 5%;
+}
+
+
+
+
 .aboutteextout{
 
 }
@@ -348,7 +440,7 @@ Link {
 
 
 .clientmainpage{
-  width: 98.50vw;
+  width: 97.70vw;
 
 }
 
