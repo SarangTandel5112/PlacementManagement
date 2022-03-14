@@ -86,7 +86,8 @@ const tpoSchema = {
   email: String,
   password: String,
 };
-Tpo=mongoose.model("Tpo",tpoSchema)
+const Tpo=mongoose.model("Tpo",tpoSchema)
+
 
 
 app.post("/register", function (req, res) {
