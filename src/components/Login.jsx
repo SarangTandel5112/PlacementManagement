@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { Link, useHistory } from "react-router-dom";
 
+
 function Login() {
   const [formdata, setformdata] = useState({
     email: "",
@@ -22,7 +23,11 @@ function Login() {
     const finaldata = formdata;
     console.log(finaldata);
     axios
-      .post("/login", finaldata)
+      .post("/login", finaldata,{
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        withCredentials: true})
       .then((response) => {
         var check = response.data.err;
         console.log(response.data.err)
@@ -37,7 +42,7 @@ function Login() {
           if(response.data.user.status ==="Accpted"){
           console.log("IF vloc")
 
-            history.push("/studentHome");
+            history.push("/");
           }else if(response.data.user.status==="Rejected"){
             setvalue("Your Request Is Rejected By TPO! Kindly Ask Them")
           }

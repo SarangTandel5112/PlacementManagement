@@ -51,11 +51,12 @@ class StudentController{
         }else if(status==="reject"){
             Student.findOneAndUpdate(
                 {_id:id},
-                {Status:"Rejected"},
+                {status:"Rejected"},
                 (err,success)=>{
                     if(err){
                         res.json({status:"error"});
                     }
+                    console.log(success)
                 }
             )
             let pendingStudents = await Student.find({ status: "Pending" });

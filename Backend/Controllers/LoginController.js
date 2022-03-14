@@ -10,7 +10,7 @@ class LoginController{
   let lpassword = req.body.password[0];
   let type = req.body.type[0];
   let a = "";
-  console.log(req.body);
+  // console.log(req.body);
   if (type === "student") {
     Student.find({ email: name }, function (err, userfounds) {
       if (userfounds.length === 0 || err) {
@@ -18,8 +18,18 @@ class LoginController{
         console.log("incorrect username!!");
       } else if (userfounds[0].password === lpassword) {
         res.send({ err: req.body.type[0], user: userfounds[0] });
+
         logindatauser = userfounds;
-        console.log(logindatauser);
+        console.log(userfounds)
+        console.log(userfounds["_id"])
+        req.session.user="Student";
+        
+        req.session.userid=userfounds[0]._id;
+        req.session.loggedin=true;
+        console.log(req.session.id)
+
+        // console.log(logindatauser);
+        console.log(req.session)
       } else {
         res.send({ err: "incorrect password!!", user: userfounds[0] });
         console.log("incorrect password!!");
@@ -60,9 +70,13 @@ class LoginController{
 
     }
     static getTpoData = async(req,res)=>{
+      req.session.userid="Punit";
+      console.log(req.session.id)
+      console.log(req.session.userid)
      
       let slen = await Student.find({ status: "Accpted" });
       slen = slen.length;
+      
       let clen = await Company.find();
       clen = clen.length;
       res.json({
