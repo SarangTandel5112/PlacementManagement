@@ -1,18 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import Companynavbottom from "./Companynavbottom";
 import Header1 from "./Header1";
 import Footer from "./Footer";
-import axios from "axios";
 
 function Companydisplay() {
-  const [file,setFile]=useState();
-  function sendfile(event){
-    const data=new FormData();
-    data.append("file",file)
-    console.log(data);
+ 
 
-    axios.post("/sendfile",data)
-  }
   return (
     <div>
       <Header1 />

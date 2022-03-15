@@ -33,7 +33,8 @@ router.post("/tpoRequestedJobs", JobControlller.tpoRequestedJobs);
 
 
 //Company Routes
-router.post("/register", CompanyController.registerCompany);
+// router.post("/register", CompanyController.registerCompany);
+router.post("/registerCompany",CompanyController.registerCompany)
 
 //Tpo Routes
 router.get("/tpodata", LoginController.getTpoData);

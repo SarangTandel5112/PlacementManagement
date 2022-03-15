@@ -5,6 +5,7 @@ const Route = require("./Routes/Route");
 const session = require('express-session');
 const cookieParser=require("cookie-parser")
 const cors=require('cors')
+const fileUpload=require("express-fileupload");
 
 
 
@@ -18,6 +19,7 @@ mongoose.connect("mongodb://localhost:27017/placementDB", {
   useUnifiedTopology: true,
 }).then("Connected to MongoDb");
 app.use(cookieParser())
+app.use(fileUpload())
 
 app.use(cors({
   origin: 'http://localhost:3000',

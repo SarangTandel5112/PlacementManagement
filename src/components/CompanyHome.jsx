@@ -32,7 +32,7 @@ function Front() {
       </div>
       <div className="row featurehome tpodata">
         <h1 className="centertext"> <b>Manage Job</b></h1>
-        <h4 className="subtxt"></h4>
+        <h4 className="subtxt"> </h4>
         <div className="col-lg-3 ml-5 featureimgout1">
           <img className="comcard" alt="company" src="../../Photos/interview.png" />
           <h3 className="featurename">Post A Job</h3>
