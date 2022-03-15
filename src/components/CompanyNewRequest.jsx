@@ -7,7 +7,9 @@ function Companyhire() {
     description: "",
     numberOfOpening: "",
     ctcRange: "",
+    minimumCriteria:"",
     jobLocation: "",
+    companyWebsite: "",
     deadline:""
   });
 
@@ -79,6 +81,21 @@ function Companyhire() {
               required
             />
           </div>
+
+          
+
+          <div className="phno container-fluid">
+            <input
+              type="text"
+              className="phno1"
+              name="minimumCriteria"
+              onChange={handleChange}
+              placeholder="Minimum Criteria"
+              required
+            />
+          </div>
+
+
           <div className="phno container-fluid">
             <input
               type="text"
@@ -89,6 +106,19 @@ function Companyhire() {
               required
             />
           </div>
+
+          <div className="phno container-fluid">
+            <input
+              type="text"
+              className="phno1"
+              name="companyWebsite"
+              onChange={handleChange}
+              placeholder="Company Website"
+              required
+            />
+          </div>
+
+
           <div>
             <input type="datetime-local" className="phno1" name="deadline" onChange={handleChange} required/>
           </div>

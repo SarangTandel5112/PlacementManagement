@@ -10,6 +10,7 @@ const companyschema = new Schema({
     jobsposted:[String],
     address: String,
     password: String,
+    imagepath:String
   });
 
   const Company = mongoose.model("Company", companyschema);
