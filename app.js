@@ -9,6 +9,10 @@ const crypto = require("crypto");
 const nodemailer = require("nodemailer");
 const { getMaxListeners } = require("process");
 
+const fs=require('fs')
+const {promisify}=require("util");
+const pipeline =promisify(require("stream").pipeline)
+
 app.use(bodyParser.urlencoded({ extended: true }));
 
 
@@ -489,6 +493,21 @@ app.get("/tpodata",async (req,res)=>{
   })
   
 })
+
+const upload=multer();
+
+// app.post("/sendfile",upload.single("file"),async(req,res,next)=>{
+//   const{
+//     file,
+//     body:{name}
+    
+//   }=req;  
+//   if(file.detectedFileExtension != '.jpg') next(new Error ("invalid"))
+//   const filename=Date.now()+file.detectedFileExtension;
+
+//   await pipeline(file.stream,fs.createWriteStream(`${__dirname}/${filename}`))
+//   console.log(req.file);
+// })
 
 app.listen(5000, () => {
   console.log("Server started at port 5000");
