@@ -16,30 +16,30 @@ function Companynavbottom() {
                     </li>
                     
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="/#"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Categories
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">CS/IT</a>
+                            <a class="dropdown-item" href="/#">CS/IT</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Mechanical</a>
+                            <a class="dropdown-item" href="/#">Mechanical</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Civil</a>
+                            <a class="dropdown-item" href="/#">Civil</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">EC</a>
+                            <a class="dropdown-item" href="/#">EC</a>
                         </div>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Blogs <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="/#" >Blogs <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">FAQs <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="/#" >FAQs <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">About Us <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="/#" >About Us <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Contact Us <span class="sr-only">(current)</span></a>
+                        <a class="nav-link" href="/#" >Contact Us <span class="sr-only">(current)</span></a>
                     </li>
                 </ul>
                 

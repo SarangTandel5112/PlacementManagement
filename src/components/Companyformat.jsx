@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+
 import Companynavbottom from "./Companynavbottom";
 import Header1 from "./Header1";
 
@@ -10,7 +10,7 @@ function Companyformat() {
       <Companynavbottom />
       <div className="row companyformatout">
         <div className="col-lg-3 col-md-6">
-          <img className=" companyimg1" src="../../Photos/company5.png" />
+          <img className=" companyimg1" alt="company" src="../../Photos/company5.png" />
         </div>
         <div className="col-lg-8 siderec">
           <p className="cominnertext">Company Name : TCS</p>
@@ -21,7 +21,7 @@ function Companyformat() {
       </div>
       <div className="row companyformatout">
         <div className="col-lg-3 col-md-6">
-          <img className=" companyimg1" src="../../Photos/company3.png" />
+          <img className=" companyimg1" alt="company1" src="../../Photos/company3.png" />
         </div>
         <div className="col-lg-8 siderec">
           <p className="cominnertext">Company Name : TCS</p>
@@ -32,7 +32,7 @@ function Companyformat() {
       </div>
       <div className="row companyformatout">
         <div className="col-lg-3 col-md-6">
-          <img className=" companyimg1" src="../../Photos/company6.png" />
+          <img className=" companyimg1" alt="company1" src="../../Photos/company6.png" />
         </div>
         <div className="col-lg-8 siderec">
           <p className="cominnertext">Company Name : TCS</p>
@@ -42,7 +42,7 @@ function Companyformat() {
         </div>
       </div><div className="row companyformatout">
         <div className="col-lg-3 col-md-6">
-          <img className=" companyimg1" src="../../Photos/company4.png" />
+          <img className=" companyimg1" alt="company1" src="../../Photos/company4.png" />
         </div>
         <div className="col-lg-8 siderec">
           <p className="cominnertext">Company Name : TCS</p>

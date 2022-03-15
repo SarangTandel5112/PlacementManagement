@@ -53,10 +53,10 @@ function Footer() {
 
                         <div>
                             <ul class="social_footer_ul">
-                                <li className=""><a href=""><i class="smlogo fab fa-facebook-f"></i></a></li>
-                                <li className=""><a href=""><i class="smlogo fab fa-twitter"></i></a></li>
-                                <li className=""><a href=""><i class="smlogo fab fa-linkedin"></i></a></li>
-                                <li className=""><a href=""><i class="smlogo fab fa-instagram"></i></a></li>
+                                <li className=""><a href="/#" ><i class="smlogo fab fa-facebook-f"></i></a></li>
+                                <li className=""><a href="/#" ><i class="smlogo fab fa-twitter"></i></a></li>
+                                <li className=""><a href="/#" ><i class="smlogo fab fa-linkedin"></i></a></li>
+                                <li className=""><a href="/#" ><i class="smlogo fab fa-instagram"></i></a></li>
                             </ul>
                         </div>
                     </div>

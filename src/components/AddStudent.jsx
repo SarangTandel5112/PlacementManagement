@@ -72,7 +72,7 @@ function AddStudent() {
     if (students.length > 0) {
       let success = 0;
 
-      students.map((student,index) => {
+      students.forEach((student,index) => {
         axios
           .post("/addStudent", {
             email: student[0],

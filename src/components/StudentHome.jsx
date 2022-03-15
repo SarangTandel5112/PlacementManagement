@@ -1,12 +1,21 @@
-import React from "react";
-import StudentHeader from "./StudentHeader";
+import React ,{useEffect}from "react";
+import axios from "axios";
 import { Link } from "react-router-dom";
 import Header1 from "./Header1";
-import Navbarbottom from "./Navbarbottom";
 import Studentnavbottom from "./Studentnavbottom";
 import Footer from "./Footer";
-
+axios.defaults.withCredentials=true;
 function Front() {
+
+  async function fetchdata() {
+      console.log("Used")
+      axios.get("/tpodata").then((res) => { console.log(res) });
+
+
+  }
+  useEffect(() => {
+      fetchdata();
+  }, [])
   return (
     <div>
       <Header1 />
@@ -31,7 +40,7 @@ function Front() {
         <h1 className="centertext"> <b>Currently Hiring...</b></h1>
         <div className="row companyformatout">
           <div className="col-lg-3 col-md-6">
-            <img className=" companyimg1" src="../../Photos/company3.png" />
+            <img className=" companyimg1" alt="company" src="../../Photos/company3.png" />
           </div>
           <div className="col-lg-8 siderec">
             <p className="cominnertext">Company Name : TCS</p>
@@ -42,7 +51,7 @@ function Front() {
         </div>
         <div className="row companyformatout">
           <div className="col-lg-3 col-md-6">
-            <img className=" companyimg1" src="../../Photos/company6.png" />
+            <img className=" companyimg1" alt="company1" src="../../Photos/company6.png" />
           </div>
           <div className="col-lg-8 siderec">
             <p className="cominnertext">Company Name : TCS</p>
@@ -52,7 +61,7 @@ function Front() {
           </div>
         </div><div className="row companyformatout">
           <div className="col-lg-3 col-md-6">
-            <img className=" companyimg1" src="../../Photos/company4.png" />
+            <img className=" companyimg1" alt="company1" src="../../Photos/company4.png" />
           </div>
           <div className="col-lg-8 siderec">
             <p className="cominnertext">Company Name : TCS</p>

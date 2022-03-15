@@ -1,5 +1,5 @@
 import React from "react";
-import CompanyHeader from "./CompanyHeader";
+
 import { Link } from "react-router-dom";
 import Companynavbottom from "./Companynavbottom";
 import Header1 from "./Header1";

@@ -14,20 +14,12 @@ function Tpodetails() {
     console.log(incomingRequest,"after state");
   };
 
-  // function changeState(event) {
-  //   const setData = async () => {
-  //     const resp = await axios.post("/setdetails", {
-  //       jname: event.target.name,
-  //       jid: event.target.value,
-  //     });
-  //   };
-  //   setData();
-  //   fetchJob();
-  // }
-
+  
+  
   useEffect(() => {
-    console.log("Use effect qwad");
+    
     fetchJob();
+    // eslint-disable-next-line
   }, []);
 
   const acceptJobRequest = (job_id) => {
