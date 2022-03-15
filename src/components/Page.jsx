@@ -20,6 +20,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from "./Home";
 import tpodashboard from "./Tpodashboard";
 import Companyformat from "./Companyformat"
+import Companydisplay from "./Companydisplay";
  
 
 function Page() {
@@ -83,6 +84,9 @@ function Page() {
       </Switch>
       <Switch>
         <Route exact path="/companyformat" component={Companyformat} />
+      </Switch>
+      <Switch>
+        <Route exact path="/companydisplay" component={Companydisplay} />
       </Switch>
     </Router>
   );

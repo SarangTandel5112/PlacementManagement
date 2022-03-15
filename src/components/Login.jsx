@@ -42,7 +42,7 @@ function Login() {
           if(response.data.user.status ==="Accpted"){
           console.log("IF vloc")
 
-            history.push("/");
+            history.push("/studentHome");
           }else if(response.data.user.status==="Rejected"){
             setvalue("Your Request Is Rejected By TPO! Kindly Ask Them")
           }

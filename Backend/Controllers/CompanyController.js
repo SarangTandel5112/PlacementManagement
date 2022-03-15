@@ -1,25 +1,36 @@
 const Company = require("../Models/Company");
+const path=require('path')
 class CompanyController{
+    
     static registerCompany=(req,res)=>{
-        console.log(req.body);
-
-        let tempuser = req.body.email[0];
-      
+      if(req.files===null){
+        res.status(400).json({msg:'No file Uploaded'})
+      }else{
+        const file=req.files.file;
+        const fileName=Date.now()+file.name;
+        console.log(req.body)
+       
         const user = new Company({
-          name: req.body.name[0],
-          email: req.body.email[0],
-          number: req.body.phno[0],
-          ceo: req.body.ceo[0],
-          hr: req.body.hr[0],
-          address: req.body.address[0],
-          password: req.body.password[0],
-          job: [],
+          name: req.body.name,
+          email: req.body.email,
+          number: req.body.phno,
+          ceo: req.body.ceo,
+          hr: req.body.hr,
+          address: req.body.address,
+          password: req.body.password,
+          jobsposted: [],
+          imagepath:fileName
         });
-        console.log(user);
         user.save();
         res.json({
           msg: "Data received",
         });
+
+
+        
+        file.mv(path.join(__dirname,`/../../public/Photos/Files/${fileName}`))
+
+      }
     }
     
 }

@@ -1,9 +1,11 @@
 import axios from "axios";
+import { Redirect } from "react-router-dom";
 import React, { useState } from "react";
 // import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import {Link} from "react-router-dom"
+axios.defaults.withCredentials=true;
 function Register() {
   const [formdata, setformdata] = useState({
     name: "",
@@ -15,6 +17,9 @@ function Register() {
     password: "",
     password1: "",
   });
+ const [file, setfile] = useState(" ")
+
+  
   function submitform(event) {
     event.preventDefault();
     const finaldata = formdata;
@@ -28,24 +33,50 @@ function Register() {
         draggable: true,
         progress: undefined,
       });
-    } else {
-      
-      axios
-        .post("/register", finaldata)
-        .then((response) => {
-          console.log("Success");
-
-          window.location.replace("/login");
+    } 
+    else {
+      const formData=new FormData();
+      formData.append("file",file)
+      formData.append("name",finaldata.name);
+      formData.append("email",finaldata.email);
+      formData.append("phno",finaldata.phno);
+      formData.append("ceo",finaldata.ceo);
+      formData.append("hr",finaldata.hr);
+      formData.append("address",finaldata.address);
+      formData.append("password",finaldata.password);
+   
+      try{
+        axios.post("/registerCompany",formData,{
+          headers:{
+            'Content-Type':'multipart/formdata'
+          }
         })
-        .catch(() => {
-          console.log("fail");
-        });
+        
+  
+      }catch(err){
+        console.log(err)
+      }
+      
+      
     }
-    console.log(password, password1);
+    
+    
+  
+    
   }
 
   function handleChange(event) {
     setformdata({ ...formdata, [event.target.name]: [event.target.value] });
+  }
+  function handleFileChange(event){
+     console.log("before")
+     setfile(event.target.files[0])
+     
+    
+
+   
+    
+
   }
 
   const { password, password1 } = formdata;
@@ -152,13 +183,18 @@ function Register() {
         <br />
 
         <br />
-
+        <div className="phno container-fluid">
+        <input type="file" name="file" onChange={handleFileChange} className=" password1 form-control-file" id="fileInput" />
+        
+        </div>
+        
         <input
           type="submit"
           className="btn-primary btn-lg accbtn"
           value="Create Account"
           name="Log in"
         />
+       
       </form>
     </div>
   );
