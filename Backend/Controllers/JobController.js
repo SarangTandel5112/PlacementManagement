@@ -4,6 +4,7 @@ const path=require('path')
 class JobControlller{
 
     static requestToAddJob=(req,res)=>{
+
       if(req.files===null){
         fileName=null;
       }else{
@@ -36,6 +37,8 @@ class JobControlller{
       console.log(newJob)
         userfound[0].save();
       })
+ 
+         
       
     
     
@@ -64,14 +67,30 @@ class JobControlller{
       });
     }
 
-    static getAvailableJobForStudent=(req,res)=>{
+    static getAvailableJobForStudent=async(req,res)=>{
+    
     Job.find(
         { status: "accepted", timestatus: "active" },
         function (err, jobfound) {
-          console.log(jobfound);
+         
           if (err) {
             res.json({ status: "error" });
           } else {
+            
+            for(let i=0;i<jobfound.length;i++){
+              Company.find({_id:jobfound[i].companyid},(err,compfind)=>{
+                if (err) {
+                  res.json({ status: "error" });
+                } 
+                else{
+                  jobfound[i].compname=compfind[0].name;
+                  console.log(jobfound[i].compname,compfind[0].name);
+                  
+                } 
+                
+              })
+            }
+            console.log(jobfound);
             res.send({ alljob: jobfound });
           }
         }

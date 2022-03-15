@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const {Schema}=mongoose;
 const jobSchema = new Schema({
+
   jobTitle: String,
   jobDescription: String,
   numberOfOpening: Number,
@@ -16,6 +17,7 @@ const jobSchema = new Schema({
   compname:String,
   compimg:String,
   jobDescriptionFile:String
+
   }) ;
   
   const Job = mongoose.model("Job", jobSchema);

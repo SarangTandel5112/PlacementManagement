@@ -79,16 +79,9 @@ function Register() {
   function handleFileChange(event){
      console.log("before")
      setfile(event.target.files[0])
-     
-    
-
-   
-    
-
   }
 
   const { password, password1 } = formdata;
-
   return (
     <div>
       <ToastContainer
