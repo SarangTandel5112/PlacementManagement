@@ -8,7 +8,8 @@ const studentSchema = new Schema({
     cgpa: Number,
     password: String,
     status:String,
-    myapply:[String]
+    myapply:[String],
+    resumename:String
   }) ;
   
   const Student = mongoose.model("Student", studentSchema);

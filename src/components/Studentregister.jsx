@@ -1,10 +1,12 @@
 import axios from "axios";
 import React, { useState } from "react";
-// import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+axios.defaults.withCredentials=true;
 
 function Studentregister() {
+  const history=useHistory()
   const [formdata, setformdata] = useState({
     name: "",
     email: "",
@@ -14,7 +16,8 @@ function Studentregister() {
     password: "",
     password1: "",
   });
-  function submitform(event) {
+  const [file, setfile] = useState(" ")
+  async function submitform(event) {
     event.preventDefault();
     const finaldata = formdata;
     if (password[0] !== password1[0]) {
@@ -29,23 +32,46 @@ function Studentregister() {
       });
     } else {
       
-      axios
-        .post("/registerstudent", finaldata)
-        .then((response) => {
-          console.log("Success");
-
-          window.location.replace("/");
+      const formData=new FormData();
+      formData.append("file",file)
+      formData.append("name",finaldata.name);
+      formData.append("email",finaldata.email);
+      formData.append("phno",finaldata.phno);
+      formData.append("collegename",finaldata.collegename);
+      formData.append("cgpa",finaldata.cgpa);
+      formData.append("password",finaldata.password);
+      try{
+        let response= await axios.post("/registerstudent",formData,{
+          headers:{
+            'Content-Type':'multipart/formdata'
+          }
+          
         })
-        .catch(() => {
-          console.log("fail");
-        });
+        history.push("/login")
+        
+       
+        
+  
+      }catch(err){
+        console.log(err)
+      }
     }
-    console.log(password, password1);
+ 
   }
 
   function handleChange(event) {
     setformdata({ ...formdata, [event.target.name]: [event.target.value] });
   }
+  function handleFileChange(event){
+    console.log("before")
+    setfile(event.target.files[0])
+    
+   
+
+  
+   
+
+ }
 
   const {  password, password1 } = formdata;
 
@@ -141,6 +167,11 @@ function Studentregister() {
         <br />
 
         <br />
+        <div className="container-fluid">
+          <label htmlFor="fielInput">Upload Resume : </label>
+        <input type="file" name="file" className="lname" onChange={handleFileChange}  id="fileInput" />
+        
+        </div>
 
         <input
           type="submit"
