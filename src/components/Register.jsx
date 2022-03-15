@@ -1,12 +1,15 @@
 import axios from "axios";
-import { Redirect } from "react-router-dom";
+import { Redirect, useHistory } from "react-router-dom";
 import React, { useState } from "react";
 // import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import {Link} from "react-router-dom"
+
+
 axios.defaults.withCredentials=true;
 function Register() {
+  const history=useHistory()
   const [formdata, setformdata] = useState({
     name: "",
     email: "",
@@ -20,7 +23,8 @@ function Register() {
  const [file, setfile] = useState(" ")
 
   
-  function submitform(event) {
+  async function submitform(event) {
+
     event.preventDefault();
     const finaldata = formdata;
     if (password[0] !== password1[0]) {
@@ -46,11 +50,15 @@ function Register() {
       formData.append("password",finaldata.password);
    
       try{
-        axios.post("/registerCompany",formData,{
+        let response= await axios.post("/registerCompany",formData,{
           headers:{
             'Content-Type':'multipart/formdata'
           }
+          
         })
+        history.push("/login")
+        
+       
         
   
       }catch(err){
@@ -183,8 +191,9 @@ function Register() {
         <br />
 
         <br />
-        <div className="phno container-fluid">
-        <input type="file" name="file" onChange={handleFileChange} className=" password1 form-control-file" id="fileInput" />
+        <div className="container-fluid">
+          <label htmlFor="fielInput">Upload Logo : </label>
+        <input type="file" name="file" className="lname" onChange={handleFileChange}  id="fileInput" />
         
         </div>
         
