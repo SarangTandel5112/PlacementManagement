@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import Companynavbottom from "./Companynavbottom";
 import Header1 from "./Header1";
 import Footer from "./Footer";
+import axios from "axios";
 
 function Companydisplay() {
 
