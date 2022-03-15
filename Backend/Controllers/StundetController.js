@@ -143,13 +143,13 @@ class StudentController{
                   text: `Your username - ${req.body.email} Your password - ${newPassword}`,
                 };
         
-                transporter.sendMail(mailOptions, function (error, info) {
-                  if (error) {
-                    console.log(error);
-                  } else {
-                    console.log("Email sent: " + info.response);
-                  }
-                });
+                // transporter.sendMail(mailOptions, function (error, info) {
+                //   if (error) {
+                //     console.log(error);
+                //   } else {
+                //     console.log("Email sent: " + info.response);
+                //   }
+                // });
         
                 res.json({
                   status: "ok",

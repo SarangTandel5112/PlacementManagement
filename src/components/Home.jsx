@@ -295,11 +295,6 @@ function Home() {
 
             <Footer />
 
-
-
-
-
-
         </div >
 
     )
