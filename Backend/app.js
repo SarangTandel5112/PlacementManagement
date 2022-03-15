@@ -16,7 +16,7 @@ const app = express();
 mongoose.connect("mongodb://localhost:27017/placementDB", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-});
+}).then("Connected to MongoDb");
 app.use(cookieParser())
 
 app.use(cors({

@@ -1,16 +1,15 @@
-import React ,{useEffect,useState}from "react";
+import React ,{useEffect}from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import Header1 from "./Header1";
 import Studentnavbottom from "./Studentnavbottom";
 import Footer from "./Footer";
-
+axios.defaults.withCredentials=true;
 function Front() {
-  const [slen, setslen] = useState(0);
-  const [clen, setclen] = useState(0)
+
   async function fetchdata() {
       console.log("Used")
-      axios.get("/tpodata",{withCredentials:true}).then((res) => { setslen(res.data.slen); setclen(res.data.clen) });
+      axios.get("/tpodata").then((res) => { console.log(res) });
 
 
   }

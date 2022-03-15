@@ -17,19 +17,13 @@ class LoginController{
         res.send({ err: "incorrect username!!", user: userfounds[0] });
         console.log("incorrect username!!");
       } else if (userfounds[0].password === lpassword) {
+        req.session.user="Student";
+        req.session.userid=userfounds[0]._id;
+        console.log(req.session)
         res.send({ err: req.body.type[0], user: userfounds[0] });
 
         logindatauser = userfounds;
-        console.log(userfounds)
-        console.log(userfounds["_id"])
-        req.session.user="Student";
-        
-        req.session.userid=userfounds[0]._id;
-        req.session.loggedin=true;
-        console.log(req.session.id)
-
-        // console.log(logindatauser);
-        console.log(req.session)
+     
       } else {
         res.send({ err: "incorrect password!!", user: userfounds[0] });
         console.log("incorrect password!!");
@@ -54,26 +48,32 @@ class LoginController{
 
   if (type === "tpo") {
     Tpo.find({ email: name }, function (err, userfounds) {
-      console.log("tpofound");
+      // console.log("tpofound");
       if (userfounds.length === 0 || err) {
         res.send({ err: "incorrect username!!", user: userfounds });
-        console.log("incorrect username!!");
+        // console.log("incorrect username!!");
       } else if (userfounds[0].password === lpassword) {
+        req.session.user="Tpo"
+        req.session.userid=userfounds[0]._id;
+        console.log(req.session)
         res.send({ err: req.body.type[0], user: userfounds });
         logindataadmin = userfounds;
       } else {
         res.send({ err: "incorrect password!!", user: userfounds });
-        console.log("incorrect password!!");
+        // console.log("incorrect password!!");
       }
     });
   }
 
     }
     static getTpoData = async(req,res)=>{
-      req.session.userid="Punit";
-      console.log(req.session.id)
-      console.log(req.session.userid)
+      
+      // console.log(req.session.id)
+      // console.log(req.session.userid)
      
+      console.log(req.session.id)
+      console.log(req.session)
+
       let slen = await Student.find({ status: "Accpted" });
       slen = slen.length;
       
@@ -83,6 +83,10 @@ class LoginController{
         slen: slen,
         clen: clen,
       });
+  }
+
+  static logout=async(req,res)=>{
+     req.session.destroy();
   }
 }
 module.exports=LoginController;
