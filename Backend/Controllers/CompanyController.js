@@ -28,7 +28,7 @@ class CompanyController{
 
 
         
-        file.mv(path.join(__dirname,`/../../public/Photos/Files/${fileName}`))
+        file.mv(path.join(__dirname,`/../../public/Photos/Files/clogo/${fileName}`))
 
       }
     }

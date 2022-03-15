@@ -6,14 +6,6 @@ import axios from "axios";
 
 function Companydisplay() {
 
-  const [file, setFile] = useState();
-  function sendfile(event) {
-    const data = new FormData();
-    data.append("file", file)
-    console.log(data);
-
-    axios.post("/sendfile", data)
-  }
 
   return (
     <div>
