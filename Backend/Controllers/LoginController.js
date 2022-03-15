@@ -37,6 +37,9 @@ class LoginController{
         res.send({ err: "incorrect username!!", user: userfounds });
         console.log("incorrect username!!");
       } else if (userfounds[0].password === lpassword) {
+        req.session.user="Company";
+        req.session.userid=userfounds[0]._id;
+        console.log(req.session)
         res.send({ err: req.body.type[0], user: userfounds });
         logindataadmin = userfounds;
       } else {
