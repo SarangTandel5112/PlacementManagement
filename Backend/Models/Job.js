@@ -12,7 +12,9 @@ const jobSchema = new Schema({
     deadline:String,
     candidates: [String],
     timestatus:String,
-    companyid:String
+    companyid:String,
+    compname:String,
+    compimg:String
   }) ;
   
   const Job = mongoose.model("Job", jobSchema);

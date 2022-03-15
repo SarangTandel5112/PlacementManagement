@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import StudentHeader from "./StudentHeader";
 
 function Details() {
+  
   const [jobs, setJobs] = useState([]);
   
   var a=new Date();
@@ -40,35 +41,28 @@ function Details() {
       <StudentHeader />
 
       <h3 className="main-heading">All Jobs</h3>
+
+     
       {jobs.length === 0 && <h4 className="main-heading">No new Jobs</h4>}
+      
       {jobs.length > 0 && jobs.map((job) => (
         
-        <div className="dbox" id={job._id} key={job._id} >
-
-          <div className="sbox">
-            <b>JobTitle:</b> {job.jobTitle}
-          </div>
-          <div className="sbox">
-            <b>JobDescription:</b> {job.jobDescription}
-          </div>
-          <div className="sbox">
-            <b>Number Of Opening :</b> {job.numberOfOpening}
-          </div>
-          <div className="sbox">
-            <b>Ctc Range :</b> {job.ctcRange}
-          </div>
-          <div className="sbox">
-            <b>Job Location :</b>
-            {job.jobLocation}
-          </div>
-          <div className="sbox">
-            <b>Last Day For Apply : </b>{job.deadline.split('T').join(" ")}
-          </div>
-          {
+        <div className="row companyformatout">
+        <div className="col-lg-3 col-md-6">
+          <img className=" companyimg1" alt="company" src="../../Photos/company5.png" />
+        </div>
+        <div className="col-lg-8 siderec">
+          <p className="cominnertext"><b>Company Name : </b>{job.jobTitle}</p>
+          
+          <p className="cominnertext"><b>Address : </b>{job.jobLocation}</p>
+          <button type="button " class="btn btn-primary cominnertext">View Details</button>
+          <button type="button " class="btn btn-success ml-2">Apply now</button>
+        </div>
+        {/* {
             job.candidates.findIndex(email => email === localStorage.getItem("student_email")) !== -1 ?
               <button className="btn btn-large btn-success" disabled={true} > Applied </button> :
               <button className="btn btn-large btn-success " onClick={(e) => applyForJob(e, job._id)}> Apply </button>
-          }
+          } */}
           {
             setTimeout(()=>{
               let ab=document.getElementById(job._id);
@@ -78,8 +72,10 @@ function Details() {
             
           }
           
+      </div>
+          
 
-        </div>
+        
 
       ))}
     </div>

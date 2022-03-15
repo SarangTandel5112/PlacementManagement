@@ -18,13 +18,20 @@ class JobControlller{
         timestatus: "active",
         companyid:req.session.userid,
       });
+      Company.find({_id:req.session.userid},(err,userfind)=>{
+        
+        newJob.compname=userfind[0].name;
+        newJob.compimg=userfind[0].imagepath;
+        newJob.save();
+      })
+      console.log(newJob);
     
-      newJob.save();
+      
       console.log(newJob._id,req.session);
       Company.find({_id:req.session.userid},(err,userfound)=>{
-          console.log(userfound);
+          // console.log(userfound);
           userfound[0].jobsposted.push(newJob._id);
-          console.log(userfound);
+          // console.log(userfound);
           userfound[0].save();
       })
           
@@ -49,14 +56,30 @@ class JobControlller{
       });
     }
 
-    static getAvailableJobForStudent=(req,res)=>{
+    static getAvailableJobForStudent=async(req,res)=>{
+    
     Job.find(
         { status: "accepted", timestatus: "active" },
         function (err, jobfound) {
-          console.log(jobfound);
+         
           if (err) {
             res.json({ status: "error" });
           } else {
+            
+            for(let i=0;i<jobfound.length;i++){
+              Company.find({_id:jobfound[i].companyid},(err,compfind)=>{
+                if (err) {
+                  res.json({ status: "error" });
+                } 
+                else{
+                  jobfound[i].compname=compfind[0].name;
+                  console.log(jobfound[i].compname,compfind[0].name);
+                  
+                } 
+                
+              })
+            }
+            console.log(jobfound);
             res.send({ alljob: jobfound });
           }
         }
