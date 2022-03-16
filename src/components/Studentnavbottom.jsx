@@ -41,6 +41,9 @@ function Studentnavbottom() {
                     <li class="nav-item active">
                         <a class="nav-link" href="/#" >Contact Us <span class="sr-only">(current)</span></a>
                     </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/myapplies" >My Applies <span class="sr-only">(current)</span></a>
+                    </li>
                 </ul>
                 
             </div>

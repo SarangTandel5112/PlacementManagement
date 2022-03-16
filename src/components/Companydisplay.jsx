@@ -9,7 +9,7 @@ function Companydisplay() {
   const {compId}=useParams();
   
   const [comp,setComp]=useState({});
-
+  const [apply,setapply]=useState(false)
 
   async function getdata(){
     
@@ -19,6 +19,12 @@ function Companydisplay() {
     // alert(res.data.oneuser.jobTitle)
     console.log(comp);
     // alert(comp.jobTitle)
+  }
+
+  async function senddata(){
+    setapply(true);
+    await axios.post("/applyforcompany",{id:compId})
+
   }
 
   useEffect(()=>{
@@ -64,10 +70,15 @@ function Companydisplay() {
             <div className="sbox">
               <b>Last Day For Apply : </b>{comp.deadline}
             </div>
+
+            {apply == true ? 
             <div className="sbox">
-              <button class="btn btn-success">Apply now</button>
-              
-            </div>
+              <button class="btn btn-success" >Applied</button>              
+            </div> :
+            <div className="sbox">
+              <button class="btn btn-success" onClick={senddata}>Apply now</button>              
+            </div> }
+            
           </div>
         </div>
 

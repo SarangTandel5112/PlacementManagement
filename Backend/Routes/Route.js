@@ -17,6 +17,9 @@ router.post("/setstudentstatus", StudentController.setStudentStatus);
 router.post("/getStudentData", StudentController.getStudentData);
 router.post("/updateStudentProfile", StudentController.updateStudentProfile);
 router.post("/addStudent", StudentController.addStudent);
+router.post("/studentmyapplies", StudentController.studentmyapplies);
+router.post("/applyforcompany", StudentController.applyforcompany);
+
 
 
 // Job Rotues
