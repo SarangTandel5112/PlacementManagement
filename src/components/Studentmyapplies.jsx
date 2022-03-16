@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
 import Header from "./Header";
+import Studentnavbottom from "./Studentnavbottom";
 
 function Studentmyapplies() {
 
@@ -23,6 +24,7 @@ function Studentmyapplies() {
   return (
     <div>
       <Header />
+      <Studentnavbottom/>
 
       <h3 className="main-heading">All Jobs</h3>
 

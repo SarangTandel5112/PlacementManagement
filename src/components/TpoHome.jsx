@@ -1,8 +1,8 @@
 // import axios from "axios";
 import React from "react";
-import TpoHeader from "./TpoHeader";
 import { Link } from "react-router-dom";
 import Header from "./Header";
+import Tponavbottom from "./Tponavbottom";
 
 function Tpoalldetails() {
   // const [requestJobs, setRequestJobs] = useState([]);
@@ -20,7 +20,7 @@ function Tpoalldetails() {
   return (
     <div>
       <Header/>
-      <TpoHeader />
+      <Tponavbottom/>
 
       <div className="row container-fluid">
         <div className="col-lg-4 container-fluid text">

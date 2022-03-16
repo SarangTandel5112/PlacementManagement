@@ -3,8 +3,8 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Footer from "./Footer";
 import Header from "./Header";
-import Navbarbottom from "./Navbarbottom";
 import Tpomiddle from "./Tpomiddle";
+import Tponavbottom from "./Tponavbottom";
 
 
 
@@ -12,10 +12,17 @@ import Tpomiddle from "./Tpomiddle";
 
 export default function Tpodashboard() {
     const [slen, setslen] = useState(0);
-    const [clen, setclen] = useState(0)
+    const [clen, setclen] = useState(0);
+    const [sreqlen, setsreqlen] = useState(0)
+    const [creqlen, setsceqlen] = useState(0)
     async function fetchdata() {
-        console.log("Used")
+        
         axios.get("/tpodata").then((res) => { setslen(res.data.slen); setclen(res.data.clen) });
+        const studentdata1 = await axios.post("/studentrequesttpo");
+        setsreqlen(studentdata1.data.user.length)
+        const response = await axios.post("/getIncomingRequest");
+        setsceqlen(response.data.alljob.length)
+
 
 
     }
@@ -29,7 +36,7 @@ export default function Tpodashboard() {
     return (
         <div>
             <Header />
-            <Navbarbottom />
+            <Tponavbottom/>
             <Tpomiddle />
             <div className="row featurehome">
                 <h1 className="centertext tpotext"> <b>View Requests</b></h1>
@@ -37,7 +44,7 @@ export default function Tpodashboard() {
                     <img className="featureimg" alt="job photos" src="../../Photos/job.png" />
                     <h3 className="featurename">Student Requests</h3>
                     <Link to="/stuudentrequesttpo">
-                        <button className="btn btn-large btn-dark tpocombtn">Student Request <b className="reqinfo">1</b></button>
+                        <button className="btn btn-large btn-dark tpocombtn">Student Request <b className="reqinfo">{sreqlen}</b></button>
                         
                     </Link>
                 </div>
@@ -45,7 +52,7 @@ export default function Tpodashboard() {
                     <img className="featureimg" alt="manage png" src="../../Photos/manage.png" />
                     <h3 className="featurename">Company Requests </h3>
                     <Link to="/tpoIncomingRequest">
-                        <button className="btn btn-large btn-dark tpocombtn">Company Request <b className="reqinfo">1</b></button>
+                        <button className="btn btn-large btn-dark tpocombtn">Company Request <b className="reqinfo">{creqlen}</b></button>
                     </Link>
                 </div>
             </div>

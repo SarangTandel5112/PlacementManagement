@@ -101,7 +101,7 @@ class LoginController {
   }
   static isloggedin=(req,res)=>{
     if(req.session.userid){
-      res.json({loggedin:true})
+      res.json({loggedin:true,user:req.session.user})
     }else{
       res.json({loggedin:false})
     }

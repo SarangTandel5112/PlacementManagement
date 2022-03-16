@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import Header from "./Header";
 import axios from "axios";
+import Companynavbottom from "./Companynavbottom";
 function Companyhire() {
   const history=useHistory()
   const [file, setfile] = useState(" ")
@@ -35,7 +36,7 @@ function Companyhire() {
         }
         
       })
-      history.push("/login")
+      history.push("/companyDashboard")
       
      
       
@@ -61,6 +62,7 @@ function Companyhire() {
   return (
     <div>
       <Header/>
+      <Companynavbottom/>
       <div className="full-height">
         <form
           className="registerform container-fluid"

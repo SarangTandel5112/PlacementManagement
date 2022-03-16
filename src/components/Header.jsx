@@ -15,6 +15,15 @@ function Header() {
     if(loginres.data.loggedin){
       setisLoggedin(true);
       console.log("loggedin")
+      if(loginres.data.user==="Tpo"){
+        history.push("/tpo")
+
+      }else if(loginres.data.user==="Student"){
+        history.push("/studentHome")
+      }else if(loginres.data.user==="Company"){
+        history.push("/companyDashboard")
+      }
+
       
     }else{
       setisLoggedin(false);

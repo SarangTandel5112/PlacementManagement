@@ -1,9 +1,9 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import TpoHeader from "./TpoHeader";
+
 import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import Header from "./Header";
+import Tponavbottom from "./Tponavbottom";
 
 function Tpodetails() {
   const [incomingRequest, setIncomingRequest] = useState([]);
@@ -72,7 +72,7 @@ function Tpodetails() {
   return (
     <div>
       <Header/>
-      <TpoHeader />
+      <Tponavbottom/>
       <ToastContainer
         position="top-center"
         autoClose={3000}

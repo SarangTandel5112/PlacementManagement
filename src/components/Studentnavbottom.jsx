@@ -1,7 +1,32 @@
-import React from "react";
+import axios from "axios";
+import React,{useEffect,useState} from "react";
+import { useHistory } from "react-router-dom";
+
+
 
 
 function Studentnavbottom() {
+    const history=useHistory();
+  const [isLoggedin, setisLoggedin] = useState(true);
+  let logincheck = async()=>{
+
+    const loginres=await axios.get("/isloggedin");
+    console.log(loginres)
+     if(loginres.data.user==="Tpo"){
+         history.push("/tpo")
+     }else if(loginres.data.user==="Company"){
+         history.push("/companyDashboard")
+     }
+      
+      
+     
+    }
+
+  
+  useEffect(() => {
+    logincheck()
+    // eslint-disable-next-line
+  }, [])
   return (
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
             

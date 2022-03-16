@@ -128,12 +128,18 @@ class StudentController{
     console.log(req.session.userid);
     let userfound = await Student.find({ _id: req.session.userid })
     // console.log(userfound);
-    for (let i = 0; i < userfound[0].myapply.length; i++) {
-      let jobfound =await Job.find({ _id: userfound[0].myapply[i] })
-      // console.log(jobfound);
-      senddata.push(jobfound[0])
-      // console.log(senddata);
+    try{
+      for (let i = 0; i < userfound[0].myapply.length; i++) {
+        let jobfound =await Job.find({ _id: userfound[0].myapply[i] })
+        // console.log(jobfound);
+        senddata.push(jobfound[0])
+        // console.log(senddata);
+      }
     }
+    catch(err){
+       console.log("Some Error ocuured")
+    }
+      
 
     res.send({applydata:senddata})
 

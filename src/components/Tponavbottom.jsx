@@ -2,16 +2,15 @@ import axios from "axios";
 import React,{useEffect,useState} from "react";
 import { useHistory } from "react-router-dom";
 
-
-function Companynavbottom() {
+ function Tponavbottom() {
     const history=useHistory();
     const [isLoggedin, setisLoggedin] = useState(true);
     let logincheck = async()=>{
   
       const loginres=await axios.get("/isloggedin");
       console.log(loginres)
-       if(loginres.data.user==="Tpo"){
-           history.push("/tpo")
+       if(loginres.data.user==="Company"){
+           history.push("/companyDashboard")
        }else if(loginres.data.user==="Student"){
            history.push("/studentHome")
        }
@@ -70,4 +69,4 @@ function Companynavbottom() {
         </nav>
   );
 }
-export default Companynavbottom;
+export default Tponavbottom;

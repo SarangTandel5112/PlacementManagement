@@ -1,8 +1,8 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Header from "./Header";
-import StudentHeader from "./StudentHeader";
 import { Link } from 'react-router-dom';
+import Studentnavbottom from "./Studentnavbottom";
 
 function Details() {
 
@@ -30,7 +30,9 @@ function Details() {
 
   return (
     <div>
-      <Header />
+
+      <Header/>
+      <Studentnavbottom/>
 
 
       <h3 className="main-heading">All Jobs</h3>
