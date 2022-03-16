@@ -24,10 +24,10 @@ class JobControlller{
         newJob.compimg=userfind[0].imagepath;
         newJob.save();
       })
-      console.log(newJob);
+      // console.log(newJob);
     
       
-      console.log(newJob._id,req.session);
+      // console.log(newJob._id,req.session);
       Company.find({_id:req.session.userid},(err,userfound)=>{
           // console.log(userfound);
           userfound[0].jobsposted.push(newJob._id);
@@ -73,13 +73,13 @@ class JobControlller{
                 } 
                 else{
                   jobfound[i].compname=compfind[0].name;
-                  console.log(jobfound[i].compname,compfind[0].name);
+                  // console.log(jobfound[i].compname,compfind[0].name);
                   
                 } 
                 
               })
             }
-            console.log(jobfound);
+            // console.log(jobfound);
             res.send({ alljob: jobfound });
           }
         }
@@ -157,7 +157,7 @@ class JobControlller{
    });
     }
 
-    static tpoRequestedJobs=(reqr,res)=>{
+    static tpoRequestedJobs=(req,res)=>{
         Job.find({}, function (err, data) {
             const requestedJobs = data.filter((job) => job.status === "waiting");
             console.log("requestedJobs", requestedJobs);
@@ -165,6 +165,14 @@ class JobControlller{
             res.send({ data: requestedJobs });
             console.log(data);
           });
+    }
+
+
+    static getFulldetails=(req,res)=>{
+      Job.find({_id: req.body.id},(err,userfound)=>{
+        console.log(userfound[0]);
+        res.send({"oneuser":userfound[0]})
+      })
     }
 
 

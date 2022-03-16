@@ -56,6 +56,9 @@ function Page() {
         <Route exact path="/jobs" component={StudentJobPage} />
       </Switch>
       <Switch>
+        <Route exact path="/jobs/:compId" component={Companydisplay} />
+      </Switch>
+      <Switch>
         <Route exact path="/tpoIncomingRequest" component={TpoIncomingRequest} />
       </Switch>
       <Switch>

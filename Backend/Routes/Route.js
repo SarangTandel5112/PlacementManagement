@@ -30,6 +30,9 @@ router.post("/addStudentToJob", JobControlller.addStudentToJob);
 router.post("/GetAllJobsOfCompany", JobControlller.GetAllJobsOfCompany);
 router.post("/setdetails", JobControlller.setdetails);
 router.post("/tpoRequestedJobs", JobControlller.tpoRequestedJobs);
+router.post("/getfulldetails", JobControlller.getFulldetails);
+
+
 
 
 //Company Routes
