@@ -36,12 +36,16 @@ function Front() {
         <div className="col-lg-3 ml-5 featureimgout1">
           <img className="comcard" alt="company" src="../../Photos/interview.png" />
           <h3 className="featurename">Post A Job</h3>
-          <button className="btn btn-primary">Post Job</button>
+          <Link to="/companyNewRequest">
+            <button className="btn btn-primary">Post Job</button>
+          </Link>
         </div>
         <div className="col-lg-3 ml-5 featureimgout1">
-        <img className="comcard" alt="company" src="../../Photos/professor.png" />
+          <img className="comcard" alt="company" src="../../Photos/professor.png" />
           <h3 className="featurename">My Jobs</h3>
-          <button className="btn btn-primary">View Jobs</button>
+          <Link to={`/companypost`}>
+            <button className="btn btn-primary">View Jobs</button>
+          </Link>
         </div>
       </div>
       <Footer />

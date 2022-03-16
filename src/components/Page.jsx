@@ -21,6 +21,7 @@ import tpodashboard from "./Tpodashboard";
 import Companyformat from "./Companyformat"
 import Companydisplay from "./Companydisplay";
 import Studentmyapplies from "./Studentmyapplies";
+import Companypost from "./Companypost";
  
 
 function Page() {
@@ -92,6 +93,10 @@ function Page() {
       <Switch>
         <Route exact path="/myapplies" component={Studentmyapplies} />
       </Switch>
+      <Switch>
+        <Route exact path="/companypost" component={Companypost} />
+      </Switch>
+      
     </Router>
   );
 }

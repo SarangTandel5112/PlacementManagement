@@ -32,6 +32,12 @@ class CompanyController{
 
       }
     }
+
+
+
+    static companyPost=(req,res)=>{
+      console.log(req.session.userid);
+    }
     
 }
 
