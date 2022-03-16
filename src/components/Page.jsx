@@ -21,6 +21,7 @@ import Home from "./Home";
 import tpodashboard from "./Tpodashboard";
 import Companyformat from "./Companyformat"
 import Companydisplay from "./Companydisplay";
+import Studentmyapplies from "./Studentmyapplies";
  
 
 function Page() {
@@ -56,6 +57,9 @@ function Page() {
         <Route exact path="/jobs" component={StudentJobPage} />
       </Switch>
       <Switch>
+        <Route exact path="/jobs/:compId" component={Companydisplay} />
+      </Switch>
+      <Switch>
         <Route exact path="/tpoIncomingRequest" component={TpoIncomingRequest} />
       </Switch>
       <Switch>
@@ -87,6 +91,9 @@ function Page() {
       </Switch>
       <Switch>
         <Route exact path="/companydisplay" component={Companydisplay} />
+      </Switch>
+      <Switch>
+        <Route exact path="/myapplies" component={Studentmyapplies} />
       </Switch>
     </Router>
   );

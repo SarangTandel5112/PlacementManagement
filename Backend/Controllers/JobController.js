@@ -4,6 +4,7 @@ const path=require('path')
 class JobControlller{
 
     static requestToAddJob=(req,res)=>{
+      let fileName;
       if(req.files===null){
         fileName=null;
       }else{
@@ -36,15 +37,14 @@ class JobControlller{
       console.log(newJob)
         userfound[0].save();
       })
- 
-         
-      
     
-    
-      res.json({ status: "OK" });
+      res.json({status:'OK'})
 
       
       
+   
+
+
           
 
     }
@@ -83,13 +83,13 @@ class JobControlller{
                 } 
                 else{
                   jobfound[i].compname=compfind[0].name;
-                  console.log(jobfound[i].compname,compfind[0].name);
+                  // console.log(jobfound[i].compname,compfind[0].name);
                   
                 } 
                 
               })
             }
-            console.log(jobfound);
+            // console.log(jobfound);
             res.send({ alljob: jobfound });
           }
         }
@@ -167,7 +167,7 @@ class JobControlller{
    });
     }
 
-    static tpoRequestedJobs=(reqr,res)=>{
+    static tpoRequestedJobs=(req,res)=>{
         Job.find({}, function (err, data) {
             const requestedJobs = data.filter((job) => job.status === "waiting");
             console.log("requestedJobs", requestedJobs);
@@ -175,6 +175,14 @@ class JobControlller{
             res.send({ data: requestedJobs });
             console.log(data);
           });
+    }
+
+
+    static getFulldetails=(req,res)=>{
+      Job.find({_id: req.body.id},(err,userfound)=>{
+        console.log(userfound[0]);
+        res.send({"oneuser":userfound[0]})
+      })
     }
 
 

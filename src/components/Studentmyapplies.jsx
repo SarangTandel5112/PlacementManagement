@@ -1,47 +1,30 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import Header from "./Header";
 import StudentHeader from "./StudentHeader";
 import { Link } from 'react-router-dom';
+import Header1 from "./Header1";
 
-function Details() {
+function Studentmyapplies() {
 
   const [jobs, setJobs] = useState([]);
 
   var a = new Date();
   const fetchJob = async () => {
-    const response = await axios.post("/getAvailableJobForStudent");
-    console.log(response.data.alljob);
-    setJobs(response.data.alljob);
+    const response = await axios.post("/studentmyapplies");
+    console.log(response.data.applydata);
+    setJobs(response.data.applydata);
 
-    axios.get("/isAuthenticate", {})
-      .then(res => console.log(res))
-      .catch(err => console.log(err))
+    
   };
 
-  const applyForJob = (e, job_id) => {
-    e.preventDefault();
-    axios.post("/addStudentToJob", {
-      job_id,
-      student_email: localStorage.getItem("student_email")
-    })
-      .then(res => {
-        console.log(res);
-        fetchJob();
-      })
-      .catch(err => {
-        console.log(err);
-      })
-  }
-
+  
   useEffect(() => {
     fetchJob();
   }, []);
 
   return (
     <div>
-      <Header/>
-      <StudentHeader />
+      <Header1 />
 
       <h3 className="main-heading">All Jobs</h3>
 
@@ -68,14 +51,7 @@ function Details() {
               <button className="btn btn-large btn-success" disabled={true} > Applied </button> :
               <button className="btn btn-large btn-success " onClick={(e) => applyForJob(e, job._id)}> Apply </button>
           } */}
-          {
-            setTimeout(() => {
-              let ab = document.getElementById(job._id);
-              ab.remove();
-              axios.post('/settimestatus', { jid: job._id });
-            }, new Date(job.deadline) - a)
-
-          }
+          
 
         </div>
 
@@ -86,4 +62,4 @@ function Details() {
     </div>
   );
 }
-export default Details;
+export default Studentmyapplies;
