@@ -20,10 +20,7 @@ function Details() {
   
   };
 
-  async function senddata(event) {
-    setapply(true);
-    await axios.post("/applyforcompany", { id: event.target.value })
-  }
+  
   useEffect(() => {
     fetchJob();
   }, []);
@@ -54,11 +51,7 @@ function Details() {
               <button type="button " class="btn btn-primary cominnertext" value={job._id}>View Details</button>
             </Link>
 
-            {userapply.includes(job._id) ?
-                <button class="btn btn-success ml-2" disabled="true" >Applied</button>
-               :              
-                <button class="btn btn-success ml-2" onClick={senddata} value={job._id}>Apply now</button>
-              }
+            
           </div>
 
           {
