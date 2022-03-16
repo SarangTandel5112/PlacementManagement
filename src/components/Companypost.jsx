@@ -4,12 +4,12 @@ import { Link } from 'react-router-dom';
 import Header from "./Header";
 import Studentnavbottom from "./Studentnavbottom";
 
-function Studentmyapplies() {
+function Companypost() {
 
   const [jobs, setJobs] = useState([]);
 
   const fetchJob = async () => {
-    const response = await axios.post("/studentmyapplies");
+    const response = await axios.post("/companypost");
     console.log(response.data.applydata);
     setJobs(response.data.applydata);
 
@@ -23,8 +23,7 @@ function Studentmyapplies() {
 
   return (
     <div>
-      <Header />
-      <Studentnavbottom/>
+      
 
       <h3 className="main-heading">All Jobs</h3>
 
@@ -58,4 +57,4 @@ function Studentmyapplies() {
     </div>
   );
 }
-export default Studentmyapplies;
+export default Companypost;

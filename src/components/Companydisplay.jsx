@@ -7,6 +7,7 @@ import Footer from "./Footer";
 
 import axios from "axios";
 import {  useParams } from 'react-router-dom';
+import Studentnavbottom from "./Studentnavbottom";
 
 
 function Companydisplay() {
@@ -49,7 +50,7 @@ function Companydisplay() {
 
       <Header />
 
-      <Companynavbottom />
+      <Studentnavbottom />
       {/* {userapply.indexOf(compId) > -1 ? alert("true"):alert("false")} */}
 
       <div className="">
