@@ -1,7 +1,36 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import axios from "axios";
+import React ,{useEffect,useState}from "react";
+
+import { useHistory } from "react-router-dom";
+import Loginbtncomp from "./Loginbtncomp";
+import Logoutbtn from "./Logoutbtn";
 
 function Header() {
+  const history=useHistory();
+  const [isLoggedin, setisLoggedin] = useState(true);
+  let logincheck = async()=>{
+
+    const loginres=await axios.get("/isloggedin");
+    console.log(loginres)
+    if(loginres.data.loggedin){
+      setisLoggedin(true);
+      console.log("loggedin")
+      
+    }else{
+      setisLoggedin(false);
+
+      history.push("/")
+      
+      
+     
+    }
+
+  }
+  useEffect(() => {
+    logincheck()
+    // eslint-disable-next-line
+  }, [])
+  
   return (
     <div className="frontpage">
       <section id="title">
@@ -64,13 +93,13 @@ function Header() {
               </li>
 
               <li className="nav-item">
-                <form method="GET" action="/login">
-                  <button className="btn btn-light ">
-                    <Link to="/login">
-                      <b className="lbtn">Login</b>
-                    </Link>
-                  </button>
-                </form>
+                
+               
+                 {isLoggedin?<Logoutbtn/>:<Loginbtncomp/>}   
+                  
+
+                
+                 
               </li>
             </ul>
           </div>

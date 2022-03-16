@@ -90,9 +90,24 @@ class LoginController {
 
   static logout = async (req, res) => {
     console.log("dn");
-    req.session.destroy();
+    req.session.destroy(err => {
+      if (err) {
+          return res.send({ error: 'Logout error' })
+      }
+      req.session = null
+      res.clearCookie("DDUPLACEMENT", {path: '/'})
+      return res.send({ 'clearSession': 'success' })
+  })
+  }
+  static isloggedin=(req,res)=>{
+    if(req.session.userid){
+      res.json({loggedin:true})
+    }else{
+      res.json({loggedin:false})
+    }
   }
 }
+
 module.exports = LoginController;
 /*
 app.post("/login", function (req, res) {

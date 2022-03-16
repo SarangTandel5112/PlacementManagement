@@ -1,26 +1,29 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import CompanyHeader from "./CompanyHeader";
-// import { Link } from "react-router-dom";
+import Header from "./Header";
 
 function Companydetails() {
   const [jobs, setJobs] = useState([]);
   
+ 
   const fetchJob = async () => {
     const response = await axios.post("/GetAllJobsOfCompany",{
       company_id:localStorage.getItem("company_id")
     });
     console.log(response.data.jobs);
     setJobs(response.data.jobs);
+    
   };
+
 
   useEffect(() => {
     fetchJob();
   }, []);
 
+
   return (
     <div>
-      <CompanyHeader />
+       <Header/>
       <h3 className="main-heading">All Jobs</h3>
       {jobs.length === 0 && <p className="main-heading">No job Posted</p>}
       {jobs.map((job) => (

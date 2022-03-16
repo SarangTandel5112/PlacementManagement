@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import TpoHeader from "./TpoHeader";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Header from "./Header";
 
 function Tpodetails() {
   const [incomingRequest, setIncomingRequest] = useState([]);
@@ -70,6 +71,7 @@ function Tpodetails() {
 
   return (
     <div>
+      <Header/>
       <TpoHeader />
       <ToastContainer
         position="top-center"

@@ -6,6 +6,7 @@ const session = require('express-session');
 const cookieParser=require("cookie-parser")
 const cors=require('cors')
 const fileUpload=require("express-fileupload");
+const { tpoRequestedJobs } = require("./Controllers/JobController");
 
 
 
@@ -28,10 +29,11 @@ app.use(cors({
   exposedHeaders: ['Set-cookie']
 }));
 app.use(session({
+  name:"DDUPLACEMENT",
   secret: 'keyboard cat',
   resave: false,
   saveUninitialized: false,
-cookie:{user:"Punit"}
+  cookie:{user:"Punit"}
   
 }));
 //For json

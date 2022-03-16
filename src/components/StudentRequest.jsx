@@ -1,8 +1,9 @@
 import axios from "axios";
 // import { event } from "jquery";
 import React, { useEffect, useState } from "react";
+import Header from "./Header";
 // import { Link } from "react-router-dom";
-import Header from "./StudentHeader";
+import StudentHeader from "./StudentHeader";
 
 
 
@@ -36,7 +37,8 @@ function StudentRequest() {
 
     return (
         <div>
-            <Header />
+            <Header/>
+            <StudentHeader />
 
             {studentData.length >= 0 &&
                 studentData.map((job) => (

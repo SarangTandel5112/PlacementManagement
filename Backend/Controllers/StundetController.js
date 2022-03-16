@@ -18,7 +18,8 @@ class StudentController{
           cgpa: req.body.cgpa,
           password: req.body.password,
           jobsposted: [],
-          imagepath:fileName
+          resumename:fileName,
+          status:"Pending"
         });
         user.save();
         res.json({

@@ -1,15 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 import Companynavbottom from "./Companynavbottom";
-import Header1 from "./Header1";
+import Header from "./Header";
 import Footer from "./Footer";
-import axios from "axios";
+
 
 function Companydisplay() {
 
 
   return (
     <div>
-      <Header1 />
+      <Header />
       {/* <form action="">
         <label>File</label>
         <input type="file" id="file" accept=".jpg" onChange={event => {

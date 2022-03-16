@@ -1,8 +1,8 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import StudentHeader from "./StudentHeader";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Header from "./Header";
 
 function Details() {
   const [jobs, setJobs] = useState([]);
@@ -41,7 +41,7 @@ function Details() {
 
   return (
     <div>
-      <StudentHeader />
+      <Header />
       <ToastContainer
         position="top-center"
         autoClose={3000}

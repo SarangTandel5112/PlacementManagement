@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
+import Header from "./Header";
 import StudentHeader from "./StudentHeader";
 
 function Form() {
@@ -110,6 +111,7 @@ function Form() {
 
   return (
     <div className="full-height">
+      <Header/>
       <StudentHeader />
       <div className="full-height">
         <form
