@@ -4,11 +4,12 @@ const path=require('path')
 class JobControlller{
 
     static requestToAddJob=(req,res)=>{
+     let filename;
       if(req.files===null){
         fileName=null;
       }else{
         const file=req.files.file;
-        const fileName=Date.now()+file.name;
+         fileName=Date.now()+file.name;
         file.mv(path.join(__dirname,`/../../public/Photos/Files/jobdescription/${fileName}`))
 
       Company.find({_id:req.session.userid},(err,userfound)=>{
