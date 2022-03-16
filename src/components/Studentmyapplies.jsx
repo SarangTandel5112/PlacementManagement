@@ -44,13 +44,9 @@ function Studentmyapplies() {
             <Link to={`/jobs/${job._id}`} >
               <button type="button " class="btn btn-primary cominnertext" value={job._id}>View Details</button>
             </Link>
-            <button type="button " class="btn btn-success ml-2">Apply now</button>
+           
           </div>
-          {/* {
-            job.candidates.findIndex(email => email === localStorage.getItem("student_email")) !== -1 ?
-              <button className="btn btn-large btn-success" disabled={true} > Applied </button> :
-              <button className="btn btn-large btn-success " onClick={(e) => applyForJob(e, job._id)}> Apply </button>
-          } */}
+          
           
 
         </div>

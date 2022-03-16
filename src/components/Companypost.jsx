@@ -1,23 +1,19 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import Header from "./Header";
 import { Link } from 'react-router-dom';
+import Header from "./Header";
 import Studentnavbottom from "./Studentnavbottom";
 
-function Details() {
+function Companypost() {
 
   const [jobs, setJobs] = useState([]);
-  const [comp, setComp] = useState({});
-  const [userapply, setuserapply] = useState([])
-  const [apply, setapply] = useState(false)
 
-  var a = new Date();
   const fetchJob = async () => {
-    const response = await axios.post("/getAvailableJobForStudent");
-    console.log(response.data.alljob);
-    setJobs(response.data.alljob);
-    await setuserapply(response.data.oneuser)
-  
+    const response = await axios.post("/companypost");
+    console.log(response.data.applydata);
+    setJobs(response.data.applydata);
+
+    
   };
 
   
@@ -27,10 +23,7 @@ function Details() {
 
   return (
     <div>
-
-      <Header/>
-      <Studentnavbottom/>
-
+      
 
       <h3 className="main-heading">All Jobs</h3>
 
@@ -50,18 +43,10 @@ function Details() {
             <Link to={`/jobs/${job._id}`} >
               <button type="button " class="btn btn-primary cominnertext" value={job._id}>View Details</button>
             </Link>
-
-            
+           
           </div>
-
-          {
-            setTimeout(() => {
-              let ab = document.getElementById(job._id);
-              ab.remove();
-              axios.post('/settimestatus', { jid: job._id });
-            }, new Date(job.deadline) - a)
-
-          }
+          
+          
 
         </div>
 
@@ -72,4 +57,4 @@ function Details() {
     </div>
   );
 }
-export default Details;
+export default Companypost;

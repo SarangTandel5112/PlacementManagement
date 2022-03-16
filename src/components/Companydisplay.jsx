@@ -50,7 +50,7 @@ function Companydisplay() {
 
       <Header />
 
-     <Studentnavbottom/>
+      <Studentnavbottom />
       {/* {userapply.indexOf(compId) > -1 ? alert("true"):alert("false")} */}
 
       <div className="">
