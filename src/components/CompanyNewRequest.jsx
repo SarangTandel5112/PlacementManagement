@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import CompanyHeader from "./CompanyHeader";
+import { useHistory } from "react-router-dom";
 import axios from "axios";
 function Companyhire() {
+  const history=useHistory()
+  const [file, setfile] = useState(" ")
   const [formdata, setformdata] = useState({
     title: "",
     description: "",
@@ -13,24 +16,48 @@ function Companyhire() {
     deadline:""
   });
 
-  function submitform(event) {
+  async function submitform(event) {
     event.preventDefault();
     const finaldata = formdata;
-    axios
-      .post("/requestToAddJob", finaldata)
-      .then((response) => {
-        console.log("Success");
-        window.location.replace("/companyDashboard");
+    const formData=new FormData();
+    formData.append("file",file)
+    formData.append("title",finaldata.title);
+    formData.append("description",finaldata.description);
+    formData.append("ctcRange",finaldata.ctcRange);
+    formData.append("minimumCriteria",finaldata.minimumCriteria);
+    formData.append("jobLocation",finaldata.jobLocation);
+    formData.append("companyWebsite",finaldata.companyWebsite);
+    formData.append("deadline",finaldata.deadline);
+    try{
+      let response= await axios.post("/requestToAddJob",formData,{
+        headers:{
+          'Content-Type':'multipart/formdata'
+        }
+        
       })
-      .catch(() => {
-        console.log("fail");
-      });
+      history.push("/login")
+      
+     
+      
+
+    }catch(err){
+      console.log(err)
+    }
   }
 
   function handleChange(event) {
     setformdata({ ...formdata, [event.target.name]: [event.target.value] });
   }
+  function handleFileChange(event){
+    console.log("before")
+    setfile(event.target.files[0])
+    
+   
 
+  
+   
+
+ }
   return (
     <div>
       <CompanyHeader />
@@ -126,6 +153,11 @@ function Companyhire() {
           <br />
 
           <br />
+          <div className="container-fluid">
+          <label htmlFor="fielInput">Upload Job Description : </label>
+        <input type="file" name="file" className="lname" onChange={handleFileChange}  id="fileInput" />
+        
+        </div>
 
           <input
             type="submit"

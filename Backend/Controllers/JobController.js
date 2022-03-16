@@ -1,32 +1,48 @@
 const Job= require("../Models/Job");
 const Company = require("../Models/Company");
+const path=require('path')
 class JobControlller{
 
     static requestToAddJob=(req,res)=>{
-      
-    const newJob = new Job({
-        jobTitle: req.body.title[0],
-        jobDescription: req.body.description[0],
-        numberOfOpening: req.body.numberOfOpening[0],
-        ctcRange: req.body.ctcRange[0],
-        minimumCriteria:req.body.minimumCriteria[0],
-        jobLocation: req.body.jobLocation[0],
-        companyWebsite:req.body.companyWebsite[0],
-        status: "waiting",
-        deadline: req.body.deadline[0],
-        candidates: [],
-        timestatus: "active",
-        companyid:req.session.userid,
-      });
-      Company.find({_id:req.session.userid},(err,userfind)=>{
-        
-        newJob.compname=userfind[0].name;
-        newJob.compimg=userfind[0].imagepath;
+
+      if(req.files===null){
+        fileName=null;
+      }else{
+        const file=req.files.file;
+        const fileName=Date.now()+file.name;
+        file.mv(path.join(__dirname,`/../../public/Photos/Files/jobdescription/${fileName}`))
+
+      Company.find({_id:req.session.userid},(err,userfound)=>{
+        console.log(userfound[0].name,"obj")
+        const newJob = new Job({
+          jobTitle: req.body.title,
+          jobDescription: req.body.description,
+          numberOfOpening: req.body.numberOfOpening,
+          ctcRange: req.body.ctcRange,
+          minimumCriteria:req.body.minimumCriteria,
+          jobLocation: req.body.jobLocation,
+          companyWebsite:req.body.companyWebsite,
+          status: "waiting",
+          deadline: req.body.deadline,
+          candidates: [],
+          timestatus: "active",
+          companyid:req.session.userid,
+          compname:userfound[0].name,
+          compimg:userfound[0].imagepath,
+          jobDescriptionFile:fileName
+        });
         newJob.save();
-      })
-      // console.log(newJob);
+        userfound[0].jobsposted.push(newJob._id);
+        // console.log(userfound);
+      console.log(newJob)
+        userfound[0].save();
+      }
     
+      )
+
       
+      
+    
       // console.log(newJob._id,req.session);
       Company.find({_id:req.session.userid},(err,userfound)=>{
           // console.log(userfound);
@@ -34,11 +50,12 @@ class JobControlller{
           // console.log(userfound);
           userfound[0].save();
       })
+
+
           
-      res.json({ status: "OK" });
 
     }
-    
+  }
     static getIncomingRequest=(req,res)=>{
     Job.find({ status: "waiting" }, function (err, jobfound) {
         if (err) {
