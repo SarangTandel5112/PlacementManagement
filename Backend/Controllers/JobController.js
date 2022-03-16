@@ -36,9 +36,9 @@ class JobControlller{
         // console.log(userfound);
       console.log(newJob)
         userfound[0].save();
-      }
+      })
     
-      )
+      
 
       
       
