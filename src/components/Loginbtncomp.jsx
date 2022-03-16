@@ -4,12 +4,13 @@ import { Link } from "react-router-dom";
 export default function Loginbtncomp() {
   return (
     <div>
+       <Link to="/login">
         <button className="btn btn-light ">
-                    <Link to="/login">
+                   
                       <b className="lbtn">Login</b>
-                    </Link>
                    
                   </button>
+                    </Link>
     </div>
   )
 }

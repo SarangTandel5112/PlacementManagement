@@ -40,7 +40,7 @@ router.post("/getfulldetails", JobControlller.getFulldetails);
 
 //Company Routes
 // router.post("/register", CompanyController.registerCompany);
-router.post("/registerCompany",CompanyController.registerCompany)
+router.post("/registerCompany",CompanyController.registerCompany);
 
 //Tpo Routes
 router.get("/tpodata", LoginController.getTpoData);

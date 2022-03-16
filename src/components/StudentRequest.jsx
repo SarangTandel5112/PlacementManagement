@@ -3,7 +3,6 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Header from "./Header";
 // import { Link } from "react-router-dom";
-import StudentHeader from "./StudentHeader";
 
 
 
@@ -12,7 +11,7 @@ function StudentRequest() {
     const [studentData, setStudentdata] = useState([]);
     async function studentreq() {
 
-        var studentdata1 = await axios.post("/studentrequesttpo");
+        const studentdata1 = await axios.post("/studentrequesttpo");
       
         console.log(studentdata1.data.user);
         setStudentdata(studentdata1.data.user);
@@ -38,7 +37,7 @@ function StudentRequest() {
     return (
         <div>
             <Header/>
-            <StudentHeader />
+            
 
             {studentData.length >= 0 &&
                 studentData.map((job) => (

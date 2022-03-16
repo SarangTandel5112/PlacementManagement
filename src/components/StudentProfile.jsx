@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import Header from "./Header";
-import StudentHeader from "./StudentHeader";
+import Studentnavbottom from "./Studentnavbottom";
 
 function Form() {
   
@@ -112,7 +112,7 @@ function Form() {
   return (
     <div className="full-height">
       <Header/>
-      <StudentHeader />
+      <Studentnavbottom/>
       <div className="full-height">
         <form
           class="registerform container-fluid"

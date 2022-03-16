@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import Companynavbottom from "./Companynavbottom";
 import Header from "./Header";
 
 function Companydetails() {
@@ -24,6 +25,7 @@ function Companydetails() {
   return (
     <div>
        <Header/>
+       <Companynavbottom/>
       <h3 className="main-heading">All Jobs</h3>
       {jobs.length === 0 && <p className="main-heading">No job Posted</p>}
       {jobs.map((job) => (

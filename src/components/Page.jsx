@@ -11,7 +11,6 @@ import Companydetails from "./CompanyAllRequest";
 import TpoDashboard from "./TpoHome";
 import CompanyHome from "./CompanyHome";
 import CompanyAllRequest from "./CompanyAllRequest";
-import TpoAcceptedRequest from "./TpoAcceptedRequest";
 import AddStudent from "./AddStudent";
 import StudentProfile from "./StudentProfile";
 import Studentregister from "./Studentregister"
@@ -62,9 +61,7 @@ function Page() {
       <Switch>
         <Route exact path="/tpoIncomingRequest" component={TpoIncomingRequest} />
       </Switch>
-      <Switch>
-        <Route exact path="/tpoAcceptedRequest" component={TpoAcceptedRequest} />
-      </Switch>
+    
       <Switch>
         <Route exact path="/companyPreviousRequest" component={Companydetails} />
       </Switch>
