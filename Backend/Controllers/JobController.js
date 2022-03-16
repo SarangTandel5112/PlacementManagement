@@ -4,6 +4,7 @@ const path=require('path')
 class JobControlller{
 
     static requestToAddJob=(req,res)=>{
+      let fileName;
       if(req.files===null){
         fileName=null;
       }else{
@@ -37,18 +38,11 @@ class JobControlller{
         userfound[0].save();
       })
     
-      
+      res.json({status:'OK'})
 
       
       
-    
-      // console.log(newJob._id,req.session);
-      Company.find({_id:req.session.userid},(err,userfound)=>{
-          // console.log(userfound);
-          userfound[0].jobsposted.push(newJob._id);
-          // console.log(userfound);
-          userfound[0].save();
-      })
+   
 
 
           
