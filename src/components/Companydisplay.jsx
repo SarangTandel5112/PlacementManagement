@@ -6,7 +6,7 @@ import Header from "./Header";
 import Footer from "./Footer";
 
 import axios from "axios";
-import { Link, useParams } from 'react-router-dom';
+import {  useParams } from 'react-router-dom';
 
 
 function Companydisplay() {
@@ -33,6 +33,7 @@ function Companydisplay() {
 
   useEffect(()=>{
     getdata();
+     // eslint-disable-next-line 
   },[compId])
 
 
@@ -87,7 +88,7 @@ function Companydisplay() {
               <b>Last Day For Apply : </b>{comp.deadline}
             </div>
 
-            {apply == true ? 
+            {apply === true ? 
             <div className="sbox">
               <button class="btn btn-success" >Applied</button>              
             </div> :
