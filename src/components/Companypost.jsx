@@ -9,9 +9,9 @@ function Companypost() {
   const [jobs, setJobs] = useState([]);
 
   const fetchJob = async () => {
-    const response = await axios.post("/companypost");
-    console.log(response.data.applydata);
-    setJobs(response.data.applydata);
+    const response = await axios.post("/GetAllJobsOfCompany");
+    console.log(response.data.jobs);
+    setJobs(response.data.jobs);
 
     
   };
@@ -37,10 +37,10 @@ function Companypost() {
             <img className=" companyimg1" alt="company" src={`../../Photos/Files/clogo/${job.compimg}`} />
           </div>
           <div className="col-lg-8 siderec">
-            <p className="cominnertext"><b>Company Name : </b>{job.compname}</p>
-
+           
             <p className="cominnertext"><b>Title : </b>{job.jobTitle}</p>
-            <Link to={`/jobs/${job._id}`} >
+            <p className="cominnertext"><b>Description : </b>{job.jobDescription}</p>
+            <Link to={`/companypost/${job._id}`} >
               <button type="button " class="btn btn-primary cominnertext" value={job._id}>View Details</button>
             </Link>
            

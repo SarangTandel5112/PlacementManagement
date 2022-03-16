@@ -1,5 +1,6 @@
 const Company = require("../Models/Company");
-const path=require('path')
+const path=require('path');
+const Job = require("../Models/Job");
 class CompanyController{
     
     static registerCompany=(req,res)=>{
@@ -35,9 +36,8 @@ class CompanyController{
 
 
 
-    static companyPost=(req,res)=>{
-      console.log(req.session.userid);
-    }
+    
+   
     
 }
 

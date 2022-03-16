@@ -34,6 +34,9 @@ router.post("/GetAllJobsOfCompany", JobControlller.GetAllJobsOfCompany);
 router.post("/setdetails", JobControlller.setdetails);
 router.post("/tpoRequestedJobs", JobControlller.tpoRequestedJobs);
 router.post("/getfulldetails", JobControlller.getFulldetails);
+router.post("/getjobdetailsforcomp", JobControlller.getjobdetailsforcomp);
+
+
 
 
 
@@ -41,7 +44,7 @@ router.post("/getfulldetails", JobControlller.getFulldetails);
 //Company Routes
 // router.post("/register", CompanyController.registerCompany);
 router.post("/registerCompany",CompanyController.registerCompany);
-router.post("/companypost",CompanyController.companyPost);
+
 
 
 
