@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import CompanyHeader from "./CompanyHeader";
 import { useHistory } from "react-router-dom";
+import Header from "./Header";
 import axios from "axios";
 function Companyhire() {
   const history=useHistory()
@@ -29,7 +29,7 @@ function Companyhire() {
     formData.append("companyWebsite",finaldata.companyWebsite);
     formData.append("deadline",finaldata.deadline);
     try{
-      let response= await axios.post("/requestToAddJob",formData,{
+       await axios.post("/requestToAddJob",formData,{
         headers:{
           'Content-Type':'multipart/formdata'
         }
@@ -60,7 +60,7 @@ function Companyhire() {
  }
   return (
     <div>
-      <CompanyHeader />
+      <Header/>
       <div className="full-height">
         <form
           className="registerform container-fluid"

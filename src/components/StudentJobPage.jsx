@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import Header from "./Header";
 import StudentHeader from "./StudentHeader";
 import { Link } from 'react-router-dom';
 
@@ -39,6 +40,7 @@ function Details() {
 
   return (
     <div>
+      <Header/>
       <StudentHeader />
 
       <h3 className="main-heading">All Jobs</h3>

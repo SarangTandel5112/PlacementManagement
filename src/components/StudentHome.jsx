@@ -1,7 +1,7 @@
 import React ,{useEffect}from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import Header1 from "./Header1";
+import Header from "./Header";
 import Studentnavbottom from "./Studentnavbottom";
 import Footer from "./Footer";
 axios.defaults.withCredentials=true;
@@ -18,7 +18,7 @@ function Front() {
   }, [])
   return (
     <div>
-      <Header1 />
+      <Header />
       <Studentnavbottom />
       <div className="row container-fluid">
         <div className="col-lg-4 container-fluid text">

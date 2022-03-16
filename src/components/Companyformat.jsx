@@ -1,12 +1,12 @@
 import React from "react";
 
 import Companynavbottom from "./Companynavbottom";
-import Header1 from "./Header1";
+import Header from "./Header";
 
 function Companyformat() {
   return (
     <div>
-      <Header1 />
+      <Header />
       <Companynavbottom />
       <div className="row companyformatout">
         <div className="col-lg-3 col-md-6">

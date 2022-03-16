@@ -49,6 +49,7 @@ router.get("/tpodata", LoginController.getTpoData);
 router.post("/login", LoginController.loginFunction);
 
 //Logout Request
-router.post("/logout", LoginController.logout);
+router.get("/logout", LoginController.logout);
+router.get("/isloggedin", LoginController.isloggedin);
 
 module.exports=router;

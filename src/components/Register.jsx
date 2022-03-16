@@ -1,10 +1,8 @@
 import axios from "axios";
-import { Redirect, useHistory } from "react-router-dom";
+import {  useHistory } from "react-router-dom";
 import React, { useState } from "react";
-// import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import {Link} from "react-router-dom"
 
 
 axios.defaults.withCredentials=true;
@@ -50,7 +48,7 @@ function Register() {
       formData.append("password",finaldata.password);
    
       try{
-        let response= await axios.post("/registerCompany",formData,{
+         await axios.post("/registerCompany",formData,{
           headers:{
             'Content-Type':'multipart/formdata'
           }

@@ -10,6 +10,7 @@ class StudentController {
       const fileName = Date.now() + file.name;
       console.log(req.body)
 
+
       const user = new Student({
         name: req.body.name,
         email: req.body.email,
@@ -26,9 +27,40 @@ class StudentController {
         msg: "Data received",
       });
 
+const Student=require("../Models/Student");
+const path=require('path')
+class StudentController{
+    static register=(req,res)=>{
+      if(req.files===null){
+        res.status(400).json({msg:'No file Uploaded'})
+      }else{
+        const file=req.files.file;
+        const fileName=Date.now()+file.name;
+        console.log(req.body)
+       
+        const user = new Student({
+          name: req.body.name,
+          email: req.body.email,
+          number: req.body.phno,
+          collegename: req.body.collegename,
+          cgpa: req.body.cgpa,
+          password: req.body.password,
+          jobsposted: [],
+          resumename:fileName,
+          status:"Pending"
+        });
+        user.save();
+        res.json({
+          msg: "Data received",
+        });
 
 
-      file.mv(path.join(__dirname, `/../../public/Photos/Files/sresume/${fileName}`))
+        
+        file.mv(path.join(__dirname,`/../../public/Photos/Files/sresume/${fileName}`))
+
+
+
+     
 
     }
 

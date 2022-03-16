@@ -2,13 +2,13 @@ import React from "react";
 
 import { Link } from "react-router-dom";
 import Companynavbottom from "./Companynavbottom";
-import Header1 from "./Header1";
+import Header from "./Header";
 import Footer from "./Footer";
 
 function Front() {
   return (
     <div>
-      <Header1 />
+      <Header />
       <Companynavbottom />
       <div className="row container-fluid">
         <div className="col-lg-4 container-fluid text">

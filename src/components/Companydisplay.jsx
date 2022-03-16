@@ -1,9 +1,13 @@
+
 import React, { useEffect, useState } from "react";
+
 import Companynavbottom from "./Companynavbottom";
-import Header1 from "./Header1";
+import Header from "./Header";
 import Footer from "./Footer";
+
 import axios from "axios";
 import { Link, useParams } from 'react-router-dom';
+
 
 function Companydisplay() {
   const {compId}=useParams();
@@ -34,7 +38,19 @@ function Companydisplay() {
 
   return (
     <div>
-      <Header1 />
+
+
+      <Header />
+      {/* <form action="">
+        <label>File</label>
+        <input type="file" id="file" accept=".jpg" onChange={event => {
+          const file=event.target.files[0];
+          setFile(file);
+        }}/>
+
+      </form>
+      <button onClick={sendfile}>send</button> */}
+
       <Companynavbottom />
 
       <div className="">

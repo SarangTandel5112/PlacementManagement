@@ -2,6 +2,7 @@
 import React from "react";
 import TpoHeader from "./TpoHeader";
 import { Link } from "react-router-dom";
+import Header from "./Header";
 
 function Tpoalldetails() {
   // const [requestJobs, setRequestJobs] = useState([]);
@@ -18,6 +19,7 @@ function Tpoalldetails() {
 
   return (
     <div>
+      <Header/>
       <TpoHeader />
 
       <div className="row container-fluid">

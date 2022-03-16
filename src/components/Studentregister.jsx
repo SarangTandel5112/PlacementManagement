@@ -41,7 +41,7 @@ function Studentregister() {
       formData.append("cgpa",finaldata.cgpa);
       formData.append("password",finaldata.password);
       try{
-        let response= await axios.post("/registerstudent",formData,{
+         await axios.post("/registerstudent",formData,{
           headers:{
             'Content-Type':'multipart/formdata'
           }
