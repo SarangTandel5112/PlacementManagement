@@ -13,16 +13,22 @@ function Companydisplay() {
   const {compId}=useParams();
   
   const [comp,setComp]=useState({});
+  const [userapply,setuserapply]=useState([])
   const [apply,setapply]=useState(false)
 
   async function getdata(){
     
     const res=await axios.post("/getfulldetails",{"id":compId})
     // console.log(res.data.oneuser);
-    setComp(res.data.oneuser);
+    await setComp(res.data.oneuser);
     // alert(res.data.oneuser.jobTitle)
-    console.log(comp);
+    await setuserapply(res.data.userdetails)
+    if(res.data.userdetails.includes(compId)){      
+      // alert("1")
+      setapply(true);
+    }
     // alert(comp.jobTitle)
+    
   }
 
   async function senddata(){
@@ -44,6 +50,7 @@ function Companydisplay() {
       <Header />
 
       <Companynavbottom />
+      {/* {userapply.indexOf(compId) > -1 ? alert("true"):alert("false")} */}
 
       <div className="">
         <div className="imgout1">
@@ -81,7 +88,7 @@ function Companydisplay() {
 
             {apply === true ? 
             <div className="sbox">
-              <button class="btn btn-success" >Applied</button>              
+              <button class="btn btn-success" disabled="true" >Applied</button>              
             </div> :
             <div className="sbox">
               <button class="btn btn-success" onClick={senddata}>Apply now</button>              
