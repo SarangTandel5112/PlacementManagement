@@ -1,14 +1,12 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import StudentHeader from "./StudentHeader";
 import { Link } from 'react-router-dom';
-import Header1 from "./Header1";
+import Header from "./Header";
 
 function Studentmyapplies() {
 
   const [jobs, setJobs] = useState([]);
 
-  var a = new Date();
   const fetchJob = async () => {
     const response = await axios.post("/studentmyapplies");
     console.log(response.data.applydata);
@@ -24,7 +22,7 @@ function Studentmyapplies() {
 
   return (
     <div>
-      <Header1 />
+      <Header />
 
       <h3 className="main-heading">All Jobs</h3>
 
