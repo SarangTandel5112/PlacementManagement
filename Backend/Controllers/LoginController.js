@@ -6,6 +6,7 @@ class LoginController {
   static loginFunction = (req, res) => {
     let logindatauser = [];
     let logindataadmin = [];
+    console.log(req.body)
     let name = req.body.email[0];
     let lpassword = req.body.password[0];
     let type = req.body.type[0];

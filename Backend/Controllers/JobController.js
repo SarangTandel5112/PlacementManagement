@@ -135,7 +135,7 @@ class JobControlller {
   }
 
   static GetAllJobsOfCompany = (req, res) => {
-    Job.find({ company_id: req.body.company_id }, function (err, data) {
+    Job.find({ companyid: req.session.userid }, function (err, data) {
       if (err) {
         res.json({ status: "error", error: err });
       } else {
