@@ -1,13 +1,11 @@
-
 import React, { useEffect, useState } from "react";
-
 import Companynavbottom from "./Companynavbottom";
 import Header from "./Header";
 import Footer from "./Footer";
-
 import axios from "axios";
 import { useParams } from 'react-router-dom';
 import Studentnavbottom from "./Studentnavbottom";
+import { Link } from 'react-router-dom';
 
 
 function Companyonedetails() {
@@ -38,6 +36,7 @@ function Companyonedetails() {
             {/* {userapply.indexOf(compId) > -1 ? alert("true"):alert("false")} */}
 
             <div className="">
+
                 <div className="imgout1">
                     <img className="companyimg2" alt="company1" src={`../../Photos/Files/clogo/${comp.compimg}`} />
                 </div>
@@ -71,7 +70,9 @@ function Companyonedetails() {
                             <b>Last Day For Apply : </b>{comp.deadline}
                         </div>
                         <div className="sbox">
-                            <button type="button" class="btn btn-primary">View Student</button>
+                            <Link to={`/companypost/${onecomp}/${comp._id}`}>
+                                <button type="button" class="btn btn-primary" value={comp._id}>View Student</button>
+                            </Link>
                         </div>
                     </div>
                 </div>
