@@ -58,7 +58,7 @@ router.post("/registerCompany",CompanyController.registerCompany);
 
 
 
-router.post("/companypost",isAuth, CompanyController.companyPost);
+// router.post("/companypost",isAuth, CompanyController.companyPost);
 
 
 

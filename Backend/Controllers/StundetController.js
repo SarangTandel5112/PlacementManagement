@@ -8,7 +8,7 @@ class StudentController{
       }else{
         const file=req.files.file;
         const fileName=Date.now()+file.name;
-        console.log(req.body)
+      
        
         const user = new Student({
           name: req.body.name,
@@ -44,15 +44,14 @@ class StudentController{
   static studentreqtpo = (req, res) => {
     Student.find({ status: "Pending" }, (err, studentfound) => {
       res.send({ user: studentfound });
-      // console.log(studentfound);
+     
     })
   }
 
   static setStudentStatus = async (req, res) => {
     let id = req.body.val;
     let status = req.body.vid;
-    console.log(req.body)
-    console.log(status)
+    
     if (status === "accept") {
       Student.findOneAndUpdate(
         { _id: id },
@@ -61,7 +60,7 @@ class StudentController{
           if (err) {
             res.json({ status: "error" });
           }
-          console.log(success)
+          
         }
         // res.json()
       )
@@ -75,7 +74,7 @@ class StudentController{
           if (err) {
             res.json({ status: "error" });
           }
-          console.log(success)
+          
         }
       )
       let pendingStudents = await Student.find({ status: "Pending" });
@@ -89,9 +88,9 @@ class StudentController{
   static getStudentData = (req, res) => {
     Student.find({ _id: req.body.student_id }, function (err, data) {
       if (err) {
-        console.log(err);
+    
       } else {
-        // console.log("getStudentData server", data);
+       
         res.json({ status: "ok", student: data[0] });
       }
     });
@@ -114,7 +113,7 @@ class StudentController{
         if (err) {
           console.log(err);
         } else {
-          console.log(success);
+          
           res.json({ status: "ok" });
         }
       }
@@ -125,15 +124,11 @@ class StudentController{
 
   static studentmyapplies = async (req, res) => {
     let senddata = [];
-    console.log(req.session.userid);
     let userfound = await Student.find({ _id: req.session.userid })
-    // console.log(userfound);
     try{
       for (let i = 0; i < userfound[0].myapply.length; i++) {
         let jobfound =await Job.find({ _id: userfound[0].myapply[i] })
-        // console.log(jobfound);
         senddata.push(jobfound[0])
-        // console.log(senddata);
       }
     }
     catch(err){
@@ -147,10 +142,7 @@ class StudentController{
 
 
   static applyforcompany = (req, res) => {
-    console.log(req.body.id);
-    console.log(req.session.userid);
     Student.find({ _id: req.session.userid }, (err, userfound) => {
-      // console.log(userfound);
       userfound[0].myapply.push(req.body.id);
       userfound[0].save();
     })
@@ -166,7 +158,6 @@ class StudentController{
       if (err) {
         console.log(err);
       } else {
-        console.log("Result :", doc);
         if (doc) {
           res.json({ status: "ok", message: "already There" });
         } else {
@@ -203,9 +194,7 @@ class StudentController{
 
           // transporter.sendMail(mailOptions, function (error, info) {
           //   if (error) {
-          //     console.log(error);
           //   } else {
-          //     console.log("Email sent: " + info.response);
           //   }
           // });
 

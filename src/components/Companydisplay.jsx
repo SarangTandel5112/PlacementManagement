@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 
-import Companynavbottom from "./Companynavbottom";
 import Header from "./Header";
 import Footer from "./Footer";
 
@@ -13,7 +12,6 @@ function Companydisplay() {
   const {compId}=useParams();
   
   const [comp,setComp]=useState({});
-  const [userapply,setuserapply]=useState([])
   const [apply,setapply]=useState(false)
 
   async function getdata(){
@@ -22,7 +20,7 @@ function Companydisplay() {
     // console.log(res.data.oneuser);
     await setComp(res.data.oneuser);
     // alert(res.data.oneuser.jobTitle)
-    await setuserapply(res.data.userdetails)
+
     if(res.data.userdetails.includes(compId)){      
       // alert("1")
       setapply(true);
