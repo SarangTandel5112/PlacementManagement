@@ -111,7 +111,7 @@ function Form() {
 
   return (
     <div className="full-height">
-      <Header/>
+      <Header path="/studentHome" />
       <Studentnavbottom/>
       <div className="full-height">
         <form

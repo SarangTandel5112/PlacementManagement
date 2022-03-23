@@ -5,7 +5,7 @@ import Tpomiddle from "./Tpomiddle";
 function Tpo() {
   return (
     <div>
-      <Header />
+         <Header path="/tpo" />
       <Tpomiddle />
     </div>
   );

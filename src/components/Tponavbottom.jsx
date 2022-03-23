@@ -1,14 +1,13 @@
 import axios from "axios";
 import React,{useEffect,useState} from "react";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
  function Tponavbottom() {
     const history=useHistory();
-    const [isLoggedin, setisLoggedin] = useState(true);
     let logincheck = async()=>{
   
       const loginres=await axios.get("/isloggedin");
-      console.log(loginres)
+      
        if(loginres.data.user==="Company"){
            history.push("/companyDashboard")
        }else if(loginres.data.user==="Student"){
@@ -34,34 +33,34 @@ import { useHistory } from "react-router-dom";
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="/companyDashboard">Home <span class="sr-only">(current)</span></a>
+                        <Link class="nav-link" to="/tpo">Home <span class="sr-only">(current)</span></Link>
                     </li>
                     
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="/#"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <Link class="nav-link dropdown-toggle" to="/#"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Categories
-                        </a>
+                        </Link>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="/#">CS/IT</a>
+                            <Link class="dropdown-item" to="/#">CS/IT</Link>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="/#">Mechanical</a>
+                            <Link class="dropdown-item" to="/#">Mechanical</Link>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="/#">Civil</a>
+                            <Link class="dropdown-item" to="/#">Civil</Link>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="/#">EC</a>
+                            <Link class="dropdown-item" to="/#">EC</Link>
                         </div>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="/#" >Blogs <span class="sr-only">(current)</span></a>
+                        <Link class="nav-link" to="/#" >Blogs <span class="sr-only">(current)</span></Link>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="/#" >FAQs <span class="sr-only">(current)</span></a>
+                        <Link class="nav-link" to="/#" >FAQs <span class="sr-only">(current)</span></Link>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="/#" >About Us <span class="sr-only">(current)</span></a>
+                        <Link class="nav-link" to="/#" >About Us <span class="sr-only">(current)</span></Link>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="/#" >Contact Us <span class="sr-only">(current)</span></a>
+                        <Link class="nav-link" to="/#" >Contact Us <span class="sr-only">(current)</span></Link>
                     </li>
                 </ul>
                 

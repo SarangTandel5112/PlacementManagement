@@ -28,7 +28,7 @@ function Details() {
   return (
     <div>
 
-      <Header/>
+      <Header path="/studentHome" />
       <Studentnavbottom/>
 
 

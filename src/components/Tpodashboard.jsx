@@ -16,12 +16,18 @@ export default function Tpodashboard() {
     const [sreqlen, setsreqlen] = useState(0)
     const [creqlen, setsceqlen] = useState(0)
     async function fetchdata() {
-        
-        axios.get("/tpodata").then((res) => { setslen(res.data.slen); setclen(res.data.clen) });
-        const studentdata1 = await axios.post("/studentrequesttpo");
-        setsreqlen(studentdata1.data.user.length)
-        const response = await axios.post("/getIncomingRequest");
-        setsceqlen(response.data.alljob.length)
+        try{
+            axios.get("/tpodata").then((res) => { setslen(res.data.slen); setclen(res.data.clen) });
+            const studentdata1 = await axios.post("/studentrequesttpo");
+            setsreqlen(studentdata1.data.user.length)
+            const response = await axios.post("/getIncomingRequest");
+            setsceqlen(response.data.alljob.length)
+
+        }catch(e){
+            console.log("Unauthorised")
+
+        }
+ 
 
 
 
@@ -35,7 +41,7 @@ export default function Tpodashboard() {
 
     return (
         <div>
-            <Header />
+            <Header path="/tpo" />
             <Tponavbottom/>
             <Tpomiddle />
             <div className="row featurehome">

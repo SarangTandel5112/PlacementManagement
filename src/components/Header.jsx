@@ -1,11 +1,10 @@
 import axios from "axios";
 import React ,{useEffect,useState}from "react";
-
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import Loginbtncomp from "./Loginbtncomp";
 import Logoutbtn from "./Logoutbtn";
 
-function Header() {
+function Header(props) {
   const history=useHistory();
   const [isLoggedin, setisLoggedin] = useState(true);
   let logincheck = async()=>{
@@ -71,11 +70,12 @@ function Header() {
           <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
             <ul className="navbar-nav ml-auto">
               <li className="nav-item">
-                <form method="GET" action="/">
+                <Link to={props.path}>
                   <button className="nav-link navname coursebtn btn btn-dark">
                     <b className="mainname">Home</b>
                   </button>
-                </form>
+                  </Link>
+                
               </li>
 
               <li className="nav-item">
