@@ -22,6 +22,8 @@ import Companyformat from "./Companyformat"
 import Companydisplay from "./Companydisplay";
 import Studentmyapplies from "./Studentmyapplies";
 import Companypost from "./Companypost";
+import Companyonedetails from "./Companyonedetails";
+import Appliedstudentdetails from "./Appliedstudentdetails";
  
 
 function Page() {
@@ -95,6 +97,12 @@ function Page() {
       </Switch>
       <Switch>
         <Route exact path="/companypost" component={Companypost} />
+      </Switch>
+      <Switch>
+        <Route exact path="/companypost/:onecomp" component={Companyonedetails} />
+      </Switch>
+      <Switch>
+        <Route exact path="/companypost/:onecomp/studentdetails" component={Appliedstudentdetails} />
       </Switch>
       
     </Router>

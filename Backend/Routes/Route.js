@@ -31,17 +31,23 @@ router.post("/applyforcompany",isAuth, StudentController.applyforcompany);
 
 
 // Job Rotues
-router.post("/requestToAddJob", isAuth,JobControlller.requestToAddJob);
-router.post("/getIncomingRequest",isAuth, JobControlller.getIncomingRequest);
-router.post("/settimestatus",isAuth, JobControlller.settimestatus);
-router.post("/getAvailableJobForStudent", isAuth,JobControlller.getAvailableJobForStudent);
-router.post("/AcceptJobRequest",isAuth, JobControlller.AcceptJobRequest);
-router.post("/RejectJobRequest",isAuth, JobControlller.RejectJobRequest);
-router.post("/addStudentToJob",isAuth, JobControlller.addStudentToJob);
-router.post("/GetAllJobsOfCompany",isAuth, JobControlller.GetAllJobsOfCompany);
-router.post("/setdetails", isAuth,JobControlller.setdetails);
-router.post("/tpoRequestedJobs",isAuth, JobControlller.tpoRequestedJobs);
-router.post("/getfulldetails",isAuth, JobControlller.getFulldetails);
+
+router.post("/requestToAddJob", JobControlller.requestToAddJob);
+router.post("/getIncomingRequest", JobControlller.getIncomingRequest);
+router.post("/settimestatus", JobControlller.settimestatus);
+router.post("/getAvailableJobForStudent", JobControlller.getAvailableJobForStudent);
+router.post("/AcceptJobRequest", JobControlller.AcceptJobRequest);
+router.post("/RejectJobRequest", JobControlller.RejectJobRequest);
+router.post("/addStudentToJob", JobControlller.addStudentToJob);
+router.post("/GetAllJobsOfCompany", JobControlller.GetAllJobsOfCompany);
+router.post("/setdetails", JobControlller.setdetails);
+router.post("/tpoRequestedJobs", JobControlller.tpoRequestedJobs);
+router.post("/getfulldetails", JobControlller.getFulldetails);
+router.post("/getjobdetailsforcomp", JobControlller.getjobdetailsforcomp);
+router.post("/getappliedstudentdetails",JobControlller.getappliedstudent);
+
+
+
 
 
 
@@ -49,7 +55,11 @@ router.post("/getfulldetails",isAuth, JobControlller.getFulldetails);
 //Company Routes
 // router.post("/register", CompanyController.registerCompany);
 router.post("/registerCompany",CompanyController.registerCompany);
+
+
+
 router.post("/companypost",isAuth, CompanyController.companyPost);
+
 
 
 

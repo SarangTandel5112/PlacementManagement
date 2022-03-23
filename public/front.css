@@ -340,6 +340,13 @@ margin-top: 100px;
   
 }
 
+
+.stdtable{
+  padding: 0% 2%;
+  border: 2px solid red;
+  
+}
+
 /* width: 150px;
   height: 150px;
   border-radius: 50%;
