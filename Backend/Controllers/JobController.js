@@ -14,7 +14,6 @@ class JobControlller {
       file.mv(path.join(__dirname, `/../../public/Photos/Files/jobdescription/${fileName}`))
 
       Company.find({ _id: req.session.userid }, (err, userfound) => {
-        console.log(userfound[0].name, "obj")
         const newJob = new Job({
           jobTitle: req.body.title,
           jobDescription: req.body.description,
@@ -34,8 +33,6 @@ class JobControlller {
         });
         newJob.save();
         userfound[0].jobsposted.push(newJob._id);
-        // console.log(userfound);
-        console.log(newJob)
         userfound[0].save();
       })
 
@@ -56,7 +53,6 @@ class JobControlller {
         res.json({ status: "error", error: err });
       } else {
         res.send({ alljob: jobfound });
-        console.log(jobfound);
       }
     });
   }
@@ -76,7 +72,6 @@ class JobControlller {
           res.json({ status: "error" });
         } else {
           Student.find({ _id: req.session.userid }, (err, userfound) => {
-            console.log(jobfound, userfound[0].myapply);
             res.send({ alljob: jobfound, oneuser: userfound[0].myapply });
 
           })
@@ -94,10 +89,8 @@ class JobControlller {
       function (err, success) {
         if (err) {
           res.json({ status: "error", error: err });
-          console.log(err);
         } else {
           res.json({ status: "OK" });
-          console.log(success);
         }
       }
     );
@@ -110,10 +103,8 @@ class JobControlller {
       function (err, success) {
         if (err) {
           res.json({ status: "error", error: err });
-          console.log(err);
         } else {
           res.json({ status: "OK" });
-          console.log(success);
         }
       }
     );
@@ -127,7 +118,6 @@ class JobControlller {
         if (err) {
           console.log(err);
         } else {
-          console.log(success);
           res.json({ status: "ok" });
         }
       }
@@ -149,10 +139,7 @@ class JobControlller {
     let tname;
     tid = req.body.jid;
     tname = req.body.jname;
-    console.log(tid, tname);
     Job.find({ _id: tid }, function (err, redfound) {
-      console.log(redfound);
-      console.log(redfound[0].status);
       redfound[0].status = tname;
       redfound[0].save();
     });
@@ -161,10 +148,8 @@ class JobControlller {
   static tpoRequestedJobs = (req, res) => {
     Job.find({}, function (err, data) {
       const requestedJobs = data.filter((job) => job.status === "waiting");
-      console.log("requestedJobs", requestedJobs);
 
       res.send({ data: requestedJobs });
-      console.log(data);
     });
   }
 
@@ -173,8 +158,6 @@ class JobControlller {
     Job.find({ _id: req.body.id }, (err, userfound) => {
       try {
         Student.find({ _id: req.session.userid }, (err, stdfound) => {
-          console.log("in");
-          console.log(stdfound[0]);
           res.send({ "oneuser": userfound[0], "userdetails": stdfound[0].myapply })
 
         })
@@ -187,7 +170,6 @@ class JobControlller {
   }
 
   static getjobdetailsforcomp = (req, res) => {
-    console.log(req.body.id);
     Job.find({ _id: req.body.id }, (err, jobfound) => {
       res.send({ onedata: jobfound[0] })
 
@@ -196,16 +178,12 @@ class JobControlller {
 
 
   static getappliedstudent = async (req, res) => {
-    console.log("run");
     const senddata = [];
-    console.log(req.body)
     const jobfound = await Job.find({ _id: req.body.id })
-    console.log(jobfound);
     for (let i = 0; i < jobfound[0].candidates.length; i++) {
       const std=await Student.find({_id:jobfound[0].candidates[i]})
       senddata.push(std[0])
     }
-    console.log(senddata);
     res.send({stddata:senddata})
   }
 

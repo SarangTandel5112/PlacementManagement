@@ -7,16 +7,14 @@ import Studentnavbottom from "./Studentnavbottom";
 function Details() {
 
   const [jobs, setJobs] = useState([]);
-  const [comp, setComp] = useState({});
-  const [userapply, setuserapply] = useState([])
-  const [apply, setapply] = useState(false)
+  
+
 
   var a = new Date();
   const fetchJob = async () => {
     const response = await axios.post("/getAvailableJobForStudent");
     console.log(response.data.alljob);
     setJobs(response.data.alljob);
-    await setuserapply(response.data.oneuser)
   
   };
 
