@@ -1,5 +1,5 @@
 import axios from "axios";
-import React,{useEffect,useState} from "react";
+import React,{useEffect} from "react";
 import { useHistory } from "react-router-dom";
 
 
@@ -7,7 +7,7 @@ import { useHistory } from "react-router-dom";
 
 function Studentnavbottom() {
     const history=useHistory();
-  const [isLoggedin, setisLoggedin] = useState(true);
+  
   let logincheck = async()=>{
 
     const loginres=await axios.get("/isloggedin");

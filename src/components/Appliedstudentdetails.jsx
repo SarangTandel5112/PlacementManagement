@@ -5,7 +5,6 @@ import axios from "axios";
 function Appliedstudentdetails() {
 
     const { onecomp } = useParams()
-    const [compid, setcompid] = useState()
     const [compdata, setcompdata] = useState([])
     let s = 1;
     // setcompid(onecomp)
@@ -17,7 +16,7 @@ function Appliedstudentdetails() {
 
     useEffect(() => {
         getdata();
-    }, [])
+    },[])
     return (
         <div>
             <div className="stdtable">

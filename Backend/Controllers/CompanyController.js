@@ -9,7 +9,6 @@ class CompanyController{
       }else{
         const file=req.files.file;
         const fileName=Date.now()+file.name;
-        console.log(req.body)
        
         const user = new Company({
           name: req.body.name,

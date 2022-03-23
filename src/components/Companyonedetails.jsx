@@ -1,10 +1,7 @@
 import React, { useEffect, useState } from "react";
-import Companynavbottom from "./Companynavbottom";
-import Header from "./Header";
 import Footer from "./Footer";
 import axios from "axios";
 import { useParams } from 'react-router-dom';
-import Studentnavbottom from "./Studentnavbottom";
 import { Link } from 'react-router-dom';
 
 
@@ -12,8 +9,6 @@ function Companyonedetails() {
     const { onecomp } = useParams();
 
     const [comp, setComp] = useState({});
-    const [userapply, setuserapply] = useState([])
-    const [apply, setapply] = useState(false)
 
     async function getdata() {
         const res = await axios.post("/getjobdetailsforcomp", { "id": onecomp })
