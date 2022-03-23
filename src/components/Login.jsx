@@ -21,6 +21,9 @@ function Login() {
   function submitData(event) {
     event.preventDefault();
     const finaldata = formdata;
+
+    console.log(finaldata)
+    
     console.log(finaldata);
     axios
       .post("/login", finaldata,{
