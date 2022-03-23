@@ -35,6 +35,7 @@ router.post("/setdetails", JobControlller.setdetails);
 router.post("/tpoRequestedJobs", JobControlller.tpoRequestedJobs);
 router.post("/getfulldetails", JobControlller.getFulldetails);
 router.post("/getjobdetailsforcomp", JobControlller.getjobdetailsforcomp);
+router.post("/getappliedstudentdetails",JobControlller.getappliedstudent);
 
 
 

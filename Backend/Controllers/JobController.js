@@ -180,18 +180,33 @@ class JobControlller {
         })
       } catch (err) {
         console.log("Some Error Occured")
-      }      
+      }
 
 
     })
   }
 
-  static getjobdetailsforcomp=(req,res)=>{
+  static getjobdetailsforcomp = (req, res) => {
     console.log(req.body.id);
-    Job.find({_id:req.body.id},(err,jobfound)=>{
-      res.send({onedata:jobfound[0]})
+    Job.find({ _id: req.body.id }, (err, jobfound) => {
+      res.send({ onedata: jobfound[0] })
 
     })
+  }
+
+
+  static getappliedstudent = async (req, res) => {
+    console.log("run");
+    const senddata = [];
+    console.log(req.body)
+    const jobfound = await Job.find({ _id: req.body.id })
+    console.log(jobfound);
+    for (let i = 0; i < jobfound[0].candidates.length; i++) {
+      const std=await Student.find({_id:jobfound[0].candidates[i]})
+      senddata.push(std[0])
+    }
+    console.log(senddata);
+    res.send({stddata:senddata})
   }
 
 

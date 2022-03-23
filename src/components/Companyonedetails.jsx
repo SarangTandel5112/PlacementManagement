@@ -70,7 +70,7 @@ function Companyonedetails() {
                             <b>Last Day For Apply : </b>{comp.deadline}
                         </div>
                         <div className="sbox">
-                            <Link to={`/companypost/${onecomp}/${comp._id}`}>
+                            <Link to={`/companypost/${onecomp}/studentdetails`}>
                                 <button type="button" class="btn btn-primary" value={comp._id}>View Student</button>
                             </Link>
                         </div>
