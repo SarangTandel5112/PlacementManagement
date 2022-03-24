@@ -1,38 +1,38 @@
 const Job = require("../Models/Job");
 const path = require('path');
-const Student=require("../Models/Student");
-class StudentController{
-    static register=(req,res)=>{
-      if(req.files===null){
-        res.status(400).json({msg:'No file Uploaded'})
-      }else{
-        const file=req.files.file;
-        const fileName=Date.now()+file.name;
-      
-       
-        const user = new Student({
-          name: req.body.name,
-          email: req.body.email,
-          number: req.body.phno,
-          collegename: req.body.collegename,
-          cgpa: req.body.cgpa,
-          password: req.body.password,
-          jobsposted: [],
-          resumename:fileName,
-          status:"Pending"
-        });
-        user.save();
-        res.json({
-          msg: "Data received",
-        });
+const Student = require("../Models/Student");
+class StudentController {
+  static register = (req, res) => {
+    if (req.files === null) {
+      res.status(400).json({ msg: 'No file Uploaded' })
+    } else {
+      const file = req.files.file;
+      const fileName = Date.now() + file.name;
 
 
-        
-        file.mv(path.join(__dirname,`/../../public/Photos/Files/sresume/${fileName}`))
+      const user = new Student({
+        name: req.body.name,
+        email: req.body.email,
+        number: req.body.phno,
+        collegename: req.body.collegename,
+        cgpa: req.body.cgpa,
+        password: req.body.password,
+        jobsposted: [],
+        resumename: fileName,
+        status: "Pending"
+      });
+      user.save();
+      res.json({
+        msg: "Data received",
+      });
 
 
 
-     
+      file.mv(path.join(__dirname, `/../../public/Photos/Files/sresume/${fileName}`))
+
+
+
+
 
     }
 
@@ -44,14 +44,14 @@ class StudentController{
   static studentreqtpo = (req, res) => {
     Student.find({ status: "Pending" }, (err, studentfound) => {
       res.send({ user: studentfound });
-     
+
     })
   }
 
   static setStudentStatus = async (req, res) => {
     let id = req.body.val;
     let status = req.body.vid;
-    
+
     if (status === "accept") {
       Student.findOneAndUpdate(
         { _id: id },
@@ -60,7 +60,7 @@ class StudentController{
           if (err) {
             res.json({ status: "error" });
           }
-          
+
         }
         // res.json()
       )
@@ -74,7 +74,7 @@ class StudentController{
           if (err) {
             res.json({ status: "error" });
           }
-          
+
         }
       )
       let pendingStudents = await Student.find({ status: "Pending" });
@@ -88,9 +88,9 @@ class StudentController{
   static getStudentData = (req, res) => {
     Student.find({ _id: req.body.student_id }, function (err, data) {
       if (err) {
-    
+
       } else {
-       
+
         res.json({ status: "ok", student: data[0] });
       }
     });
@@ -113,7 +113,7 @@ class StudentController{
         if (err) {
           console.log(err);
         } else {
-          
+
           res.json({ status: "ok" });
         }
       }
@@ -125,29 +125,38 @@ class StudentController{
   static studentmyapplies = async (req, res) => {
     let senddata = [];
     let userfound = await Student.find({ _id: req.session.userid })
-    try{
+    try {
       for (let i = 0; i < userfound[0].myapply.length; i++) {
-        let jobfound =await Job.find({ _id: userfound[0].myapply[i] })
+        let jobfound = await Job.find({ _id: userfound[0].myapply[i].jobid })
         senddata.push(jobfound[0])
+        
       }
     }
-    catch(err){
-       console.log("Some Error ocuured")
+    catch (err) {
+      console.log("Some Error ocuured")
     }
-      
 
-    res.send({applydata:senddata})
+
+    res.send({ applydata: senddata })
 
   }
 
 
   static applyforcompany = (req, res) => {
     Student.find({ _id: req.session.userid }, (err, userfound) => {
-      userfound[0].myapply.push(req.body.id);
+      const obj = {
+        jobid: req.body.id,
+        status: false
+      }
+      userfound[0].myapply.push(obj);
       userfound[0].save();
     })
     Job.find({ _id: req.body.id }, (err, userfound) => {
-      userfound[0].candidates.push(req.session.userid)
+      const obj1={
+        studentid:req.session.userid,
+        status:false,
+      }
+      userfound[0].candidates.push(obj1)
       userfound[0].save();
     })
 
