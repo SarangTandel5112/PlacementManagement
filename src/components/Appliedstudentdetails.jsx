@@ -52,7 +52,7 @@ function Appliedstudentdetails() {
                                 <td>{one.stddetails.email}</td>
                                 <td>{one.stddetails.cgpa}</td>
                                 <td><button className="btn btn-primary" onClick={() => window.open(`../../Photos/Files/sresume/${one.stddetails.resumename}`)} >View Resume</button></td>
-                                <td>{one.placementstatus? <Selectedbtn /> : <Selectbtn id={one.stddetails._id} changestatus= {setselectstatus} /> }</td>
+                                <td>{one.placementstatus? <Selectedbtn /> : <Selectbtn id={one.stddetails._id} changestatus = {setselectstatus} /> }</td>
                             </tr>
 
                         ))

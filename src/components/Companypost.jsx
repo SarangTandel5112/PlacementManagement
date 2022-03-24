@@ -11,11 +11,8 @@ function Companypost() {
   const fetchJob = async () => {
     const response = await axios.post("/GetAllJobsOfCompany");
     console.log(response.data.jobs);
-    setJobs(response.data.jobs);
-
-    
+    setJobs(response.data.jobs);    
   };
-
   
   useEffect(() => {
     fetchJob();
@@ -41,7 +38,7 @@ function Companypost() {
           <div className="col-lg-8 siderec">
            
             <p className="cominnertext"><b>Title : </b>{job.jobTitle}</p>
-            <p className="cominnertext"><b>Description : </b>{job.jobDescription}</p>
+            <p className="cominnertext"><b>Status : </b>{job.status}</p>
             <Link to={`/companypost/${job._id}`} >
               <button type="button " class="btn btn-primary cominnertext" value={job._id}>View Details</button>
             </Link>

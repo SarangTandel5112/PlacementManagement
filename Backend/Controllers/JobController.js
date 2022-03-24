@@ -191,7 +191,7 @@ class JobControlller {
       }
       senddata.push(object)
     }
-    res.send({ stddata: senddata })
+    res.send({ stddata: senddata ,})
   }
 
   static setplacementstatus=async(req,res)=>{
