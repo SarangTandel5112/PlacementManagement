@@ -45,6 +45,7 @@ router.post("/tpoRequestedJobs", JobControlller.tpoRequestedJobs);
 router.post("/getfulldetails", JobControlller.getFulldetails);
 router.post("/getjobdetailsforcomp", JobControlller.getjobdetailsforcomp);
 router.post("/getappliedstudentdetails",JobControlller.getappliedstudent);
+router.post("/setplacementstatus",JobControlller.setplacementstatus);
 
 
 
