@@ -71,7 +71,7 @@ function Tpodetails() {
 
   return (
     <div>
-      <Header/>
+         <Header path="/tpo" />
       <Tponavbottom/>
       <ToastContainer
         position="top-center"

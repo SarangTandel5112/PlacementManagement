@@ -19,7 +19,7 @@ function Tpoalldetails() {
 
   return (
     <div>
-      <Header/>
+         <Header path="/tpo" />
       <Tponavbottom/>
 
       <div className="row container-fluid">

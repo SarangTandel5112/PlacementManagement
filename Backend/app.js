@@ -33,7 +33,7 @@ app.use(session({
   secret: 'keyboard cat',
   resave: false,
   saveUninitialized: false,
-  cookie:{user:"Punit"}
+  cookie:{user:"Punit",maxAge:100000}
   
 }));
 //For json

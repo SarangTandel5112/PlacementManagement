@@ -23,7 +23,7 @@ function Studentmyapplies() {
 
   return (
     <div>
-      <Header />
+      <Header path="/studentHome" />
       <Studentnavbottom/>
 
       <h3 className="main-heading">All Jobs</h3>
