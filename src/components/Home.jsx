@@ -24,7 +24,7 @@ function Home() {
 
     return (
         <div>
-            <Header/>
+            <Header path="/"/>
             <Navbarbottom />
 
             {/* <div id="carouselExampleIndicators" class="carousel slide outcour" data-ride="carousel">

@@ -61,7 +61,7 @@ function Companyhire() {
  }
   return (
     <div>
-      <Header/>
+      <Header  path="/companyDashboard"/>
       <Companynavbottom/>
       <div className="full-height">
         <form
