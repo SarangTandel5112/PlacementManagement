@@ -340,6 +340,12 @@ margin-top: 100px;
   
 }
 
+.setbtn{
+  border: 2px solid red;
+  height: 80px;
+  width: 50px;
+}
+
 
 .stdtable{
   padding: 0% 2%;

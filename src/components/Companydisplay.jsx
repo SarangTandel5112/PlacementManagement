@@ -83,7 +83,7 @@ function Companydisplay() {
               <b>Last Day For Apply : </b>{comp.deadline}
             </div>
             <div className="sbox">
-              <button className="btn btn-primary" onClick={() => window.open(`../../Photos/Files/jobdescription/${comp.jobDescriptionFile}`)}>View More Details</button>
+              <button className="" onClick={() => window.open(`../../Photos/Files/jobdescription/${comp.jobDescriptionFile}`)}><img src="../../Photos/pdf.png" className="setbtn"/></button>
             </div>
 
             {apply === true ? 

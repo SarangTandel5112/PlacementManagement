@@ -183,7 +183,7 @@ class JobControlller {
       const std = await Student.find({ _id: jobfound[0].candidates[i].studentid })
       senddata.push(std[0])
     }
-    res.send({ stddata: senddata })
+    res.send({ stddata: senddata ,})
   }
 
 
