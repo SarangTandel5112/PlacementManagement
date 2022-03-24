@@ -11,7 +11,10 @@ const jobSchema = new Schema({
   companyWebsite: String,
   status: String,
   deadline:String,
-  candidates: [String],
+  candidates: [{
+    studentid:String,
+    status:Boolean,
+  }],
   timestatus:String,
   companyid:String,
   compname:String,

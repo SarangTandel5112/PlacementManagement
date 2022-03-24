@@ -9,9 +9,8 @@ import Studentnavbottom from "./Studentnavbottom";
 
 
 function Companydisplay() {
-  const {compId}=useParams();
-  
-  const [comp,setComp]=useState({});
+  const {compId}=useParams();  
+  const [comp,setComp]=useState({});    
   const [apply,setapply]=useState(false)
 
   async function getdata(){
@@ -82,6 +81,9 @@ function Companydisplay() {
             </div>
             <div className="sbox">
               <b>Last Day For Apply : </b>{comp.deadline}
+            </div>
+            <div className="sbox">
+              <button className="btn btn-primary" onClick={() => window.open(`../../Photos/Files/jobdescription/${comp.jobDescriptionFile}`)}>View More Details</button>
             </div>
 
             {apply === true ? 

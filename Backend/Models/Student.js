@@ -8,7 +8,10 @@ const studentSchema = new Schema({
     cgpa: Number,
     password: String,
     status:String,
-    myapply:[String],
+    myapply:[{
+      jobid:String,
+      status:Boolean 
+    }],
     resumename:String
   }) ;
   

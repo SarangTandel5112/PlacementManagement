@@ -158,14 +158,13 @@ class JobControlller {
     Job.find({ _id: req.body.id }, (err, userfound) => {
       try {
         Student.find({ _id: req.session.userid }, (err, stdfound) => {
-          res.send({ "oneuser": userfound[0], "userdetails": stdfound[0].myapply })
+          let data=(stdfound[0].myapply).map(a=>a.jobid)
+          res.send({ "oneuser": userfound[0], "userdetails": data })
 
         })
       } catch (err) {
         console.log("Some Error Occured")
       }
-
-
     })
   }
 
@@ -181,10 +180,10 @@ class JobControlller {
     const senddata = [];
     const jobfound = await Job.find({ _id: req.body.id })
     for (let i = 0; i < jobfound[0].candidates.length; i++) {
-      const std=await Student.find({_id:jobfound[0].candidates[i]})
+      const std = await Student.find({ _id: jobfound[0].candidates[i].studentid })
       senddata.push(std[0])
     }
-    res.send({stddata:senddata})
+    res.send({ stddata: senddata })
   }
 
 
