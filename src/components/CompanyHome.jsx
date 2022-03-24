@@ -8,7 +8,7 @@ import Footer from "./Footer";
 function Front() {
   return (
     <div>
-      <Header />
+      <Header  path="/companyDashboard"/>
       <Companynavbottom />
       <div className="row container-fluid">
         <div className="col-lg-4 container-fluid text">

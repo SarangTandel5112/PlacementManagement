@@ -4,15 +4,15 @@ import Companynavbottom from "./Companynavbottom";
 import Header from "./Header";
 
 function Companydetails() {
-  const [jobs, setJobs] = useState([]);
+  const [jobs, setjobs] = useState([]);
   
  
   const fetchJob = async () => {
     const response = await axios.post("/GetAllJobsOfCompany",{
       company_id:localStorage.getItem("company_id")
     });
-    console.log(response.data.jobs);
-    setJobs(response.data.jobs);
+    console.log(response.data.jobs,"jobs  sdasf");
+    // setjobs(response.data.jobs);
     
   };
 
@@ -24,7 +24,7 @@ function Companydetails() {
 
   return (
     <div>
-       <Header/>
+       <Header  path="/companyDashboard"/>
        <Companynavbottom/>
       <h3 className="main-heading">All Jobs</h3>
       {jobs.length === 0 && <p className="main-heading">No job Posted</p>}

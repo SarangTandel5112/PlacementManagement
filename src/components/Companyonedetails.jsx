@@ -3,6 +3,8 @@ import Footer from "./Footer";
 import axios from "axios";
 import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
+import Companynavbottom from "./Companynavbottom";
+import Header from "./Header";
 
 
 function Companyonedetails() {
@@ -24,11 +26,9 @@ function Companyonedetails() {
     return (
         <div>
 
-
-            {/* <Header />
-
-      <Studentnavbottom /> */}
-            {/* {userapply.indexOf(compId) > -1 ? alert("true"):alert("false")} */}
+       
+      <Header  path="/companyDashboard"/>
+      <Companynavbottom/>
 
             <div className="">
 

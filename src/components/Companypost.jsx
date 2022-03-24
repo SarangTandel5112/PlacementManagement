@@ -1,6 +1,8 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
+import Companynavbottom from "./Companynavbottom";
+import Header from "./Header";
 
 function Companypost() {
 
@@ -19,6 +21,8 @@ function Companypost() {
   return (
     <div>
       
+      <Header  path="/companyDashboard"/>
+      <Companynavbottom/>
 
       <h3 className="main-heading">All Jobs</h3>
 

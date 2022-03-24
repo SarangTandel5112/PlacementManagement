@@ -3,6 +3,8 @@ import { useParams } from 'react-router-dom';
 import axios from "axios";
 import { Selectedbtn } from "./Selectedbtn";
 import { Selectbtn } from "./Selectbtn";
+import Header from "./Header";
+import Companynavbottom from "./Companynavbottom";
 
 function Appliedstudentdetails() {
 
@@ -23,7 +25,11 @@ function Appliedstudentdetails() {
         getdata();
     },[selectstatus])
     return (
+
         <div>
+            
+            <Header  path="/companyDashboard"/>
+            <Companynavbottom/>
             <div className="stdtable">
                 {console.log(compdata)}
                 <table class="table table-striped ">
