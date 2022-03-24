@@ -179,11 +179,34 @@ class JobControlller {
   static getappliedstudent = async (req, res) => {
     const senddata = [];
     const jobfound = await Job.find({ _id: req.body.id })
+    
     for (let i = 0; i < jobfound[0].candidates.length; i++) {
+      // console.log(jobfound[0].candidates)
       const std = await Student.find({ _id: jobfound[0].candidates[i].studentid })
-      senddata.push(std[0])
+      console.log(jobfound[0].candidates[i])
+      let object={
+        stddetails:std[0],
+        placementstatus:jobfound[0].candidates[i].status
+
+      }
+      senddata.push(object)
     }
     res.send({ stddata: senddata ,})
+  }
+
+  static setplacementstatus=async(req,res)=>{
+       
+       let jobfound= await Job.findById(req.body.jobid);
+       console.log(jobfound.candidates)
+       for(let i=0;i<jobfound.candidates.length;i++){
+         if(jobfound.candidates[i].studentid===req.body.studentid){
+           jobfound.candidates[i].status=true;
+         }
+       }
+       jobfound.save();
+       
+       res.json({msg:true})
+
   }
 
 

@@ -1,22 +1,27 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from 'react-router-dom';
 import axios from "axios";
+import { Selectedbtn } from "./Selectedbtn";
+import { Selectbtn } from "./Selectbtn";
 
 function Appliedstudentdetails() {
 
     const { onecomp } = useParams()
     const [compdata, setcompdata] = useState([])
+    const [selectstatus, setselectstatus] = useState(false)
     let s = 1;
     // setcompid(onecomp)
     async function getdata() {
 
         const res = await axios.post("/getappliedstudentdetails", { id: onecomp })
         setcompdata(res.data.stddata);
+         console.log("Respoonse",res.data.stddata)
+         setselectstatus(false)
     }
 
     useEffect(() => {
         getdata();
-    },[])
+    },[selectstatus])
     return (
         <div>
             <div className="stdtable">
@@ -37,11 +42,11 @@ function Appliedstudentdetails() {
 
                             <tr>
                                 <th scope="row">{s++}</th>
-                                <td>{one.name}</td>
-                                <td>{one.email}</td>
-                                <td>{one.cgpa}</td>
-                                <td><button className="btn btn-primary" onClick={() => window.open(`../../Photos/Files/sresume/${one.resumename}`)} >View Resume</button></td>
-                                <td>{}<button className="btn btn-success">Selected</button></td>
+                                <td>{one.stddetails.name}</td>
+                                <td>{one.stddetails.email}</td>
+                                <td>{one.stddetails.cgpa}</td>
+                                <td><button className="btn btn-primary" onClick={() => window.open(`../../Photos/Files/sresume/${one.stddetails.resumename}`)} >View Resume</button></td>
+                                <td>{one.placementstatus? <Selectedbtn /> : <Selectbtn id={one.stddetails._id} changestatus= {setselectstatus} /> }</td>
                             </tr>
 
                         ))
