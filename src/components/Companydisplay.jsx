@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
-
 import Header from "./Header";
 import Footer from "./Footer";
-
 import axios from "axios";
-import {  useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import Studentnavbottom from "./Studentnavbottom";
 
 
