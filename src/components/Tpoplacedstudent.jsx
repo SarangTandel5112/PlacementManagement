@@ -23,6 +23,31 @@ export default function Tpoplacedstudent() {
         <div>
             <Header path="/tpo" />
             <Tponavbottom />
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Sr. No.</th>
+                        <th scope="col">Student Name</th>
+                        <th scope="col">Job Title</th>
+                        <th scope="col">CTC</th>
+                        <th scope="col">Company Name</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    {stddetails.map((std) => (
+                        <tr>
+                            <th scope="row">{i++}</th>
+                            <td>{std.studentName}</td>
+                            <td>{std.jobtitle}</td>
+                            <td>{std.ctc}</td>
+                            <td>{std.companyname}</td>
+                            
+                            
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
         </div>
     )
 }
