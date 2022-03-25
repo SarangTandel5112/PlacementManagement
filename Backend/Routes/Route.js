@@ -68,6 +68,7 @@ router.post("/registerCompany",CompanyController.registerCompany);
 router.get("/tpodata", LoginController.getTpoData);
 router.get("/getstudentstpo",isAuth, LoginController.getstudentstpo);
 router.get("/getcompaniestpo",isAuth, LoginController.getcompaniestpo);
+router.get("/getjobofferedtpo" ,LoginController.getjobofferedtpo);
 
 
 //Login Request
