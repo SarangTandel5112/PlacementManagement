@@ -8,7 +8,13 @@ function Details() {
 
   const [jobs, setJobs] = useState([]);
   
-
+  function setdisable(id,deadline){
+    setTimeout(() => {
+      let ab = document.getElementById(id);
+      ab.remove();
+      axios.post('/settimestatus', { jid: id });
+    }, new Date(deadline) - a)    
+  }
 
   var a = new Date();
   const fetchJob = async () => {
@@ -53,12 +59,7 @@ function Details() {
           </div>
 
           {
-            setTimeout(() => {
-              let ab = document.getElementById(job._id);
-              ab.remove();
-              axios.post('/settimestatus', { jid: job._id });
-            }, new Date(job.deadline) - a)
-
+            setdisable(job._id,job.deadline)
           }
 
         </div>

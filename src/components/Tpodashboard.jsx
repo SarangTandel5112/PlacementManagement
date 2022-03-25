@@ -7,42 +7,32 @@ import Tpomiddle from "./Tpomiddle";
 import Tponavbottom from "./Tponavbottom";
 
 
-
-
-
 export default function Tpodashboard() {
     const [slen, setslen] = useState(0);
     const [clen, setclen] = useState(0);
     const [sreqlen, setsreqlen] = useState(0)
     const [creqlen, setsceqlen] = useState(0)
     async function fetchdata() {
-        try{
+        try {
             axios.get("/tpodata").then((res) => { setslen(res.data.slen); setclen(res.data.clen) });
             const studentdata1 = await axios.post("/studentrequesttpo");
             setsreqlen(studentdata1.data.user.length)
             const response = await axios.post("/getIncomingRequest");
             setsceqlen(response.data.alljob.length)
 
-        }catch(e){
+        } catch (e) {
             console.log("Unauthorised")
 
         }
- 
-
-
-
     }
     useEffect(() => {
         fetchdata();
     }, [])
 
-
-
-
     return (
         <div>
             <Header path="/tpo" />
-            <Tponavbottom/>
+            <Tponavbottom />
             <Tpomiddle />
             <div className="row featurehome">
                 <h1 className="centertext tpotext"> <b>View Requests</b></h1>
@@ -51,7 +41,7 @@ export default function Tpodashboard() {
                     <h3 className="featurename">Student Requests</h3>
                     <Link to="/stuudentrequesttpo">
                         <button className="btn btn-large btn-dark tpocombtn">Student Request <b className="reqinfo">{sreqlen}</b></button>
-                        
+
                     </Link>
                 </div>
                 <div className="col-lg-5 featureimgout tpofeature1">
@@ -69,7 +59,9 @@ export default function Tpodashboard() {
                     <div className="col-lg-3 ml-5 featureimgout1 ">
                         <h1 className="setsize1">{slen}</h1>
                         <h3 className="featurename">Total Students</h3>
-                        <button className="btn btn-primary">View Students</button>
+                        <Link to="/tpo/studentdetails">
+                            <button className="btn btn-primary">View Students</button>
+                        </Link>
                     </div>
                     <div className="col-lg-3 ml-5 featureimgout1">
                         <h1 className="setsize1">{clen}</h1>
