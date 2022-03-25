@@ -36,7 +36,7 @@ function Front() {
         </div>
       </div>
 
-      <div className="row stuhomecomp">
+      {/* <div className="row stuhomecomp">
         <h1 className="centertext"> <b>Currently Hiring...</b></h1>
         <div className="row companyformatout">
           <div className="col-lg-3 col-md-6">
@@ -70,7 +70,7 @@ function Front() {
             <button type="button " class="btn btn-success ml-2">Apply now</button>
           </div>
         </div>
-      </div>
+      </div> */}
       <Footer />
     </div>
   );

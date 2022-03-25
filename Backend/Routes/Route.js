@@ -8,6 +8,31 @@ const isAuth = (req,res,next)=>{
     }
 
 }
+const isStudent = (req,res,next)=>{
+    if(req.session.user==="Student"){
+        next()
+    }else{
+        res.json({msg:"You Are Not Student"})
+    }
+
+}
+const isCompany = (req,res,next)=>{
+    if(req.session.user=="Company"){
+        next()
+    }else{
+        res.json({msg:"You Are Not Company"})
+    }
+
+}
+const isTpo = (req,res,next)=>{
+    if(req.session.user=="Tpo"){
+        next()
+    }else{
+        res.json({msg:"You Are Not Tpo"})
+    }
+
+}
+
 
 
 const StudentController=require("../Controllers/StundetController");
@@ -20,32 +45,27 @@ const LoginController=require("../Controllers/LoginController");
 
 // Student Routes
 router.post("/registerstudent",StudentController.register);
-router.post("/studentrequesttpo",isAuth,StudentController.studentreqtpo);
-router.post("/setstudentstatus",isAuth, StudentController.setStudentStatus);
 router.post("/getStudentData",isAuth, StudentController.getStudentData);
 router.post("/updateStudentProfile", isAuth,StudentController.updateStudentProfile);
 router.post("/addStudent", StudentController.addStudent);
-router.post("/studentmyapplies",isAuth, StudentController.studentmyapplies);
-router.post("/applyforcompany",isAuth, StudentController.applyforcompany);
+router.post("/studentmyapplies",isAuth,isStudent,  StudentController.studentmyapplies);
+router.post("/applyforcompany",isAuth, isStudent,StudentController.applyforcompany);
+router.post("/getfulldetails",isAuth,isStudent, JobControlller.getFulldetails);
+router.post("/getAvailableJobForStudent", isAuth,isStudent,JobControlller.getAvailableJobForStudent);
+router.post("/settimestatus",isAuth,isStudent, JobControlller.settimestatus);
 
 
 
 // Job Rotues
 
-router.post("/requestToAddJob", JobControlller.requestToAddJob);
-router.post("/getIncomingRequest", JobControlller.getIncomingRequest);
-router.post("/settimestatus", JobControlller.settimestatus);
-router.post("/getAvailableJobForStudent", JobControlller.getAvailableJobForStudent);
-router.post("/AcceptJobRequest", JobControlller.AcceptJobRequest);
-router.post("/RejectJobRequest", JobControlller.RejectJobRequest);
-router.post("/addStudentToJob", JobControlller.addStudentToJob);
-router.post("/GetAllJobsOfCompany", JobControlller.GetAllJobsOfCompany);
-router.post("/setdetails", JobControlller.setdetails);
-router.post("/tpoRequestedJobs", JobControlller.tpoRequestedJobs);
-router.post("/getfulldetails", JobControlller.getFulldetails);
-router.post("/getjobdetailsforcomp", JobControlller.getjobdetailsforcomp);
-router.post("/getappliedstudentdetails",JobControlller.getappliedstudent);
-router.post("/setplacementstatus",JobControlller.setplacementstatus);
+router.post("/requestToAddJob", isAuth,isCompany,JobControlller.requestToAddJob);
+router.post("/addStudentToJob",isAuth, JobControlller.addStudentToJob);
+router.post("/GetAllJobsOfCompany",isAuth ,isCompany,JobControlller.GetAllJobsOfCompany);
+router.post("/setdetails",isAuth, JobControlller.setdetails);
+router.post("/tpoRequestedJobs",isAuth, JobControlller.tpoRequestedJobs);
+router.post("/getjobdetailsforcomp",isAuth,isCompany, JobControlller.getjobdetailsforcomp);
+router.post("/getappliedstudentdetails",isAuth,isCompany,JobControlller.getappliedstudent);
+router.post("/setplacementstatus",isAuth ,isCompany, JobControlller.setplacementstatus);
 
 
 
@@ -66,9 +86,14 @@ router.post("/registerCompany",CompanyController.registerCompany);
 
 //Tpo Routes
 router.get("/tpodata", LoginController.getTpoData);
-router.get("/getstudentstpo",isAuth, LoginController.getstudentstpo);
-router.get("/getcompaniestpo",isAuth, LoginController.getcompaniestpo);
-router.get("/getjobofferedtpo" ,LoginController.getjobofferedtpo);
+router.post("/setstudentstatus",isAuth,isTpo ,StudentController.setStudentStatus);
+router.get("/getstudentstpo",isAuth,isTpo , LoginController.getstudentstpo);
+router.get("/getcompaniestpo",isAuth,isTpo , LoginController.getcompaniestpo);
+router.get("/getjobofferedtpo",isAuth ,isTpo ,LoginController.getjobofferedtpo);
+router.post("/studentrequesttpo",isAuth,isTpo,StudentController.studentreqtpo);
+router.post("/getIncomingRequest",isAuth,isTpo ,JobControlller.getIncomingRequest);
+router.post("/AcceptJobRequest",isAuth,isTpo , JobControlller.AcceptJobRequest);
+router.post("/RejectJobRequest",isAuth,isTpo , JobControlller.RejectJobRequest);
 
 
 //Login Request
