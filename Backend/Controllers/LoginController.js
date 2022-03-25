@@ -117,8 +117,6 @@ class LoginController {
         address:std.address,
         ceo:std.ceo,
         hr:std.hr,
-
-
       }
     })
     
@@ -159,6 +157,7 @@ class LoginController {
       
 
     
+
     }
   
 
@@ -185,6 +184,7 @@ class LoginController {
 
     res.send(finalResult)
      
+
   }
 
 }
