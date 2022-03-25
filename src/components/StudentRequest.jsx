@@ -1,6 +1,7 @@
 import axios from "axios";
 // import { event } from "jquery";
 import React, { useEffect, useState } from "react";
+import Tponavbottom from "./Tponavbottom"
 import Header from "./Header";
 // import { Link } from "react-router-dom";
 
@@ -37,6 +38,7 @@ function StudentRequest() {
     return (
         <div>
                <Header path="/tpo" />
+               <Tponavbottom />
             
 
             {studentData.length >= 0 &&
