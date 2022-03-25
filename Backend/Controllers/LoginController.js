@@ -105,6 +105,23 @@ class LoginController {
     
     res.send(students)
   }
+  static getcompaniestpo=async (req,res)=>{
+    let companies= await Company.find();
+    companies=companies.map((std)=>{
+      return {
+        name:std.name,
+        email:std.email,
+        number:std.number,
+        address:std.address,
+        ceo:std.ceo,
+        hr:std.hr,
+
+
+      }
+    })
+    
+    res.send(students)
+  }
 
 }
 
