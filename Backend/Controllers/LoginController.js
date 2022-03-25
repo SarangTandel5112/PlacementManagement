@@ -120,7 +120,7 @@ class LoginController {
       }
     })
     
-    res.send(students)
+    res.send(companies)
   }
 
 }
