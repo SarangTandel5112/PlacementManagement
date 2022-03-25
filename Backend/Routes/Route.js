@@ -66,6 +66,8 @@ router.post("/registerCompany",CompanyController.registerCompany);
 
 //Tpo Routes
 router.get("/tpodata", LoginController.getTpoData);
+router.get("/getstudentstpo",isAuth, LoginController.getstudentstpo);
+
 
 //Login Request
 router.post("/login",  LoginController.loginFunction);
