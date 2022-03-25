@@ -28,6 +28,7 @@ function Companyhire() {
     formData.append("minimumCriteria",finaldata.minimumCriteria);
     formData.append("jobLocation",finaldata.jobLocation);
     formData.append("companyWebsite",finaldata.companyWebsite);
+    formData.append("numberOfOpening",finaldata.numberOfOpening);
     formData.append("deadline",finaldata.deadline);
     try{
        await axios.post("/requestToAddJob",formData,{

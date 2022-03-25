@@ -21,6 +21,7 @@ class JobControlller {
           ctcRange: req.body.ctcRange,
           minimumCriteria: req.body.minimumCriteria,
           jobLocation: req.body.jobLocation,
+          numberOfOpening: req.body.numberOfOpening,
           companyWebsite: req.body.companyWebsite,
           status: "waiting",
           deadline: req.body.deadline,
