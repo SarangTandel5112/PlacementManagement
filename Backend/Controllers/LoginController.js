@@ -1,6 +1,8 @@
 const Company = require("../Models/Company");
+const Job = require("../Models/Job");
 const Student = require("../Models/Student");
 const Tpo = require("../Models/Tpo");
+
 class LoginController {
 
   static loginFunction = (req, res) => {
@@ -121,6 +123,22 @@ class LoginController {
     })
     
     res.send(companies)
+  }
+  static getjobofferedtpo=async(req,res)=>{
+    let jobs=await Student.find();
+    jobs=jobs.filter((std)=>{
+      return std.status==="Accpted"
+    })
+    jobs=jobs.map((std)=>{
+      return {
+        name:std.name,
+        myapply:std.myapply
+      }
+    })
+    console.log(jobs)
+    
+    
+    res.send("ok");
   }
 
 }
