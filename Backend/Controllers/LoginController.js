@@ -90,6 +90,22 @@ class LoginController {
       res.json({loggedin:false})
     }
   }
+
+  static getstudentstpo=async (req,res)=>{
+    let students= await Student.find();
+    students=students.map((std)=>{
+      return {
+        name:std.name,
+        email:std.email,
+        cgpa:std.cgpa,
+        resumename:std.resumename
+
+      }
+    })
+    
+    res.send(students)
+  }
+
 }
 
 module.exports = LoginController;
