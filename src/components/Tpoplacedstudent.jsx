@@ -10,7 +10,7 @@ export default function Tpoplacedstudent() {
     const [stddetails, setstddetails] = useState([])
     let i=1;
     async function getdetails() {
-        const res = await axios.get("/getstudentstpo")
+        const res = await axios.get("/getjobofferedtpo")
         setstddetails(res.data)        
     }
 
@@ -18,7 +18,7 @@ export default function Tpoplacedstudent() {
         getdetails();
     }, [])
 
-    
+
     return (
         <div>
             <Header path="/tpo" />
