@@ -14,9 +14,11 @@ import Header from "./Header";
 function Home() {
     const [slen, setslen] = useState(0);
     const [clen, setclen] = useState(0)
+    const [placedlen, setplacedlen] = useState(0)
     async function getdata() {
         var res = await axios.get('/tpodata')
-        setslen(res.data.slen); setclen(res.data.clen)
+        setslen(res.data.slen); setclen(res.data.clen);
+        setplacedlen(res.data.placedlen)
     }
     useEffect(() => {
         getdata();
@@ -200,8 +202,8 @@ function Home() {
                     <h3 className="featurename">Total Recruiters</h3>
                 </div>
                 <div className="col-lg-3 ml-5 featureimgout1">
-                    <h1 className="setsize1">{slen}</h1>
-                    <h3 className="featurename">Students Placed</h3>
+                    <h1 className="setsize1">{placedlen}</h1>
+                    <h3 className="featurename">Job Offered</h3>
                 </div>
             </div>
 
