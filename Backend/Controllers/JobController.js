@@ -205,6 +205,14 @@ class JobControlller {
          }
        }
        jobfound.save();
+       let stdfound=await Student.findById(req.body.studentid);
+       for(let i=0;i<stdfound.myapply.length;i++){
+         if(stdfound.myapply[i].jobid===req.body.jobid){
+          stdfound.myapply[i].status=true;
+         }
+       }
+       stdfound.save()
+       
        
        res.json({msg:true})
 

@@ -123,21 +123,67 @@ class LoginController {
     res.send(companies)
   }
   static getjobofferedtpo=async(req,res)=>{
-    let jobs=await Student.find();
-    jobs=jobs.filter((std)=>{
+    let students=await Student.find();
+    students=students.filter((std)=>{
       return std.status==="Accpted"
     })
-    jobs=jobs.map((std)=>{
+    students=students.map((std)=>{
       return {
         name:std.name,
         myapply:std.myapply
+        
       }
     })
-    console.log(jobs)
-    
-    
-    res.send("ok");
+    console.log(students)
+    let result=[]
+    for(let i=0;i<students.length;i++){
+      let studentapply=students[i].myapply;
+      let studentname=students[i].name;
+      for(let j=0;j<studentapply.length;j++){
+        
+        let object={
+          name:studentname,
+          jobdetails:{
+            jobid:studentapply[j].jobid,
+            status:studentapply[j].status
+          }
+        }
+        result.push(object)
 
+
+        
+
+      }
+      
+
+    
+
+    }
+  
+
+      result=result.filter((obj)=>{
+        return obj.jobdetails.status===true;
+      })
+      
+      let finalResult=[]
+      for(let i=0;i<result.length;i++){
+       
+        let jobid=result[i].jobdetails.jobid;
+        let job=await Job.findById(jobid);
+        console.log(job)
+        let obj={
+          studentName:result[i].name,
+          jobtitle:job.jobTitle,
+          ctc:job.ctcRange,
+          companyname:job.compname
+
+        }
+        finalResult.push(obj);
+
+      }
+
+    res.send(finalResult)
+     
 
   }
 
