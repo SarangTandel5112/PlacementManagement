@@ -25,6 +25,8 @@ import Companypost from "./Companypost";
 import Companyonedetails from "./Companyonedetails";
 import Appliedstudentdetails from "./Appliedstudentdetails";
 import { TpoStudentdetails } from "./TpoStudentdetails";
+import { Tpocompanydetails } from "./Tpocompanydetails";
+import Tpoplacedstudent from "./Tpoplacedstudent";
  
 
 function Page() {
@@ -107,6 +109,12 @@ function Page() {
       </Switch>
       <Switch>
         <Route exact path="/tpo/studentdetails" component={TpoStudentdetails} />
+      </Switch>
+      <Switch>
+        <Route exact path="/tpo/companydetails" component={Tpocompanydetails} />
+      </Switch>
+      <Switch>
+        <Route exact path="/tpo/placedstudent" component={Tpoplacedstudent} />
       </Switch>
       
     </Router>

@@ -115,12 +115,9 @@ class LoginController {
         address:std.address,
         ceo:std.ceo,
         hr:std.hr,
-
-
       }
-    })
-    
-    res.send(students)
+    })    
+    res.send(companies)
   }
 
 }

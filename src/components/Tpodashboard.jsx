@@ -66,12 +66,16 @@ export default function Tpodashboard() {
                     <div className="col-lg-3 ml-5 featureimgout1">
                         <h1 className="setsize1">{clen}</h1>
                         <h3 className="featurename">Total Recruiters</h3>
-                        <button className="btn btn-primary">View Companies</button>
+                        <Link to="/tpo/companydetails">
+                            <button className="btn btn-primary">View Companies</button>
+                        </Link>
                     </div>
                     <div className="col-lg-3 ml-5 featureimgout1">
                         <h1 className="setsize1">{slen}</h1>
                         <h3 className="featurename">Students Placed</h3>
-                        <button className="btn btn-primary">View Placed</button>
+                        <Link to="/tpo/placedstudent" >
+                            <button className="btn btn-primary">View Placed</button>
+                        </Link>
                     </div>
                 </div>
             </div>
