@@ -10,7 +10,7 @@ export default function Tpoplacedstudent() {
     const [stddetails, setstddetails] = useState([])
     let i=1;
     async function getdetails() {
-        const res = await axios.get("/getstudentstpo")
+        const res = await axios.get("/getjobofferedtpo")
         setstddetails(res.data)        
     }
 
@@ -18,11 +18,36 @@ export default function Tpoplacedstudent() {
         getdetails();
     }, [])
 
-    
+
     return (
         <div>
             <Header path="/tpo" />
             <Tponavbottom />
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Sr. No.</th>
+                        <th scope="col">Student Name</th>
+                        <th scope="col">Job Title</th>
+                        <th scope="col">CTC</th>
+                        <th scope="col">Company Name</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    {stddetails.map((std) => (
+                        <tr>
+                            <th scope="row">{i++}</th>
+                            <td>{std.studentName}</td>
+                            <td>{std.jobtitle}</td>
+                            <td>{std.ctc}</td>
+                            <td>{std.companyname}</td>
+                            
+                            
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
         </div>
     )
 }
