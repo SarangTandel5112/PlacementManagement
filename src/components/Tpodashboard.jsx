@@ -10,11 +10,12 @@ import Tponavbottom from "./Tponavbottom";
 export default function Tpodashboard() {
     const [slen, setslen] = useState(0);
     const [clen, setclen] = useState(0);
+    const [placedlen, setplacedlen] = useState(0);
     const [sreqlen, setsreqlen] = useState(0)
     const [creqlen, setsceqlen] = useState(0)
     async function fetchdata() {
         try {
-            axios.get("/tpodata").then((res) => { setslen(res.data.slen); setclen(res.data.clen) });
+            axios.get("/tpodata").then((res) => { setslen(res.data.slen); setclen(res.data.clen);setplacedlen(res.data.placedlen) });
             const studentdata1 = await axios.post("/studentrequesttpo");
             setsreqlen(studentdata1.data.user.length)
             const response = await axios.post("/getIncomingRequest");
@@ -71,8 +72,8 @@ export default function Tpodashboard() {
                         </Link>
                     </div>
                     <div className="col-lg-3 ml-5 featureimgout1">
-                        <h1 className="setsize1">{slen}</h1>
-                        <h3 className="featurename">Students Placed</h3>
+                        <h1 className="setsize1">{placedlen}</h1>
+                        <h3 className="featurename">Job Offered</h3>
                         <Link to="/tpo/placedstudent" >
                             <button className="btn btn-primary">View Placed</button>
                         </Link>
