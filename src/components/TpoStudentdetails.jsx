@@ -8,14 +8,15 @@ import Tponavbottom from './Tponavbottom'
 export const TpoStudentdetails = () => {
 
     const [stddetails, setstddetails] = useState([])
-
-    async function getdetails(){
-        const data = await axios.get("/")
+    let i=1;
+    async function getdetails() {
+        const res = await axios.get("/getstudentstpo")
+        setstddetails(res.data)        
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         getdetails();
-    },[])
+    }, [])
 
     return (
 
@@ -30,16 +31,21 @@ export const TpoStudentdetails = () => {
                         <th scope="col">Email</th>
                         <th scope="col">Branch</th>
                         <th scope="col">CGPA</th>
-                        <th scope="col">Resume</th>                        
+                        <th scope="col">Resume</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                    </tr>
+                    {stddetails.map((std) => (
+                        <tr>
+                            <th scope="row">{i++}</th>
+                            <td>{std.name}</td>
+                            <td>{std.email}</td>
+                            <td>{std.email}</td>
+                            <td>{std.cgpa}</td>
+                            <td><button className='btn btn-primary' onClick={() => window.open(`../../Photos/Files/sresume/${std.resumename}`)}>View Resume</button></td>
+                            
+                        </tr>
+                    ))}
                 </tbody>
             </table>
         </div>
