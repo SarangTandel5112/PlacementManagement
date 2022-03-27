@@ -5,14 +5,14 @@ function Footer() {
 
     return (
 
-        <footer class="footer">
-                <div class="container bottom_border">
-                    <div class="row">
-                        <div class=" col-sm-4 col-md col-sm-4  col-12 col">
-                            <h5 class="headin5_amrc col_white_amrc pt2">Categories</h5>
+        <footer className="footer">
+                <div className="container bottom_border">
+                    <div className="row">
+                        <div className=" col-sm-4 col-md col-sm-4  col-12 col">
+                            <h5 className="headin5_amrc col_white_amrc pt2">Categories</h5>
 
 
-                            <ul class="footer_ul_amrc">
+                            <ul className="footer_ul_amrc">
                                 <li><a href="http://webenlance.com">CE/IT</a></li>
                                 <li><a href="http://webenlance.com">MECHANICAL</a></li>
                                 <li><a href="http://webenlance.com">CIVIL</a></li>
@@ -22,10 +22,10 @@ function Footer() {
                         </div>
 
 
-                        <div class=" col-sm-4 col-md  col-6 col">
-                            <h5 class="headin5_amrc col_white_amrc pt2">Help</h5>
+                        <div className=" col-sm-4 col-md  col-6 col">
+                            <h5 className="headin5_amrc col_white_amrc pt2">Help</h5>
 
-                            <ul class="footer_ul_amrc">
+                            <ul className="footer_ul_amrc">
                                 <li><a href="http://webenlance.com">My Applies</a></li>
                                 <li><a href="http://webenlance.com">About Company</a></li>
                                 <li><a href="http://webenlance.com">My Details</a></li>
@@ -35,8 +35,8 @@ function Footer() {
 
                         </div>
                         
-                        <div class=" col-sm-4 col-md-5  col-lg-6 col">
-                            <h5 class="headin5_amrc col_white_amrc pt2">About Us :</h5>
+                        <div className=" col-sm-4 col-md-5  col-lg-6 col">
+                            <h5 className="headin5_amrc col_white_amrc pt2">About Us :</h5>
                             <p>
                                 &nbsp; &nbsp; &nbsp; &nbsp;The Placement Cell at DDU is a concept in
                                 its own form. It has the following structure comprising of three
@@ -52,11 +52,11 @@ function Footer() {
                         
 
                         <div>
-                            <ul class="social_footer_ul">
-                                <li className=""><a href="/#" ><i class="smlogo fab fa-facebook-f"></i></a></li>
-                                <li className=""><a href="/#" ><i class="smlogo fab fa-twitter"></i></a></li>
-                                <li className=""><a href="/#" ><i class="smlogo fab fa-linkedin"></i></a></li>
-                                <li className=""><a href="/#" ><i class="smlogo fab fa-instagram"></i></a></li>
+                            <ul className="social_footer_ul">
+                                <li className=""><a href="/#" ><i className="smlogo fab fa-facebook-f"></i></a></li>
+                                <li className=""><a href="/#" ><i className="smlogo fab fa-twitter"></i></a></li>
+                                <li className=""><a href="/#" ><i className="smlogo fab fa-linkedin"></i></a></li>
+                                <li className=""><a href="/#" ><i className="smlogo fab fa-instagram"></i></a></li>
                             </ul>
                         </div>
                     </div>

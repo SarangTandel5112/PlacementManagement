@@ -10,7 +10,7 @@ function Studentmyapplies() {
 
   const fetchJob = async () => {
     const response = await axios.post("/studentmyapplies");
-    console.log(response.data.applydata);
+
     setJobs(response.data.applydata);
 
     
@@ -42,7 +42,7 @@ function Studentmyapplies() {
 
             <p className="cominnertext"><b>Title : </b>{job.jobTitle}</p>
             <Link to={`/jobs/${job._id}`} >
-              <button type="button " class="btn btn-primary cominnertext" value={job._id}>View Details</button>
+              <button type="button " className="btn btn-primary cominnertext" value={job._id}>View Details</button>
             </Link>
            
           </div>

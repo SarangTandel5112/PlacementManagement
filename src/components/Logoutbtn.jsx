@@ -6,7 +6,7 @@ import { useHistory} from 'react-router-dom'
 function Logoutbtn() {
     const history=useHistory();
     let logout=()=>{
-        console.log("log")
+        
         axios.get("/logout")
         history.push("/")
 

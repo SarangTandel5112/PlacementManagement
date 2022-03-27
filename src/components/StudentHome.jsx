@@ -1,4 +1,4 @@
-import React ,{useEffect}from "react";
+import React from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import Header from "./Header";
@@ -7,15 +7,7 @@ import Footer from "./Footer";
 axios.defaults.withCredentials=true;
 function Front() {
 
-  async function fetchdata() {
-      console.log("Used")
-      axios.get("/tpodata").then((res) => { console.log(res) });
-
-
-  }
-  useEffect(() => {
-      fetchdata();
-  }, [])
+  
   return (
     <div>
       <Header path="/studentHome" />
@@ -45,8 +37,8 @@ function Front() {
           <div className="col-lg-8 siderec">
             <p className="cominnertext">Company Name : TCS</p>
             <p className="cominnertext">Address : wefg df dfgdf</p>
-            <button type="button " class="btn btn-primary cominnertext">View Details</button>
-            <button type="button " class="btn btn-success ml-2">Apply now</button>
+            <button type="button " className="btn btn-primary cominnertext">View Details</button>
+            <button type="button " className="btn btn-success ml-2">Apply now</button>
           </div>
         </div>
         <div className="row companyformatout">
@@ -56,8 +48,8 @@ function Front() {
           <div className="col-lg-8 siderec">
             <p className="cominnertext">Company Name : TCS</p>
             <p className="cominnertext">Address : wefg df dfgdf</p>
-            <button type="button " class="btn btn-primary cominnertext">View Details</button>
-            <button type="button " class="btn btn-success ml-2">Apply now</button>
+            <button type="button " className="btn btn-primary cominnertext">View Details</button>
+            <button type="button " className="btn btn-success ml-2">Apply now</button>
           </div>
         </div><div className="row companyformatout">
           <div className="col-lg-3 col-md-6">
@@ -66,8 +58,8 @@ function Front() {
           <div className="col-lg-8 siderec">
             <p className="cominnertext">Company Name : TCS</p>
             <p className="cominnertext">Address : wefg df dfgdf</p>
-            <button type="button " class="btn btn-primary cominnertext">View Details</button>
-            <button type="button " class="btn btn-success ml-2">Apply now</button>
+            <button type="button " className="btn btn-primary cominnertext">View Details</button>
+            <button type="button " className="btn btn-success ml-2">Apply now</button>
           </div>
         </div>
       </div> */}

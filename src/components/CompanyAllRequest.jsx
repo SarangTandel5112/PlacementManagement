@@ -4,14 +4,16 @@ import Companynavbottom from "./Companynavbottom";
 import Header from "./Header";
 
 function Companydetails() {
+  // eslint-disable-next-line 
   const [jobs, setjobs] = useState([]);
   
  
   const fetchJob = async () => {
+    // eslint-disable-next-line 
     const response = await axios.post("/GetAllJobsOfCompany",{
       company_id:localStorage.getItem("company_id")
     });
-    console.log(response.data.jobs,"jobs  sdasf");
+   
     // setjobs(response.data.jobs);
     
   };
@@ -58,7 +60,7 @@ function Companydetails() {
               {job.candidates.map(student => <p>{student}</p>)}
             </div>
           }
-          {console.log(job.candidates)}
+       
         </div>
       ))}
     </div>

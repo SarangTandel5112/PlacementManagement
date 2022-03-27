@@ -23,7 +23,7 @@ export const TpoStudentdetails = () => {
         <div>
             <Header path="/tpo" />
             <Tponavbottom />
-            <table class="table table-hover">
+            <table className="table table-hover">
                 <thead>
                     <tr>
                         <th scope="col">Sr. No.</th>

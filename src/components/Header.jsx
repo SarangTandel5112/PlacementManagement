@@ -10,10 +10,10 @@ function Header(props) {
   let logincheck = async()=>{
 
     const loginres=await axios.get("/isloggedin");
-    console.log(loginres)
+    
     if(loginres.data.loggedin){
       setisLoggedin(true);
-      console.log("loggedin")
+      
     
 
       
@@ -48,7 +48,7 @@ function Header(props) {
             <span className="navbar-toggler-icon"></span>
           </button>
           <b className="navbar-brand brandname mainname">
-            <i class="fas fa-user-graduate"></i> DDU Placement
+            <i className="fas fa-user-graduate"></i> DDU Placement
           </b>
           <button
             className="navbar-toggler searchbox"

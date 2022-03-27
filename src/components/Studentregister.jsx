@@ -11,6 +11,7 @@ function Studentregister() {
     name: "",
     email: "",
     phno: "",
+    branch:" ",
     collegename: "",
     cgpa: "",
     password: "",
@@ -38,6 +39,7 @@ function Studentregister() {
       formData.append("email",finaldata.email);
       formData.append("phno",finaldata.phno);
       formData.append("collegename",finaldata.collegename);
+      formData.append("branch",finaldata.branch);
       formData.append("cgpa",finaldata.cgpa);
       formData.append("password",finaldata.password);
       try{
@@ -63,7 +65,7 @@ function Studentregister() {
     setformdata({ ...formdata, [event.target.name]: [event.target.value] });
   }
   function handleFileChange(event){
-    console.log("before")
+   
     setfile(event.target.files[0])
     
    
@@ -77,6 +79,8 @@ function Studentregister() {
 
   return (
     <div>
+      
+      
       <ToastContainer
         position="top-center"
         autoClose={3000}
@@ -133,6 +137,17 @@ function Studentregister() {
             placeholder="College Name"
             required
           />
+        </div>
+        <div className=" container-fluid">
+        
+          <select name="branch" onChange={handleChange} className="lname1" id="branch" placeholder="Phone Number"
+            required>
+            <option value="" selected>Select Branch</option>
+            <option value="CS/IT">CS/IT</option>
+            <option value="MECH">MECH</option>
+            <option value="CIVIL">CIVIL</option>
+            <option value="EC">EC"</option>
+          </select>
         </div>
         <div className="phno container-fluid">
           <input

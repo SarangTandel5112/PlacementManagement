@@ -19,7 +19,7 @@ function Details() {
   var a = new Date();
   const fetchJob = async () => {
     const response = await axios.post("/getAvailableJobForStudent");
-    console.log(response.data.alljob);
+
     setJobs(response.data.alljob);
   
   };
@@ -52,7 +52,7 @@ function Details() {
 
             <p className="cominnertext"><b>Title : </b>{job.jobTitle}</p>
             <Link to={`/jobs/${job._id}`} >
-              <button type="button " class="btn btn-primary cominnertext" value={job._id}>View Details</button>
+              <button type="button " className="btn btn-primary cominnertext" value={job._id}>View Details</button>
             </Link>
 
             

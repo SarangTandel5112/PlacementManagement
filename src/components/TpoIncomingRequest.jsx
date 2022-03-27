@@ -10,9 +10,9 @@ function Tpodetails() {
   const fetchJob = async () => {
     const response = await axios.post("/getIncomingRequest");
     
-    console.log(response.data.alljob , "before state");
+    
     setIncomingRequest(response.data.alljob);
-    console.log(incomingRequest,"after state");
+    
   };
 
   
@@ -29,7 +29,7 @@ function Tpodetails() {
         job_id,
       })
       .then((res) => {
-        console.log(res);
+        
         fetchJob();
         toast.success("Successfully accepted the request", {
           position: "top-center",
@@ -52,7 +52,7 @@ function Tpodetails() {
         job_id,
       })
       .then((res) => {
-        console.log(res);
+       
         toast.success("Successfully decline the request", {
           position: "top-center",
           autoClose: 3000,
@@ -85,7 +85,7 @@ function Tpodetails() {
         pauseOnHover
       />
       <h3 className="main-heading">New requests</h3>
-      {console.log(incomingRequest,"DOM RE")}
+     
       {incomingRequest.length === 0 && <p className="main-heading">No new Request</p>}
 
       {incomingRequest.length >= 0 &&

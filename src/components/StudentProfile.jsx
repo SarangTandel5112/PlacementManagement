@@ -34,7 +34,7 @@ function Form() {
         student_id: localStorage.getItem("student_id"),
       })
       .then((res) => {
-        console.log("getStudentData ", res.data.student);
+   
         let student = res.data.student;
         setProfileData({
           name: student.name,
@@ -58,7 +58,7 @@ function Form() {
         });
       })
       .catch((err) => {
-        console.log(err);
+
       });
   };
   useEffect(getStudentDetail, []);
@@ -73,8 +73,7 @@ function Form() {
 
   function submitform(event) {
    
-    // const finaldata = formData;
-    console.log(formData);
+
     
     axios
       .post("/updateStudentProfile", {
@@ -89,12 +88,12 @@ function Form() {
         leetcode_profile: formData.leetcode_profile,
       })
       .then((response) => {
-        console.log("Success");
+    
         getStudentDetail();
         setUpdateData(0);
       })
       .catch(() => {
-        console.log("fail");
+        
         setUpdateData(0);
       });
   }
@@ -115,7 +114,7 @@ function Form() {
       <Studentnavbottom/>
       <div className="full-height">
         <form
-          class="registerform container-fluid"
+          className="registerform container-fluid"
           onSubmit={() => {}}
         >
           {updateData ? (
@@ -130,11 +129,11 @@ function Form() {
                 <p>{profileData.name.length > 0 ? profileData.name : "none"}</p>
               </div>
             ) : (
-              <div class="fname container-fluid box box">
+              <div className="fname container-fluid box box">
                 <input
                   value={formData.name}
                   type="text"
-                  class="fname1"
+                  className="fname1"
                   name="name"
                   onChange={handleChange}
                   placeholder="Name"
@@ -147,11 +146,11 @@ function Form() {
                 <p>{profileData.cgpa !== 0 ? profileData.cgpa : "none"}</p>
               </div>
             ) : (
-              <div class="lname container-fluid box">
+              <div className="lname container-fluid box">
                 <input
                   value={formData.cgpa}
                   type="number"
-                  class="lname1"
+                  className="lname1"
                   name="cgpa"
                   onChange={handleChange}
                   placeholder="CGPA"
@@ -168,11 +167,11 @@ function Form() {
                 </p>
               </div>
             ) : (
-              <div class="phno container-fluid box">
+              <div className="phno container-fluid box">
                 <input
                   value={formData.college_id}
                   type="text"
-                  class="phno1"
+                  className="phno1"
                   name="college_id"
                   onChange={handleChange}
                   placeholder="ID"
@@ -187,11 +186,11 @@ function Form() {
                 </p>
               </div>
             ) : (
-              <div class="phno container-fluid box">
+              <div className="phno container-fluid box">
                 <input
                   value={formData.branch}
                   type="text"
-                  class="phno1"
+                  className="phno1"
                   name="branch"
                   onChange={handleChange}
                   placeholder="Branch"
@@ -208,11 +207,11 @@ function Form() {
                 </p>
               </div>
             ) : (
-              <div class="phno container-fluid box">
+              <div className="phno container-fluid box">
                 <input
                   value={formData.resumeLink}
                   type="text"
-                  class="phno1"
+                  className="phno1"
                   name="resumeLink"
                   onChange={handleChange}
                   placeholder="Resume Link"
@@ -230,11 +229,11 @@ function Form() {
                 </p>
               </div>
             ) : (
-              <div class="phno container-fluid box">
+              <div className="phno container-fluid box">
                 <input
                   value={formData.linkedin_profile}
                   type="text"
-                  class="phno1"
+                  className="phno1"
                   name="linkedin_profile"
                   onChange={handleChange}
                   placeholder="Linkedin Profile Link"
@@ -251,11 +250,11 @@ function Form() {
                 </p>
               </div>
             ) : (
-              <div class="phno container-fluid box">
+              <div className="phno container-fluid box">
                 <input
                   value={formData.codechef_profile}
                   type="text"
-                  class="phno1"
+                  className="phno1"
                   name="codechef_profile"
                   onChange={handleChange}
                   placeholder="Codechef Profile Link"
@@ -272,11 +271,11 @@ function Form() {
                 </p>
               </div>
             ) : (
-              <div class="phno container-fluid box">
+              <div className="phno container-fluid box">
                 <input
                   value={formData.leetcode_profile}
                   type="text"
-                  class="phno1"
+                  className="phno1"
                   name="leetcode_profile"
                   onChange={handleChange}
                   placeholder="Leet Code Profile Link"
@@ -286,14 +285,14 @@ function Form() {
             <br />
             <br />
             {!updateData ? (
-              <button class="btn-primary btn-lg accbtn" onClick={changedata}>
+              <button className="btn-primary btn-lg accbtn" onClick={changedata}>
                 Update Profile
               </button>
             ) : (
               <input
                 value={formData.name}
                 type="submit"
-                class="btn-primary btn-lg accbtn"
+                className="btn-primary btn-lg accbtn"
               
                 name="Log in"
                 onClick={changedata}

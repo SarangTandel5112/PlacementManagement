@@ -75,7 +75,7 @@ function Register() {
     setformdata({ ...formdata, [event.target.name]: [event.target.value] });
   }
   function handleFileChange(event){
-     console.log("before")
+    
      setfile(event.target.files[0])
   }
 
