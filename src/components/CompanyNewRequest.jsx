@@ -4,66 +4,57 @@ import Header from "./Header";
 import axios from "axios";
 import Companynavbottom from "./Companynavbottom";
 function Companyhire() {
-  const history=useHistory()
-  const [file, setfile] = useState(" ")
+  const history = useHistory();
+  const [file, setfile] = useState(" ");
   const [formdata, setformdata] = useState({
     title: "",
     description: "",
     numberOfOpening: "",
     ctcRange: "",
-    minimumCriteria:"",
+    branch: "",
+    minimumCriteria: "",
     jobLocation: "",
     companyWebsite: "",
-    deadline:""
+    deadline: "",
   });
 
   async function submitform(event) {
     event.preventDefault();
     const finaldata = formdata;
-    const formData=new FormData();
-    formData.append("file",file)
-    formData.append("title",finaldata.title);
-    formData.append("description",finaldata.description);
-    formData.append("ctcRange",finaldata.ctcRange);
-    formData.append("minimumCriteria",finaldata.minimumCriteria);
-    formData.append("jobLocation",finaldata.jobLocation);
-    formData.append("companyWebsite",finaldata.companyWebsite);
-    formData.append("numberOfOpening",finaldata.numberOfOpening);
-    formData.append("deadline",finaldata.deadline);
-    try{
-       await axios.post("/requestToAddJob",formData,{
-        headers:{
-          'Content-Type':'multipart/formdata'
-        }
-        
-      })
-      history.push("/companyDashboard")
-      
-     
-      
-
-    }catch(err){
-      console.log(err)
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("title", finaldata.title);
+    formData.append("description", finaldata.description);
+    formData.append("ctcRange", finaldata.ctcRange);
+    formData.append("branch", finaldata.branch);
+    formData.append("minimumCriteria", finaldata.minimumCriteria);
+    formData.append("jobLocation", finaldata.jobLocation);
+    formData.append("companyWebsite", finaldata.companyWebsite);
+    formData.append("numberOfOpening", finaldata.numberOfOpening);
+    formData.append("deadline", finaldata.deadline);
+    try {
+      await axios.post("/requestToAddJob", formData, {
+        headers: {
+          "Content-Type": "multipart/formdata",
+        },
+      });
+      history.push("/companyDashboard");
+    } catch (err) {
+      console.log(err);
     }
   }
 
   function handleChange(event) {
     setformdata({ ...formdata, [event.target.name]: [event.target.value] });
   }
-  function handleFileChange(event){
-    console.log("before")
-    setfile(event.target.files[0])
-    
-   
+  function handleFileChange(event) {
 
-  
-   
-
- }
+    setfile(event.target.files[0]);
+  }
   return (
     <div>
-      <Header  path="/companyDashboard"/>
-      <Companynavbottom/>
+      <Header path="/companyDashboard" />
+      <Companynavbottom />
       <div className="full-height">
         <form
           className="registerform container-fluid"
@@ -91,6 +82,24 @@ function Companyhire() {
               required
             />
           </div>
+          <div className=" container-fluid">
+            <select
+              name="branch"
+              onChange={handleChange}
+              className="lname1"
+              id="branch"
+              placeholder="Phone Number"
+              required
+            >
+              <option value="" selected>
+                Select Branch
+              </option>
+              <option value="CS/IT">CS/IT</option>
+              <option value="MECH">MECH</option>
+              <option value="CIVIL">CIVIL</option>
+              <option value="EC">EC"</option>
+            </select>
+          </div>
           <div className="phno container-fluid">
             <input
               type="number"
@@ -112,8 +121,6 @@ function Companyhire() {
             />
           </div>
 
-          
-
           <div className="phno container-fluid">
             <input
               type="text"
@@ -124,7 +131,6 @@ function Companyhire() {
               required
             />
           </div>
-
 
           <div className="phno container-fluid">
             <input
@@ -148,19 +154,29 @@ function Companyhire() {
             />
           </div>
 
-
           <div>
-            <input type="datetime-local" className="phno1" name="deadline" onChange={handleChange} required/>
+            <input
+              type="datetime-local"
+              className="phno1"
+              name="deadline"
+              onChange={handleChange}
+              required
+            />
           </div>
 
           <br />
 
           <br />
           <div className="container-fluid">
-          <label htmlFor="fielInput">Upload Job Description : </label>
-        <input type="file" name="file" className="lname" onChange={handleFileChange}  id="fileInput" />
-        
-        </div>
+            <label htmlFor="fielInput">Upload Job Description : </label>
+            <input
+              type="file"
+              name="file"
+              className="lname"
+              onChange={handleFileChange}
+              id="fileInput"
+            />
+          </div>
 
           <input
             type="submit"

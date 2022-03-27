@@ -5,6 +5,7 @@ const studentSchema = new Schema({
     email: String,
     phno:Number,
     collegename:String,
+    branch:String,
     cgpa: Number,
     password: String,
     status:String,

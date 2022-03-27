@@ -22,9 +22,6 @@ function Login() {
     event.preventDefault();
     const finaldata = formdata;
 
-    console.log(finaldata)
-    
-    console.log(finaldata);
     axios
       .post("/login", finaldata,{
         headers: {
@@ -33,8 +30,7 @@ function Login() {
         withCredentials: true})
       .then((response) => {
         var check = response.data.err;
-        console.log(response.data.err)
-        console.log(response.data.user.status);
+       
 
         if (check === "incorrect username!!") {
           setvalue(check);
@@ -43,14 +39,14 @@ function Login() {
         }
         else if (check === "student") {
           if(response.data.user.status ==="Accpted"){
-          console.log("IF vloc")
+         
 
             history.push("/studentHome");
           }else if(response.data.user.status==="Rejected"){
             setvalue("Your Request Is Rejected By TPO! Kindly Ask Them")
           }
           else{
-            console.log("ela")
+          
             setvalue("Your Request is Still Pending, Please Get Approved From TPO")
           }
         } else if (check === "company") {
@@ -80,7 +76,7 @@ function Login() {
         //   history.push("/");
         // }
 
-        // console.log(formdata.type[0]);
+        
         // if (formdata.type[0] === "tpo") {
         //   history.push("/tpo");
         // }
@@ -94,7 +90,10 @@ function Login() {
   }
   const { email, password} = formdata;
   return (
+
     <div className="loginform container-fluid full-height">
+      
+      
       <form className="lform" onSubmit={submitData}>
         <h1 className="heading main-heading">Login to The Account</h1>
         <div className="email container-fluid">

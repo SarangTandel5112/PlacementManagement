@@ -9,7 +9,7 @@ function Tpoalldetails() {
 
   /* const fetchJob = async () => {
     const response = await axios.post("/tpoRequestedJobs");
-    console.log("pk", response.data.data);
+
     setRequestJobs(response.data.data);
   };
 

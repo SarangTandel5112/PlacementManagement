@@ -14,7 +14,7 @@ function Companydisplay() {
   async function getdata(){
     
     const res=await axios.post("/getfulldetails",{"id":compId})
-    // console.log(res.data.oneuser);
+ 
     await setComp(res.data.oneuser);
     // alert(res.data.oneuser.jobTitle)
 
@@ -81,15 +81,15 @@ function Companydisplay() {
               <b>Last Day For Apply : </b>{comp.deadline}
             </div>
             <div className="sbox">
-              <button className="" onClick={() => window.open(`../../Photos/Files/jobdescription/${comp.jobDescriptionFile}`)}><img src="../../Photos/pdf.png" className="setbtn"/></button>
+              <button className="" onClick={() => window.open(`../../Photos/Files/jobdescription/${comp.jobDescriptionFile}`)}><img src="../../Photos/pdf.png" alt=" " className="setbtn"/></button>
             </div>
 
             {apply === true ? 
             <div className="sbox">
-              <button class="btn btn-success" disabled="true" >Applied</button>              
+              <button className="btn btn-success" disabled="true" >Applied</button>              
             </div> :
             <div className="sbox">
-              <button class="btn btn-success" onClick={senddata}>Apply now</button>              
+              <button className="btn btn-success" onClick={senddata}>Apply now</button>              
             </div> }
             
           </div>

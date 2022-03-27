@@ -17,12 +17,13 @@ function Appliedstudentdetails() {
 
         const res = await axios.post("/getappliedstudentdetails", { id: onecomp })
         setcompdata(res.data.stddata);
-         console.log("Respoonse",res.data.stddata)
+    
          setselectstatus(false)
     }
 
     useEffect(() => {
         getdata();
+        // eslint-disable-next-line 
     },[selectstatus])
     return (
 
@@ -31,8 +32,8 @@ function Appliedstudentdetails() {
             <Header  path="/companyDashboard"/>
             <Companynavbottom/>
             <div className="stdtable">
-                {console.log(compdata)}
-                <table class="table table-striped ">
+              
+                <table className="table table-striped ">
                     <thead>
                         <tr>
                             <th scope="col">Sr No.</th>

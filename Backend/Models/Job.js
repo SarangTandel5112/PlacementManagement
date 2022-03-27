@@ -7,6 +7,7 @@ const jobSchema = new Schema({
   numberOfOpening: Number,
   ctcRange: String,
   minimumCriteria : Number,
+  branch : String,
   jobLocation: String,
   companyWebsite: String,
   status: String,

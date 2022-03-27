@@ -14,19 +14,19 @@ function StudentRequest() {
 
         const studentdata1 = await axios.post("/studentrequesttpo");
       
-        console.log(studentdata1.data.user);
+        
         setStudentdata(studentdata1.data.user);
-        console.log(studentData, "1");
+        
 
 
     }
 
     async function setstatus(event) {
-        console.log("r");
+       
         var val=event.target.value;
         var vid=event.target.name;
         var res=await axios.post("/setstudentstatus",{val,vid})  
-        console.log(res.data);
+      
         setStudentdata(res.data);
     }
 

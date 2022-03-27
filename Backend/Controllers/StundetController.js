@@ -13,8 +13,9 @@ class StudentController {
       const user = new Student({
         name: req.body.name,
         email: req.body.email,
-        number: req.body.phno,
+        phno: req.body.phno,
         collegename: req.body.collegename,
+        branch: req.body.branch,
         cgpa: req.body.cgpa,
         password: req.body.password,
         jobsposted: [],

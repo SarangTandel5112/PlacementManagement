@@ -14,14 +14,14 @@ function AddStudent() {
 
   const changeHandler = (event) => {
     setSelectedFile(event.target.files[0]);
-    console.log("ch");
+
   };
 
   function handleFiles() {
     // Check for the various File API support.
     if (window.FileReader) {
       // FileReader are supported.
-      console.log(selectedFile);
+     
       getAsText(selectedFile);
     } else {
       alert("FileReader are not supported in this browser.");
@@ -55,7 +55,7 @@ function AddStudent() {
     }
     lines.pop();
     setStudents(lines);
-    console.log(lines);
+    
   }
 
   function errorHandler(evt) {
@@ -92,7 +92,7 @@ function AddStudent() {
               });
             } else {
               success += 1;
-              console.log(index);
+       
               if(index === students.length - 1)
               {
                 if (success > 0) {
@@ -119,7 +119,7 @@ function AddStudent() {
 
   const addNewStudent = (e) => {
     e.preventDefault();
-    console.log(data.email[0]);
+  
     axios
       .post("/addStudent", {
         email: data.email[0],

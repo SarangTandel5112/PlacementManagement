@@ -22,6 +22,7 @@ class JobControlller {
           minimumCriteria: req.body.minimumCriteria,
           jobLocation: req.body.jobLocation,
           numberOfOpening: req.body.numberOfOpening,
+          branch: req.body.branch,
           companyWebsite: req.body.companyWebsite,
           status: "waiting",
           deadline: req.body.deadline,
@@ -65,14 +66,18 @@ class JobControlller {
   }
 
   static getAvailableJobForStudent = async (req, res) => {
+    let student=await Student.findById(req.session.userid);
+    let stubranch=student.branch;
+    
 
     Job.find(
-      { status: "accepted", timestatus: "active" },
+      { status: "accepted", timestatus: "active",branch: stubranch},
       function (err, jobfound) {
         if (err) {
           res.json({ status: "error" });
         } else {
           Student.find({ _id: req.session.userid }, (err, userfound) => {
+            console.log(jobfound)
             res.send({ alljob: jobfound, oneuser: userfound[0].myapply });
 
           })

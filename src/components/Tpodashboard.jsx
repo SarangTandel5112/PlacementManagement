@@ -22,7 +22,7 @@ export default function Tpodashboard() {
             setsceqlen(response.data.alljob.length)
 
         } catch (e) {
-            console.log("Unauthorised")
+         
 
         }
     }
