@@ -40,7 +40,7 @@ export const TpoStudentdetails = () => {
                             <th scope="row">{i++}</th>
                             <td>{std.name}</td>
                             <td>{std.email}</td>
-                            <td>{std.email}</td>
+                            <td>{std.branch}</td>
                             <td>{std.cgpa}</td>
                             <td><button className='btn btn-primary' onClick={() => window.open(`../../Photos/Files/sresume/${std.resumename}`)}>View Resume</button></td>
                             

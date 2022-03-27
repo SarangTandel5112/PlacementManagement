@@ -134,11 +134,12 @@ class LoginController {
   };
 
   static getstudentstpo = async (req, res) => {
-    let students = await Student.find();
+    let students = await Student.find({status:"Accpted"});
     students = students.map((std) => {
       return {
         name: std.name,
         email: std.email,
+        branch:std.branch,
         cgpa: std.cgpa,
         resumename: std.resumename,
       };

@@ -71,7 +71,21 @@ function Register() {
     
   }
 
+
+  const [disabled, setdisabled] = useState(false)
+  const [phonedisp, setphonedisp] = useState("d-none")
   function handleChange(event) {
+    if(event.target.name==="phno"){
+      if(event.target.value.length!==10){
+        setdisabled(true)
+        setphonedisp("d-inline")
+        
+      }else{
+        setdisabled(false);
+        setphonedisp("d-none")
+      }
+
+    }
     setformdata({ ...formdata, [event.target.name]: [event.target.value] });
   }
   function handleFileChange(event){
@@ -98,7 +112,7 @@ function Register() {
         method="POST"
         onSubmit={submitform}
       >
-        <h1 className="heading">Create an Account</h1>
+        <h1 className="heading">Get Registered Your Company to US!</h1>
         <div className="fname container-fluid">
           <input
             type="text"
@@ -129,6 +143,7 @@ function Register() {
             required
           />
         </div>
+          <p className={`errstatus  ${phonedisp}  container-fluid`}>Digits should be equal to 10</p>
         <div className="phno container-fluid">
           <input
             type="text"
@@ -193,6 +208,7 @@ function Register() {
           className="btn-primary btn-lg accbtn"
           value="Create Account"
           name="Log in"
+          disabled={disabled}
         />
        
       </form>

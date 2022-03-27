@@ -68,6 +68,8 @@ class JobControlller {
   static getAvailableJobForStudent = async (req, res) => {
     let student=await Student.findById(req.session.userid);
     let stubranch=student.branch;
+    let stucgpa=student.cgpa;
+    
     
 
     Job.find(
@@ -78,6 +80,10 @@ class JobControlller {
         } else {
           Student.find({ _id: req.session.userid }, (err, userfound) => {
             console.log(jobfound)
+            console.log(jobfound)
+            jobfound=jobfound.filter((job)=>{return stucgpa>job.minimumCriteria})
+            
+
             res.send({ alljob: jobfound, oneuser: userfound[0].myapply });
 
           })

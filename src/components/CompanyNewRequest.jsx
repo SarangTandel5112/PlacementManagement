@@ -43,11 +43,23 @@ function Companyhire() {
       console.log(err);
     }
   }
+  const [disabled, setdisabled] = useState(false)
+  const [display, setdisplay] = useState("d-none")
 
   function handleChange(event) {
+    if(event.target.name==="minimumCriteria"){
+      if(event.target.value>10){
+        setdisabled(true)
+        setdisplay("d-inline")
+      }else{
+        setdisabled(false)
+        setdisplay("d-none")
+      }
+    }
     setformdata({ ...formdata, [event.target.name]: [event.target.value] });
   }
   function handleFileChange(event) {
+    
 
     setfile(event.target.files[0]);
   }
@@ -61,7 +73,7 @@ function Companyhire() {
           method="POST"
           onSubmit={submitform}
         >
-          <h1 className="heading">Looking to hire Developers?</h1>
+          <h1 className="heading">Looking to hire Candidates?</h1>
           <div className="fname container-fluid">
             <input
               type="text"
@@ -97,7 +109,7 @@ function Companyhire() {
               <option value="CS/IT">CS/IT</option>
               <option value="MECH">MECH</option>
               <option value="CIVIL">CIVIL</option>
-              <option value="EC">EC"</option>
+              <option value="EC">EC</option>
             </select>
           </div>
           <div className="phno container-fluid">
@@ -131,6 +143,7 @@ function Companyhire() {
               required
             />
           </div>
+          <p className={`errstatus  ${display}  container-fluid`}>CGPA should be less than 10</p>
 
           <div className="phno container-fluid">
             <input
@@ -183,6 +196,7 @@ function Companyhire() {
             className="btn-primary btn-lg accbtn"
             value="Submit"
             name="Log in"
+            disabled={disabled}
           />
         </form>
       </div>

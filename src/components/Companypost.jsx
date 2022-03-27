@@ -10,6 +10,7 @@ function Companypost() {
 
   const fetchJob = async () => {
     const response = await axios.post("/GetAllJobsOfCompany");
+  
  
     setJobs(response.data.jobs);    
   };

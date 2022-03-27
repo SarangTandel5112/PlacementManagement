@@ -19,6 +19,7 @@ function Details() {
   var a = new Date();
   const fetchJob = async () => {
     const response = await axios.post("/getAvailableJobForStudent");
+    console.log(response.data)
 
     setJobs(response.data.alljob);
   
