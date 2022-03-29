@@ -31,7 +31,7 @@ function Details() {
   }, []);
 
   return (
-    <div>
+    <div className="">
 
       <Header path="/studentHome" />
       <Studentnavbottom/>

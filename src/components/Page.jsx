@@ -27,7 +27,7 @@ import Appliedstudentdetails from "./Appliedstudentdetails";
 import { TpoStudentdetails } from "./TpoStudentdetails";
 import { Tpocompanydetails } from "./Tpocompanydetails";
 import Tpoplacedstudent from "./Tpoplacedstudent";
- 
+
 
 function Page() {
   return (
@@ -67,7 +67,7 @@ function Page() {
       <Switch>
         <Route exact path="/tpoIncomingRequest" component={TpoIncomingRequest} />
       </Switch>
-    
+
       <Switch>
         <Route exact path="/companyPreviousRequest" component={Companydetails} />
       </Switch>
@@ -116,7 +116,7 @@ function Page() {
       <Switch>
         <Route exact path="/tpo/placedstudent" component={Tpoplacedstudent} />
       </Switch>
-      
+
     </Router>
   );
 }

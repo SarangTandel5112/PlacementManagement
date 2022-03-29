@@ -1,5 +1,10 @@
 /*font-family: 'Lobster', cursive;*/
 /* width */
+*{
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+
 ::-webkit-scrollbar {
   width: 7px;
 }
@@ -346,6 +351,30 @@ margin-top: 100px;
 
 
 
+.navcolor{
+  background-color: #060c66;
+}
+
+
+
+
+
+.bottomnav{
+  background: none;
+
+}
+
+
+.navbarbottom1{
+  position: fixed;
+}
+
+
+.bg-dark{
+  color: #ff0000;
+}
+
+
 .companyimg2{
   width: 150px;
   height: 150px;
@@ -394,6 +423,21 @@ margin-top: 100px;
   
   display: block;
 }
+
+
+.stdmain{
+background-image: url("../Photos/18.jpg");
+background-repeat: no-repeat;
+background-position: center;
+background-size: cover;
+justify-content: center;
+z-index: -1;
+opacity: 1;
+
+}
+
+
+
 
 
 .setsize1{
@@ -664,7 +708,7 @@ color: rgb(72, 83, 230);
 box-sizing: border-box;
 }
 body {
-font-family: 'Montserrat', sans-serif;
+font-family: 'Comfortaa', cursive;
 line-height: 1.6;
 margin: 0;
 min-height: 100vh;

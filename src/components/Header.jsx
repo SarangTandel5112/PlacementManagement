@@ -34,8 +34,8 @@ function Header(props) {
   
   return (
     <div className="frontpage">
-      <section id="title">
-        <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+      <section id="title navcolor">
+        <nav className="navbar navbar-expand-lg navbar-dark bg-dark" >
           <button 
             className="navbar-toggler "
             type="button"
@@ -69,30 +69,30 @@ function Header(props) {
           </button>
           <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
             <ul className="navbar-nav ml-auto">
-              <li className="nav-item">
+              {/* <li className="nav-item">
                 <Link to={props.path}>
                   <button className="nav-link navname coursebtn btn btn-dark">
                     <b className="mainname">Home</b>
                   </button>
                   </Link>
                 
-              </li>
+              </li> */}
 
-              <li className="nav-item">
+              {/* <li className="nav-item">
                 <form method="GET" action="/">
                   <button className="nav-link navname coursebtn btn btn-dark">
                     <b className="mainname">Blog</b>
                   </button>
                 </form>
-              </li>
+              </li> */}
 
-              <li className="nav-item">
+              {/* <li className="nav-item">
                 <form method="GET" action="/">
                   <button className="nav-link navname coursebtn btn btn-dark">
                     <b className="mainname">Contact Us</b>
                   </button>
                 </form>
-              </li>
+              </li> */}
 
               <li className="nav-item">
                 
