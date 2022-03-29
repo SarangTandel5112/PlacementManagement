@@ -162,7 +162,7 @@ function Studentregister() {
             <option value="CS/IT">CS/IT</option>
             <option value="MECH">MECH</option>
             <option value="CIVIL">CIVIL</option>
-            <option value="EC">EC"</option>
+            <option value="EC">EC</option>
           </select>
         </div>
         <div className="phno container-fluid">

@@ -13,7 +13,7 @@ function Front() {
       <Header path="/studentHome" />
       <Studentnavbottom />
       <div className="row container-fluid">
-        <div className="col-lg-4 container-fluid text">
+        <div className="container-fluid text stdmain">
           <h1>
             <b>Get Placed In Best Company....</b>
           </h1>
@@ -23,9 +23,9 @@ function Front() {
             <button className="btn btn-large btn-dark btn-width">View Companies</button>
           </Link>
         </div>
-        <div className="col-lg-8 container-fluid">
-          <img className="img-fluid" alt="coding" src="../../Photos/coding.png" />
-        </div>
+        {/* <div className="col-lg-8 container-fluid">
+          <img className="img-fluid" alt="coding" src="../../Photos/18.jpg" />
+        </div> */}
       </div>
 
       {/* <div className="row stuhomecomp">

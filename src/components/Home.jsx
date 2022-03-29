@@ -27,7 +27,7 @@ function Home() {
     return (
         <div>
             <Header path="/"/>
-            <Navbarbottom />
+            <Navbarbottom />            
 
             {/* <div id="carouselExampleIndicators" className="carousel slide outcour" data-ride="carousel">
 
@@ -74,7 +74,7 @@ function Home() {
                 </a>
             </div> */}
 
-            <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel">
+            <div id="carouselExampleIndicators" className="carousel slide home" data-ride="carousel">
                 <ol className="carousel-indicators">
                     <li data-target="#carouselExampleIndicators" data-slide-to="0" className="active"></li>
                     <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
@@ -82,25 +82,26 @@ function Home() {
                 </ol>
                 <div className="carousel-inner">
                     <div className="carousel-item active">
-                        <img className="d-block w-100 setsize" src="../../Photos/bgfull1.jpg" alt="First slide" />
+                    
+                        <img className="d-block w-100 setsize"  src="../../Photos/12.png" alt="First slide" />
                         <div className="carousel-caption caucap d-none d-md-block">
-                            <p className="trytext2">Grow your career with a coach</p>
-                            <p className="trytext1">sdf sdfsf sdfsdfd dsf</p>
+                            {/* <p className="trytext2">Grow your career with a coach</p>
+                            <p className="trytext1">sdf sdfsf sdfsdfd dsf</p> */}
                         </div>
                     </div>
                     <div className="carousel-item">
-                        <img className="d-block w-100 setsize" src="../../Photos/bgfull2.jpg" alt="Second slide" />
+                        <img className="d-block w-100 setsize" src="../../Photos/15.jpg" alt="Second slide" />
                         <div className="carousel-caption caucap d-none d-md-block">
-                            <h5 className="trytext1">jhbn bhj bhjccyrchf tf</h5>
-                            <p className="trytext1">gyjhgy fghn gjygyjg</p>
+                            {/* <h5 className="trytext1">jhbn bhj bhjccyrchf tf</h5>
+                            <p className="trytext1">gyjhgy fghn gjygyjg</p> */}
                         </div>
                     </div>
                     <div className="carousel-item">
-                        <img className="d-block w-100 setsize" src="../../Photos/bgfull3.jpg" alt="Third slide" />
+                        <img className="d-block w-100 setsize " src="../../Photos/17.jpg" alt="Third slide" />
 
                         <div className="carousel-caption caucap d-none d-md-block">
-                            <h5 className="trytext1">gvh gyjhg hvg vh</h5>
-                            <p className="trytext1">eds ds cdzc dzxc</p>
+                            {/* <h5 className="trytext1">gvh gyjhg hvg vh</h5>
+                            <p className="trytext1">eds ds cdzc dzxc</p> */}
                         </div>
                     </div>
                 </div>

@@ -82,8 +82,6 @@ class JobControlller {
             console.log(jobfound)
             console.log(jobfound)
             jobfound=jobfound.filter((job)=>{return stucgpa>job.minimumCriteria})
-            
-
             res.send({ alljob: jobfound, oneuser: userfound[0].myapply });
 
           })
