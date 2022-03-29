@@ -1,44 +1,79 @@
 import React, { useState } from "react";
-import CompanyHeader from "./CompanyHeader";
+import { useHistory } from "react-router-dom";
+import Header from "./Header";
 import axios from "axios";
+import Companynavbottom from "./Companynavbottom";
 function Companyhire() {
+  const history = useHistory();
+  const [file, setfile] = useState(" ");
   const [formdata, setformdata] = useState({
     title: "",
     description: "",
     numberOfOpening: "",
     ctcRange: "",
+    branch: "",
+    minimumCriteria: "",
     jobLocation: "",
-    company_id: localStorage.getItem("company_id"),
+    companyWebsite: "",
+    deadline: "",
   });
 
-  function submitform(event) {
+  async function submitform(event) {
     event.preventDefault();
     const finaldata = formdata;
-    axios
-      .post("/requestToAddJob", finaldata)
-      .then((response) => {
-        console.log("Success");
-        window.location.replace("/companyDashboard");
-      })
-      .catch(() => {
-        console.log("fail");
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("title", finaldata.title);
+    formData.append("description", finaldata.description);
+    formData.append("ctcRange", finaldata.ctcRange);
+    formData.append("branch", finaldata.branch);
+    formData.append("minimumCriteria", finaldata.minimumCriteria);
+    formData.append("jobLocation", finaldata.jobLocation);
+    formData.append("companyWebsite", finaldata.companyWebsite);
+    formData.append("numberOfOpening", finaldata.numberOfOpening);
+    formData.append("deadline", finaldata.deadline);
+    try {
+      await axios.post("/requestToAddJob", formData, {
+        headers: {
+          "Content-Type": "multipart/formdata",
+        },
       });
+      history.push("/companyDashboard");
+    } catch (err) {
+      console.log(err);
+    }
   }
+  const [disabled, setdisabled] = useState(false)
+  const [display, setdisplay] = useState("d-none")
 
   function handleChange(event) {
+    if(event.target.name==="minimumCriteria"){
+      if(event.target.value>10){
+        setdisabled(true)
+        setdisplay("d-inline")
+      }else{
+        setdisabled(false)
+        setdisplay("d-none")
+      }
+    }
     setformdata({ ...formdata, [event.target.name]: [event.target.value] });
   }
+  function handleFileChange(event) {
+    
 
+    setfile(event.target.files[0]);
+  }
   return (
     <div>
-      <CompanyHeader />
+      <Header path="/companyDashboard" />
+      <Companynavbottom />
       <div className="full-height">
         <form
           className="registerform container-fluid"
           method="POST"
           onSubmit={submitform}
         >
-          <h1 className="heading">Looking to hire Developers?</h1>
+          <h1 className="heading">Looking to hire Candidates?</h1>
           <div className="fname container-fluid">
             <input
               type="text"
@@ -58,6 +93,24 @@ function Companyhire() {
               placeholder="Job Description"
               required
             />
+          </div>
+          <div className=" container-fluid">
+            <select
+              name="branch"
+              onChange={handleChange}
+              className="lname1"
+              id="branch"
+              placeholder="Phone Number"
+              required
+            >
+              <option value="" selected>
+                Select Branch
+              </option>
+              <option value="CS/IT">CS/IT</option>
+              <option value="MECH">MECH</option>
+              <option value="CIVIL">CIVIL</option>
+              <option value="EC">EC</option>
+            </select>
           </div>
           <div className="phno container-fluid">
             <input
@@ -79,6 +132,19 @@ function Companyhire() {
               required
             />
           </div>
+
+          <div className="phno container-fluid">
+            <input
+              type="text"
+              className="phno1"
+              name="minimumCriteria"
+              onChange={handleChange}
+              placeholder="Minimum Criteria"
+              required
+            />
+          </div>
+          <p className={`errstatus  ${display}  container-fluid`}>CGPA should be less than 10</p>
+
           <div className="phno container-fluid">
             <input
               type="text"
@@ -90,15 +156,47 @@ function Companyhire() {
             />
           </div>
 
+          <div className="phno container-fluid">
+            <input
+              type="text"
+              className="phno1"
+              name="companyWebsite"
+              onChange={handleChange}
+              placeholder="Company Website"
+              required
+            />
+          </div>
+
+          <div>
+            <input
+              type="datetime-local"
+              className="phno1"
+              name="deadline"
+              onChange={handleChange}
+              required
+            />
+          </div>
+
           <br />
 
           <br />
+          <div className="container-fluid">
+            <label htmlFor="fielInput">Upload Job Description : </label>
+            <input
+              type="file"
+              name="file"
+              className="lname"
+              onChange={handleFileChange}
+              id="fileInput"
+            />
+          </div>
 
           <input
             type="submit"
             className="btn-primary btn-lg accbtn"
             value="Submit"
             name="Log in"
+            disabled={disabled}
           />
         </form>
       </div>

@@ -1,10 +1,13 @@
 import axios from "axios";
+import {  useHistory } from "react-router-dom";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+
+axios.defaults.withCredentials=true;
 function Register() {
+  const history=useHistory()
   const [formdata, setformdata] = useState({
     name: "",
     email: "",
@@ -15,7 +18,11 @@ function Register() {
     password: "",
     password1: "",
   });
-  function submitform(event) {
+ const [file, setfile] = useState(" ")
+
+  
+  async function submitform(event) {
+
     event.preventDefault();
     const finaldata = formdata;
     if (password[0] !== password1[0]) {
@@ -28,28 +35,65 @@ function Register() {
         draggable: true,
         progress: undefined,
       });
-    } else {
-      
-      axios
-        .post("/register", finaldata)
-        .then((response) => {
-          console.log("Success");
-
-          window.location.replace("/login");
+    } 
+    else {
+      const formData=new FormData();
+      formData.append("file",file)
+      formData.append("name",finaldata.name);
+      formData.append("email",finaldata.email);
+      formData.append("phno",finaldata.phno);
+      formData.append("ceo",finaldata.ceo);
+      formData.append("hr",finaldata.hr);
+      formData.append("address",finaldata.address);
+      formData.append("password",finaldata.password);
+   
+      try{
+         await axios.post("/registerCompany",formData,{
+          headers:{
+            'Content-Type':'multipart/formdata'
+          }
+          
         })
-        .catch(() => {
-          console.log("fail");
-        });
+        history.push("/login")
+        
+       
+        
+  
+      }catch(err){
+        console.log(err)
+      }
+      
+      
     }
-    console.log(password, password1);
+    
+    
+  
+    
   }
 
+
+  const [disabled, setdisabled] = useState(false)
+  const [phonedisp, setphonedisp] = useState("d-none")
   function handleChange(event) {
+    if(event.target.name==="phno"){
+      if(event.target.value.length!==10){
+        setdisabled(true)
+        setphonedisp("d-inline")
+        
+      }else{
+        setdisabled(false);
+        setphonedisp("d-none")
+      }
+
+    }
     setformdata({ ...formdata, [event.target.name]: [event.target.value] });
   }
+  function handleFileChange(event){
+    
+     setfile(event.target.files[0])
+  }
 
-  const { name, email, phno, ceo, hr, address, password, password1 } = formdata;
-
+  const { password, password1 } = formdata;
   return (
     <div>
       <ToastContainer
@@ -68,7 +112,7 @@ function Register() {
         method="POST"
         onSubmit={submitform}
       >
-        <h1 className="heading">Create an Account</h1>
+        <h1 className="heading">Get Registered Your Company to US!</h1>
         <div className="fname container-fluid">
           <input
             type="text"
@@ -99,6 +143,7 @@ function Register() {
             required
           />
         </div>
+          <p className={`errstatus  ${phonedisp}  container-fluid`}>Digits should be equal to 10</p>
         <div className="phno container-fluid">
           <input
             type="text"
@@ -152,13 +197,20 @@ function Register() {
         <br />
 
         <br />
-
+        <div className="container-fluid">
+          <label htmlFor="fielInput">Upload Logo : </label>
+        <input type="file" name="file" className="lname" onChange={handleFileChange}  id="fileInput" />
+        
+        </div>
+        
         <input
           type="submit"
           className="btn-primary btn-lg accbtn"
           value="Create Account"
           name="Log in"
+          disabled={disabled}
         />
+       
       </form>
     </div>
   );

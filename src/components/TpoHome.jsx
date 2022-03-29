@@ -1,14 +1,15 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import TpoHeader from "./TpoHeader";
+// import axios from "axios";
+import React from "react";
 import { Link } from "react-router-dom";
+import Header from "./Header";
+import Tponavbottom from "./Tponavbottom";
 
 function Tpoalldetails() {
-  const [requestJobs, setRequestJobs] = useState([]);
+  // const [requestJobs, setRequestJobs] = useState([]);
 
   /* const fetchJob = async () => {
     const response = await axios.post("/tpoRequestedJobs");
-    console.log("pk", response.data.data);
+
     setRequestJobs(response.data.data);
   };
 
@@ -18,7 +19,8 @@ function Tpoalldetails() {
 
   return (
     <div>
-      <TpoHeader />
+         <Header path="/tpo" />
+      <Tponavbottom/>
 
       <div className="row container-fluid">
         <div className="col-lg-4 container-fluid text">
@@ -51,7 +53,7 @@ function Tpoalldetails() {
           </Link>
         </div>
         <div className="col-lg-8 container-fluid">
-          <img className="img-fluid" src="../../Photos/company.png" />
+          <img className="img-fluid" alt="company" src="../../Photos/company.png" />
         </div>
       </div>
     </div>

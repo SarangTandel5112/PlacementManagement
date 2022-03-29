@@ -1,30 +1,26 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import TpoHeader from "./TpoHeader";
+
 import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import Header from "./Header";
+import Tponavbottom from "./Tponavbottom";
 
 function Tpodetails() {
   const [incomingRequest, setIncomingRequest] = useState([]);
   const fetchJob = async () => {
     const response = await axios.post("/getIncomingRequest");
-    console.log(response.data.alljob);
+    
+    
     setIncomingRequest(response.data.alljob);
+    
   };
 
-  function changeState(event) {
-    const setData = async () => {
-      const resp = await axios.post("/setdetails", {
-        jname: event.target.name,
-        jid: event.target.value,
-      });
-    };
-    setData();
-    fetchJob();
-  }
-
+  
+  
   useEffect(() => {
+    
     fetchJob();
+    // eslint-disable-next-line
   }, []);
 
   const acceptJobRequest = (job_id) => {
@@ -33,7 +29,7 @@ function Tpodetails() {
         job_id,
       })
       .then((res) => {
-        console.log(res);
+        
         fetchJob();
         toast.success("Successfully accepted the request", {
           position: "top-center",
@@ -56,7 +52,7 @@ function Tpodetails() {
         job_id,
       })
       .then((res) => {
-        console.log(res);
+       
         toast.success("Successfully decline the request", {
           position: "top-center",
           autoClose: 3000,
@@ -75,7 +71,8 @@ function Tpodetails() {
 
   return (
     <div>
-      <TpoHeader />
+         <Header path="/tpo" />
+      <Tponavbottom/>
       <ToastContainer
         position="top-center"
         autoClose={3000}
@@ -88,6 +85,7 @@ function Tpodetails() {
         pauseOnHover
       />
       <h3 className="main-heading">New requests</h3>
+     
       {incomingRequest.length === 0 && <p className="main-heading">No new Request</p>}
 
       {incomingRequest.length >= 0 &&

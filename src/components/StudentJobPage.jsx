@@ -1,68 +1,73 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import StudentHeader from "./StudentHeader";
+import Header from "./Header";
+import { Link } from 'react-router-dom';
+import Studentnavbottom from "./Studentnavbottom";
 
 function Details() {
+
   const [jobs, setJobs] = useState([]);
-  const fetchJob = async () => {
-    const response = await axios.post("/getAvailableJobForStudent");
-    console.log(response.data.alljob);
-    setJobs(response.data.alljob);
-
-    axios.get("/isAuthenticate",{})
-    .then(res => console.log(res))
-    .catch(err => console.log(err))
-  };
-
-  const applyForJob = (e, job_id) => {
-    e.preventDefault();
-    axios.post("/addStudentToJob",{
-      job_id,
-      student_email:localStorage.getItem("student_email")
-    })
-    .then(res => {
-      console.log(res);
-      fetchJob();
-    })
-    .catch(err => {
-      console.log(err);
-    })
+  
+  function setdisable(id,deadline){
+    setTimeout(() => {
+      let ab = document.getElementById(id);
+      ab.remove();
+      axios.post('/settimestatus', { jid: id });
+    }, new Date(deadline) - a)    
   }
 
+  var a = new Date();
+  const fetchJob = async () => {
+    const response = await axios.post("/getAvailableJobForStudent");
+    console.log(response.data)
+
+    setJobs(response.data.alljob);
+  
+  };
+
+  
   useEffect(() => {
     fetchJob();
   }, []);
 
   return (
-    <div>
-      <StudentHeader />
+    <div className="">
+
+      <Header path="/studentHome" />
+      <Studentnavbottom/>
+
 
       <h3 className="main-heading">All Jobs</h3>
+
+
       {jobs.length === 0 && <h4 className="main-heading">No new Jobs</h4>}
+
       {jobs.length > 0 && jobs.map((job) => (
-        <div className="dbox" key={job._id}>
-          <div className="sbox">
-            <b>JobTitle:</b> {job.jobTitle}
+
+        <div className="row companyformatout" id={job._id} >
+          <div className="col-lg-3 col-md-6">
+            <img className=" companyimg1" alt="company" src={`../../Photos/Files/clogo/${job.compimg}`} />
           </div>
-          <div className="sbox">
-            <b>JobDescription:</b> {job.jobDescription}
+          <div className="col-lg-8 siderec">
+            <p className="cominnertext"><b>Company Name : </b>{job.compname}</p>
+
+            <p className="cominnertext"><b>Title : </b>{job.jobTitle}</p>
+            <Link to={`/jobs/${job._id}`} >
+              <button type="button " className="btn btn-primary cominnertext" value={job._id}>View Details</button>
+            </Link>
+
+            
           </div>
-          <div className="sbox">
-            <b>Number Of Opening :</b> {job.numberOfOpening}
-          </div>
-          <div className="sbox">
-            <b>Ctc Range :</b> {job.ctcRange}
-          </div>
-          <div className="sbox">
-            <b>Job Location :</b>
-            {job.jobLocation}
-          </div>
+
           {
-            job.candidates.findIndex(email => email === localStorage.getItem("student_email")) !== -1 ?
-            <button className="btn btn-large btn-success" disabled={true} > Applied </button> :
-            <button className="btn btn-large btn-success " onClick={(e) => applyForJob(e,job._id)}> Apply </button>
+            setdisable(job._id,job.deadline)
           }
-          </div>
+
+        </div>
+
+
+
+
       ))}
     </div>
   );

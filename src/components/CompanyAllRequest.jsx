@@ -1,26 +1,33 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import CompanyHeader from "./CompanyHeader";
-import { Link } from "react-router-dom";
+import Companynavbottom from "./Companynavbottom";
+import Header from "./Header";
 
 function Companydetails() {
-  const [jobs, setJobs] = useState([]);
+  // eslint-disable-next-line 
+  const [jobs, setjobs] = useState([]);
   
+ 
   const fetchJob = async () => {
+    // eslint-disable-next-line 
     const response = await axios.post("/GetAllJobsOfCompany",{
       company_id:localStorage.getItem("company_id")
     });
-    console.log(response.data.jobs);
-    setJobs(response.data.jobs);
+   
+    // setjobs(response.data.jobs);
+    
   };
+
 
   useEffect(() => {
     fetchJob();
   }, []);
 
+
   return (
     <div>
-      <CompanyHeader />
+       <Header  path="/companyDashboard"/>
+       <Companynavbottom/>
       <h3 className="main-heading">All Jobs</h3>
       {jobs.length === 0 && <p className="main-heading">No job Posted</p>}
       {jobs.map((job) => (
@@ -53,7 +60,7 @@ function Companydetails() {
               {job.candidates.map(student => <p>{student}</p>)}
             </div>
           }
-          {console.log(job.candidates)}
+       
         </div>
       ))}
     </div>

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { Link, useHistory } from "react-router-dom";
 
+
 function Login() {
   const [formdata, setformdata] = useState({
     email: "",
@@ -20,20 +21,39 @@ function Login() {
   function submitData(event) {
     event.preventDefault();
     const finaldata = formdata;
-    console.log(finaldata);
+
     axios
-      .post("/login", finaldata)
+      .post("/login", finaldata,{
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        withCredentials: true})
       .then((response) => {
         var check = response.data.err;
+       
+
         if (check === "incorrect username!!") {
           setvalue(check);
         } else if (check === "incorrect password!!") {
           setvalue(check);
         }
         else if (check === "student") {
-          history.push("/");
+          if(response.data.user.status ==="Accpted"){
+         
+
+            history.push("/studentHome");
+          }else if(response.data.user.status==="Rejected"){
+            setvalue("Your Request Is Rejected By TPO! Kindly Ask Them")
+          }
+          else{
+          
+            setvalue("Your Request is Still Pending, Please Get Approved From TPO")
+          }
         } else if (check === "company") {
           history.push("/companyDashboard");
+        }else if(check==="tpo"){
+
+          history.push("/tpo")
         }
 
         // if (formdata.type[0] === "company") {
@@ -56,21 +76,24 @@ function Login() {
         //   history.push("/");
         // }
 
-        // console.log(formdata.type[0]);
+        
         // if (formdata.type[0] === "tpo") {
         //   history.push("/tpo");
         // }
 
-        console.log(response.data.user[0]);
+        
       })
 
       .catch(() => {
         console.log("Data Has not been send, Internal Server Error");
       });
   }
-  const { email, password, type } = formdata;
+  const { email, password} = formdata;
   return (
+
     <div className="loginform container-fluid full-height">
+      
+      
       <form className="lform" onSubmit={submitData}>
         <h1 className="heading main-heading">Login to The Account</h1>
         <div className="email container-fluid">
@@ -95,7 +118,7 @@ function Login() {
             required
           />
         </div>
-        <p>{wrong}</p>
+        <p className="errstatus">{wrong}</p>
 
         <div className="option">
           <h5 className="">Login As :</h5>
