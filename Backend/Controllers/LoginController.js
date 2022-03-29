@@ -5,7 +5,8 @@ const Tpo = require("../Models/Tpo");
 
 class LoginController {
   static loginFunction = (req, res) => {
-    let logindatauser = [];
+    try {
+      let logindatauser = [];
     let logindataadmin = [];
     let name = req.body.email[0];
     let lpassword = req.body.password[0];
@@ -56,9 +57,14 @@ class LoginController {
         }
       });
     }
+    } catch (error) {
+      res.send("Some Internal Error Occured")
+    }
+    
   };
   static getTpoData = async (req, res) => {
-    let slen = await Student.find({ status: "Accpted" });
+    try {
+      let slen = await Student.find({ status: "Accpted" });
     slen = slen.length;
 
     let clen = await Company.find();
@@ -113,28 +119,45 @@ class LoginController {
       clen: clen,
       placedlen: finalResult.length,
     });
+      
+    } catch (error) {
+      res.send("Some Internal Error Occured")
+    }
+    
   };
 
   static logout = async (req, res) => {
-    req.session.destroy((err) => {
-      if (err) {
-        return res.send({ error: "Logout error" });
-      }
-      req.session = null;
-      res.clearCookie("DDUPLACEMENT", { path: "/" });
-      return res.send({ clearSession: "success" });
-    });
+    try {
+      req.session.destroy((err) => {
+        if (err) {
+          return res.send({ error: "Logout error" });
+        }
+        req.session = null;
+        res.clearCookie("DDUPLACEMENT", { path: "/" });
+        return res.send({ clearSession: "success" });
+      });
+      
+    } catch (error) {
+      res.send("Some Interal Error Occured")
+    }
+    
   };
   static isloggedin = (req, res) => {
-    if (req.session.userid) {
-      res.json({ loggedin: true, user: req.session.user });
-    } else {
-      res.json({ loggedin: false });
+    try {
+      if (req.session.userid) {
+        res.json({ loggedin: true, user: req.session.user });
+      } else {
+        res.json({ loggedin: false });
+      }
+    } catch (error) {
+      res.send("Some Internal Error Occured")
     }
+    
   };
 
   static getstudentstpo = async (req, res) => {
-    let students = await Student.find({status:"Accpted"});
+    try {
+      let students = await Student.find({status:"Accpted"});
     students = students.map((std) => {
       return {
         name: std.name,
@@ -146,10 +169,15 @@ class LoginController {
     });
 
     res.send(students);
+    } catch (error) {
+      
+    }
+    
   };
   static getcompaniestpo = async (req, res) => {
-    let companies = await Company.find();
-    companies = companies.map((std) => {
+    try {
+      let companies = await Company.find();
+      companies = companies.map((std) => {
       return {
         name: std.name,
         email: std.email,
@@ -161,9 +189,15 @@ class LoginController {
     });
 
     res.send(companies);
+      
+    } catch (error) {
+      res.send("Some Internal Error Occured")
+    }
+    
   };
   static getjobofferedtpo = async (req, res) => {
-    let students = await Student.find();
+    try {
+      let students = await Student.find();
     students = students.filter((std) => {
       return std.status === "Accpted";
     });
@@ -209,11 +243,12 @@ class LoginController {
     }
 
     res.send(finalResult);
+      
+    } catch (error) {
+      res.send("Some Error Occured")
+    }
+    
   };
 }
 
 module.exports = LoginController;
-/*
-app.post("/login", function (req, res) {
-  
-}); */

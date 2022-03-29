@@ -2,10 +2,12 @@ const Job = require("../Models/Job");
 const Company = require("../Models/Company");
 const path = require('path');
 const Student = require("../Models/Student");
+const { resolveSoa } = require("dns");
 class JobControlller {
 
   static requestToAddJob = (req, res) => {
-    let fileName;
+    try{
+      let fileName;
     if (req.files === null) {
       fileName = null;
     } else {
@@ -48,25 +50,43 @@ class JobControlller {
 
 
     }
+    }
+    catch(e){
+      res.send("Internal Server Error Occured")
+    }
+    
   }
   static getIncomingRequest = (req, res) => {
-    Job.find({ status: "waiting" }, function (err, jobfound) {
-      if (err) {
-        res.json({ status: "error", error: err });
-      } else {
-        res.send({ alljob: jobfound });
-      }
-    });
+    try{
+      Job.find({ status: "waiting" }, function (err, jobfound) {
+        if (err) {
+          res.json({ status: "error", error: err });
+        } else {
+          res.send({ alljob: jobfound });
+        }
+      });
+    }
+    catch(e){
+      res.send("Some Internal Error Occured")
+    }
+    
   }
   static settimestatus = (req, res) => {
-    Job.find({ _id: req.body.jid }, function (err, timeuser) {
-      timeuser[0].timestatus = "timeout";
-      timeuser[0].save();
-    });
+    try{
+      Job.find({ _id: req.body.jid }, function (err, timeuser) {
+        timeuser[0].timestatus = "timeout";
+        timeuser[0].save();
+      });
+    }
+    catch(e){
+      res.send("Some Internal Error Occured")
+    }
+    
   }
 
   static getAvailableJobForStudent = async (req, res) => {
-    let student=await Student.findById(req.session.userid);
+    try{
+      let student=await Student.findById(req.session.userid);
     let stubranch=student.branch;
     let stucgpa=student.cgpa;
     
@@ -92,62 +112,89 @@ class JobControlller {
         }
       }
     );
+    }
+    catch(e){
+      res.send("Some Internal Error Occured")
+    }
+    
   }
 
   static AcceptJobRequest = (req, res) => {
-    Job.findOneAndUpdate(
-      { _id: req.body.job_id },
-      { status: "accepted" },
-      function (err, success) {
-        if (err) {
-          res.json({ status: "error", error: err });
-        } else {
-          res.json({ status: "OK" });
+    try{
+      Job.findOneAndUpdate(
+        { _id: req.body.job_id },
+        { status: "accepted" },
+        function (err, success) {
+          if (err) {
+            res.json({ status: "error", error: err });
+          } else {
+            res.json({ status: "OK" });
+          }
         }
-      }
-    );
+      );
+    }
+    catch(e){
+      res.send("Some Internal Error Occured")
+    }
+   
   }
 
   static RejectJobRequest = (req, res) => {
-    Job.findOneAndUpdate(
-      { _id: req.body.job_id },
-      { status: "rejected" },
-      function (err, success) {
-        if (err) {
-          res.json({ status: "error", error: err });
-        } else {
-          res.json({ status: "OK" });
+    try {
+      Job.findOneAndUpdate(
+        { _id: req.body.job_id },
+        { status: "rejected" },
+        function (err, success) {
+          if (err) {
+            res.json({ status: "error", error: err });
+          } else {
+            res.json({ status: "OK" });
+          }
         }
-      }
-    );
+      );
+    } catch (error) {
+      res.send("Some Internal Error Occured")
+    }
+    
   }
 
   static addStudentToJob = (req, res) => {
-    Job.findOneAndUpdate(
-      { _id: req.body.job_id },
-      { $push: { candidates: req.body.student_email } },
-      function (err, success) {
-        if (err) {
-          console.log(err);
-        } else {
-          res.json({ status: "ok" });
+    try {
+      Job.findOneAndUpdate(
+        { _id: req.body.job_id },
+        { $push: { candidates: req.body.student_email } },
+        function (err, success) {
+          if (err) {
+            console.log(err);
+          } else {
+            res.json({ status: "ok" });
+          }
         }
-      }
-    );
+      );
+    } catch (error) {
+      res.send("Some Internal Error Occured")
+    }
+    
   }
 
   static GetAllJobsOfCompany = (req, res) => {
-    Job.find({ companyid: req.session.userid }, function (err, data) {
-      if (err) {
-        res.json({ status: "error", error: err });
-      } else {
-        res.json({ status: "ok", jobs: data });
-      }
-    });
+    try {
+      Job.find({ companyid: req.session.userid }, function (err, data) {
+        if (err) {
+          res.json({ status: "error", error: err });
+        } else {
+          res.json({ status: "ok", jobs: data });
+        }
+      });
+    } catch (error) {
+      res.send("Some Internal Error Occured")
+    }
+    
   }
 
   static setdetails = (req, res) => {
-    let tid;
+    try{
+      let tid;
     let tname;
     tid = req.body.jid;
     tname = req.body.jname;
@@ -155,41 +202,62 @@ class JobControlller {
       redfound[0].status = tname;
       redfound[0].save();
     });
+    }
+    catch(e){
+      res.send("Some Error Occured")
+    }
+    
   }
 
   static tpoRequestedJobs = (req, res) => {
-    Job.find({}, function (err, data) {
-      const requestedJobs = data.filter((job) => job.status === "waiting");
-
-      res.send({ data: requestedJobs });
-    });
+    try {
+      Job.find({}, function (err, data) {
+        const requestedJobs = data.filter((job) => job.status === "waiting");
+  
+        res.send({ data: requestedJobs });
+      });
+    } catch (error) {
+      res.send("Some Internal Error Occured")
+    }
+    
   }
 
 
   static getFulldetails = (req, res) => {
-    Job.find({ _id: req.body.id }, (err, userfound) => {
-      try {
-        Student.find({ _id: req.session.userid }, (err, stdfound) => {
-          let data=(stdfound[0].myapply).map(a=>a.jobid)
-          res.send({ "oneuser": userfound[0], "userdetails": data })
-
-        })
-      } catch (err) {
-        console.log("Some Error Occured")
-      }
-    })
+    try {
+      Job.find({ _id: req.body.id }, (err, userfound) => {
+        try {
+          Student.find({ _id: req.session.userid }, (err, stdfound) => {
+            let data=(stdfound[0].myapply).map(a=>a.jobid)
+            res.send({ "oneuser": userfound[0], "userdetails": data })
+  
+          })
+        } catch (err) {
+          console.log("Some Error Occured")
+        }
+      })
+    } catch (error) {
+      res.send("Some Internal Error Occured")
+    }
+   
   }
 
   static getjobdetailsforcomp = (req, res) => {
-    Job.find({ _id: req.body.id }, (err, jobfound) => {
-      res.send({ onedata: jobfound[0] })
-
-    })
+    try {
+      Job.find({ _id: req.body.id }, (err, jobfound) => {
+        res.send({ onedata: jobfound[0] })
+  
+      })
+    } catch (error) {
+      res.send("Some Internal Error Occured")
+    }
+    
   }
 
 
   static getappliedstudent = async (req, res) => {
-    const senddata = [];
+    try {
+      const senddata = [];
     const jobfound = await Job.find({ _id: req.body.id })
     
     for (let i = 0; i < jobfound[0].candidates.length; i++) {
@@ -204,9 +272,19 @@ class JobControlller {
       senddata.push(object)
     }
     res.send({ stddata: senddata ,})
+      
+    } catch (error) {
+      res.send("Some Internal Error Occured")
+    }
+    
   }
 
   static setplacementstatus=async(req,res)=>{
+    try {
+      
+    } catch (error) {
+      res.send("Some Internal Error  Occured")
+    }
        
        let jobfound= await Job.findById(req.body.jobid);
        console.log(jobfound.candidates)
@@ -232,8 +310,5 @@ class JobControlller {
 
 
 }
-/* 
 
-
-*/
 module.exports = JobControlller;
