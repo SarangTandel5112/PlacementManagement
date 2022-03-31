@@ -9,7 +9,7 @@ export const Tpocompanydetails = () => {
     const [stddetails, setstddetails] = useState([])
     let i=1;
     async function getdetails() {
-        const res = await axios.get("/getcompaniestpo")
+        const res = await axios.get(`${process.env.REACT_APP_API_CALL}/getcompaniestpo`)
         setstddetails(res.data)        
     }
 

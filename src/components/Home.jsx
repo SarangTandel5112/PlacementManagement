@@ -17,9 +17,10 @@ function Home() {
     const [slen, setslen] = useState(0);
     const [clen, setclen] = useState(0)
     console.log(process.env)
+    console.log("Hello World")
     const [placedlen, setplacedlen] = useState(0)
     async function getdata() {
-        var res = await axios.get('/tpodata')
+        var res = await axios.get(`${process.env.REACT_APP_API_CALL}/tpodata`)
         setslen(res.data.slen); setclen(res.data.clen);
         setplacedlen(res.data.placedlen)
     }

@@ -13,7 +13,7 @@ function Companydisplay() {
 
   async function getdata(){
     
-    const res=await axios.post("/getfulldetails",{"id":compId})
+    const res=await axios.post(`${process.env.REACT_APP_API_CALL}/getfulldetails`,{"id":compId})
  
     await setComp(res.data.oneuser);
     // alert(res.data.oneuser.jobTitle)

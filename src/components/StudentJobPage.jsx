@@ -12,7 +12,7 @@ function Details() {
     setTimeout(() => {
       let ab = document.getElementById(id);
       ab.remove();
-      axios.post('/settimestatus', { jid: id });
+      axios.post(`${process.env.REACT_APP_API_CALL}/settimestatus`, { jid: id });
     }, new Date(deadline) - a)    
   }
 

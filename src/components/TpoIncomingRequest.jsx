@@ -8,7 +8,7 @@ import Tponavbottom from "./Tponavbottom";
 function Tpodetails() {
   const [incomingRequest, setIncomingRequest] = useState([]);
   const fetchJob = async () => {
-    const response = await axios.post("/getIncomingRequest");
+    const response = await axios.post(`${process.env.REACT_APP_API_CALL}/getIncomingRequest`);
     
     
     setIncomingRequest(response.data.alljob);

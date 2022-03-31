@@ -48,7 +48,7 @@ function Register() {
       formData.append("password",finaldata.password);
    
       try{
-         await axios.post("/registerCompany",formData,{
+         await axios.post(`${process.env.REACT_APP_API_CALL}/registerCompany`,formData,{
           headers:{
             'Content-Type':'multipart/formdata'
           }

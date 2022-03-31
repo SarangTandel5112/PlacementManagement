@@ -13,7 +13,7 @@ function Companyonedetails() {
     const [comp, setComp] = useState({});
 
     async function getdata() {
-        const res = await axios.post("/getjobdetailsforcomp", { "id": onecomp })
+        const res = await axios.post(`${process.env.REACT_APP_API_CALL}/getjobdetailsforcomp`, { "id": onecomp })
         await setComp(res.data.onedata);
     }
 

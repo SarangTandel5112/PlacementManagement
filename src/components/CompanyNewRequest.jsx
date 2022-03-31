@@ -33,7 +33,7 @@ function Companyhire() {
     formData.append("numberOfOpening", finaldata.numberOfOpening);
     formData.append("deadline", finaldata.deadline);
     try {
-      await axios.post("/requestToAddJob", formData, {
+      await axios.post(`${process.env.REACT_APP_API_CALL}/requestToAddJob`, formData, {
         headers: {
           "Content-Type": "multipart/formdata",
         },

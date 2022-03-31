@@ -8,7 +8,7 @@ export const Selectbtn = (props) => {
   const { onecomp } = useParams();
   let sendplacementstatus = async (event) => {
     
-    let response = await axios.post("/setplacementstatus", {
+    let response = await axios.post(`${process.env.REACT_APP_API_CALL}/setplacementstatus`, {
       jobid: onecomp,
       studentid: event.target.value
     })

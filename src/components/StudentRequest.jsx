@@ -12,7 +12,7 @@ function StudentRequest() {
     const [studentData, setStudentdata] = useState([]);
     async function studentreq() {
 
-        const studentdata1 = await axios.post("/studentrequesttpo");
+        const studentdata1 = await axios.post(`${process.env.REACT_APP_API_CALL}/studentrequesttpo`);
       
         
         setStudentdata(studentdata1.data.user);
