@@ -1,6 +1,8 @@
 // import axios from "axios";
 import axios from "axios";
 import React from "react";
+
+
 import { useEffect, useState } from "react";
 // import TpoHeader from "./TpoHeader";
 // import { ToastContainer, toast } from "react-toastify";
@@ -14,6 +16,7 @@ import Header from "./Header";
 function Home() {
     const [slen, setslen] = useState(0);
     const [clen, setclen] = useState(0)
+    console.log(process.env)
     const [placedlen, setplacedlen] = useState(0)
     async function getdata() {
         var res = await axios.get('/tpodata')
