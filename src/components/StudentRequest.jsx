@@ -25,7 +25,7 @@ function StudentRequest() {
        
         var val=event.target.value;
         var vid=event.target.name;
-        var res=await axios.post("/setstudentstatus",{val,vid})  
+        var res=await axios.post(`${process.env.REACT_APP_API_CALL}/setstudentstatus`,{val,vid})  
       
         setStudentdata(res.data);
     }
