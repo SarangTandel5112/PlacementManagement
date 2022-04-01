@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 
 function Tpomiddle() {
   return (
-    <div className="row container-fluid">
-      <div className="col-lg-4 container-fluid text">
+    <div className="">
+      {/* <div className="col-lg-4 container-fluid text">
         <h3>
           <b>View companies request....</b>
         </h3>
@@ -17,9 +17,9 @@ function Tpomiddle() {
         <Link to="/stuudentrequesttpo">
           <button className="btn btn-large btn-dark">Student Request</button>
         </Link>
-      </div>
-      <div className="col-lg-8 container-fluid">
-        <img className="img-fluid" alt="tpo" src="../../Photos/tpo.png" />
+      </div> */}
+      <div className=" tpoimgout">
+        <img className="img-fluid tpoimg" alt="tpo" src="../../Photos/19.jpg" />
       </div>
     </div>
   );

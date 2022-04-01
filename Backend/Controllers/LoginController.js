@@ -15,7 +15,8 @@ class LoginController {
       Student.find({ email: name }, function (err, userfounds) {
         if (userfounds.length === 0 || err) {
           res.send({ err: "incorrect username!!", user: userfounds[0] });
-        } else if (userfounds[0].password === lpassword) {
+        } 
+        else if (userfounds[0].password === lpassword) {
           req.session.user = "Student";
           req.session.userid = userfounds[0]._id;
           res.send({ err: req.body.type[0], user: userfounds[0] });
