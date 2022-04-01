@@ -12,13 +12,8 @@ function Details() {
     setTimeout(() => {
       let ab = document.getElementById(id);
       ab.remove();
-<<<<<<< HEAD
-      axios.post('/settimestatus', { jid: id });
-    }, new Date(deadline) - a)
-=======
       axios.post(`${process.env.REACT_APP_API_CALL}/settimestatus`, { jid: id });
     }, new Date(deadline) - a)    
->>>>>>> e572fabbd3cc3fe5c9f3525c6e52675da012d253
   }
 
   var a = new Date();
