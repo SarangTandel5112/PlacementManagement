@@ -30,7 +30,7 @@ class StudentController {
   
   
   
-        file.mv(path.join(__dirname, `/../../../front-end/build/public/Photos/Files/sresume/${fileName}`))
+        file.mv(path.join(__dirname, `/../../../front-end/build/Photos/Files/sresume/${fileName}`))
   
   
   
