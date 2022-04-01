@@ -13,7 +13,7 @@ class JobControlller {
     } else {
       const file = req.files.file;
       fileName = Date.now() + file.name;
-      file.mv(path.join(__dirname, `/../../front-end/build/Photos/Files/jobdescription/${fileName}`))
+      file.mv(path.join(__dirname, `/../../../front-end/build/Photos/Files/jobdescription/${fileName}`))
 
       Company.find({ _id: req.session.userid }, (err, userfound) => {
         const newJob = new Job({

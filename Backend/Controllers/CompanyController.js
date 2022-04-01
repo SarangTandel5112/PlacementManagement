@@ -29,7 +29,7 @@ class CompanyController{
   
   
           
-          file.mv(path.join(__dirname,`/../../front-end/build/Photos/Files/clogo/${fileName}`))
+          file.mv(path.join(__dirname,`/../../../front-end/build/Photos/Files/clogo/${fileName}`))
   
         }
       }
