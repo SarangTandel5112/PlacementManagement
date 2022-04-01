@@ -9,7 +9,7 @@ function Studentmyapplies() {
   const [jobs, setJobs] = useState([]);
 
   const fetchJob = async () => {
-    const response = await axios.post("/studentmyapplies");
+    const response = await axios.post(`${process.env.REACT_APP_API_CALL}/studentmyapplies`);
 
     setJobs(response.data.applydata);
 

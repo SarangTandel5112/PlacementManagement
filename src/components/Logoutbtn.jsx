@@ -7,7 +7,7 @@ function Logoutbtn() {
     const history=useHistory();
     let logout=()=>{
         
-        axios.get("/logout")
+        axios.get(`${process.env.REACT_APP_API_CALL}/logout`)
         history.push("/")
 
     }

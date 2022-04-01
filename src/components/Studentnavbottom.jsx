@@ -10,7 +10,7 @@ function Studentnavbottom() {
   
   let logincheck = async()=>{
 
-    const loginres=await axios.get("/isloggedin");
+    const loginres=await axios.get(`${process.env.REACT_APP_API_CALL}/isloggedin`);
    
      if(loginres.data.user==="Tpo"){
          history.push("/tpo")

@@ -23,7 +23,7 @@ function Login() {
     const finaldata = formdata;
 
     axios
-      .post("/login", finaldata,{
+      .post(`${process.env.REACT_APP_API_CALL}/login`, finaldata,{
         headers: {
           'Content-Type': 'application/json'
         },

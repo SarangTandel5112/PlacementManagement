@@ -10,7 +10,7 @@ function Companydetails() {
  
   const fetchJob = async () => {
     // eslint-disable-next-line 
-    const response = await axios.post("/GetAllJobsOfCompany",{
+    const response = await axios.post(`${process.env.REACT_APP_API_CALL}/GetAllJobsOfCompany`,{
       company_id:localStorage.getItem("company_id")
     });
    

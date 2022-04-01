@@ -10,7 +10,7 @@ export const TpoStudentdetails = () => {
     const [stddetails, setstddetails] = useState([])
     let i=1;
     async function getdetails() {
-        const res = await axios.get("/getstudentstpo")
+        const res = await axios.get(`${process.env.REACT_APP_API_CALL}/getstudentstpo`)
         setstddetails(res.data)        
     }
 

@@ -10,7 +10,7 @@ export default function Tpoplacedstudent() {
     const [stddetails, setstddetails] = useState([])
     let i=1;
     async function getdetails() {
-        const res = await axios.get("/getjobofferedtpo")
+        const res = await axios.get(`${process.env.REACT_APP_API_CALL}/getjobofferedtpo`)
         setstddetails(res.data)        
     }
 

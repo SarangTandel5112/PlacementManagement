@@ -15,7 +15,7 @@ function Appliedstudentdetails() {
     // setcompid(onecomp)
     async function getdata() {
 
-        const res = await axios.post("/getappliedstudentdetails", { id: onecomp })
+        const res = await axios.post(`${process.env.REACT_APP_API_CALL}/getappliedstudentdetails`, { id: onecomp })
         setcompdata(res.data.stddata);
     
          setselectstatus(false)

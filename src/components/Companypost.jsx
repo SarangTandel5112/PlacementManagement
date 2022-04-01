@@ -9,10 +9,12 @@ function Companypost() {
   const [jobs, setJobs] = useState([]);
 
   const fetchJob = async () => {
-    const response = await axios.post("/GetAllJobsOfCompany");
 
+    const response = await axios.post(`${process.env.REACT_APP_API_CALL}/GetAllJobsOfCompany`);
+  
+ 
+    setJobs(response.data.jobs);    
 
-    setJobs(response.data.jobs);
   };
 
   useEffect(() => {

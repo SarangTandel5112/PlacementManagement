@@ -9,7 +9,7 @@ function Header(props) {
   const [isLoggedin, setisLoggedin] = useState(true);
   let logincheck = async()=>{
 
-    const loginres=await axios.get("/isloggedin");
+    const loginres=await axios.get(`${process.env.REACT_APP_API_CALL}/isloggedin`);
     
     if(loginres.data.loggedin){
       setisLoggedin(true);
