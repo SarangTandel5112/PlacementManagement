@@ -10,8 +10,8 @@ function Front() {
     <div>
       <Header  path="/companyDashboard"/>
       <Companynavbottom />
-      <div className="row container-fluid">
-        <div className="col-lg-4 container-fluid text">
+      <div className=" ">
+        {/* <div className="col-lg-4 container-fluid text">
           <h1>
             <b>Hire Best Talent ....</b>
           </h1>
@@ -25,12 +25,12 @@ function Front() {
               All Requests
             </button>
           </Link>
-        </div>
-        <div className="col-lg-8 container-fluid">
-          <img className="img-fluid" alt="company" src="../../Photos/company.png" />
+        </div> */}
+        <div className=" ">
+          <img className="img-fluid" alt="company" src="../../Photos/24.jpg" />
         </div>
       </div>
-      <div className="row featurehome tpodata">
+      <div className="row featurehome tpodata ">
         <h1 className="centertext"> <b>Manage Job</b></h1>
         <h4 className="subtxt"> </h4>
         <div className="col-lg-3 ml-5 featureimgout1">

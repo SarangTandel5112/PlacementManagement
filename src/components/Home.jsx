@@ -26,8 +26,8 @@ function Home() {
 
     return (
         <div>
-            <Header path="/"/>
-            <Navbarbottom />            
+            <Header path="/" />
+
 
             {/* <div id="carouselExampleIndicators" className="carousel slide outcour" data-ride="carousel">
 
@@ -82,22 +82,34 @@ function Home() {
                 </ol>
                 <div className="carousel-inner">
                     <div className="carousel-item active">
-                    
-                        <img className="d-block w-100 setsize"  src="../../Photos/12.png" alt="First slide" />
+                        <Navbarbottom />
+
+                        <img className="d-block w-100 " src="../../Photos/40.jpg" alt="First slide" />
                         <div className="carousel-caption caucap d-none d-md-block">
                             {/* <p className="trytext2">Grow your career with a coach</p>
                             <p className="trytext1">sdf sdfsf sdfsdfd dsf</p> */}
                         </div>
                     </div>
                     <div className="carousel-item">
-                        <img className="d-block w-100 setsize" src="../../Photos/15.jpg" alt="Second slide" />
+                        <Navbarbottom />
+                        <img className="d-block w-100 setsize" src="../../Photos/26.jpg" alt="Second slide" />
                         <div className="carousel-caption caucap d-none d-md-block">
                             {/* <h5 className="trytext1">jhbn bhj bhjccyrchf tf</h5>
                             <p className="trytext1">gyjhgy fghn gjygyjg</p> */}
                         </div>
                     </div>
                     <div className="carousel-item">
-                        <img className="d-block w-100 setsize " src="../../Photos/17.jpg" alt="Third slide" />
+                        <Navbarbottom />
+                        <img className="d-block w-100 setsize " src="../../Photos/36.jpg" alt="Third slide" />
+
+                        <div className="carousel-caption caucap d-none d-md-block">
+                            {/* <h5 className="trytext1">gvh gyjhg hvg vh</h5>
+                            <p className="trytext1">eds ds cdzc dzxc</p> */}
+                        </div>
+                    </div>
+                    <div className="carousel-item">
+                        <Navbarbottom />
+                        <img className="d-block w-100 setsize " src="../../Photos/38.jpg" alt="Third slide" />
 
                         <div className="carousel-caption caucap d-none d-md-block">
                             {/* <h5 className="trytext1">gvh gyjhg hvg vh</h5>
@@ -171,45 +183,46 @@ function Home() {
                 </div>
             </div> */}
 
+            <div className="sethomebg"> 
+                <div className="row featurehome">
+                    <h1 className="centertext"> <b>How Can We Help</b></h1>
+                    <h4 className="subtxt">Our College have seen it all. Achieve your goals with their support.</h4>
+                    <div className="col-lg-4 featureimgout">
+                        <img className="featureimg" alt="job photos" src="../../Photos/job.png" />
+                        <h3 className="featurename">Find Job.</h3>
+                    </div>
+                    <div className="col-lg-4 featureimgout">
+                        <img className="featureimg" alt="manage png" src="../../Photos/manage.png" />
+                        <h3 className="featurename">Manage Application .</h3>
+                    </div>
+                    <div className="col-lg-4 featureimgout">
+                        <img className="featureimg" alt="resume png" src="../../Photos/resume.png" />
+                        <h3 className="featurename">Upload Resume .</h3>
+                    </div>
+                </div>
 
-            <div className="row featurehome">
-                <h1 className="centertext"> <b>How Can We Help</b></h1>
-                <h4 className="subtxt">Our College have seen it all. Achieve your goals with their support.</h4>
-                <div className="col-lg-4 featureimgout">
-                    <img className="featureimg" alt="job photos" src="../../Photos/job.png" />
-                    <h3 className="featurename">Find Job.</h3>
-                </div>
-                <div className="col-lg-4 featureimgout">
-                    <img className="featureimg" alt="manage png" src="../../Photos/manage.png" />
-                    <h3 className="featurename">Manage Application .</h3>
-                </div>
-                <div className="col-lg-4 featureimgout">
-                    <img className="featureimg" alt="resume png" src="../../Photos/resume.png" />
-                    <h3 className="featurename">Upload Resume .</h3>
+
+
+                <div className="row featurehome">
+                    <h1 className="centertext"> <b>Quick Insights</b></h1>
+
+                    <div className="col-lg-3 ml-5 featureimgout1 ">
+                        <h1 className="setsize1">{slen}</h1>
+                        <h3 className="featurename">Total Students</h3>
+                    </div>
+                    <div className="col-lg-3 ml-5 featureimgout1">
+                        <h1 className="setsize1">{clen}</h1>
+                        <h3 className="featurename">Total Recruiters</h3>
+                    </div>
+                    <div className="col-lg-3 ml-5 featureimgout1">
+                        <h1 className="setsize1">{placedlen}</h1>
+                        <h3 className="featurename">Job Offered</h3>
+                    </div>
                 </div>
             </div>
 
 
-
-            <div className="row featurehome">
-                <h1 className="centertext"> <b>Quick Insights</b></h1>
-                
-                <div className="col-lg-3 ml-5 featureimgout1 ">
-                    <h1 className="setsize1">{slen}</h1>
-                    <h3 className="featurename">Total Students</h3>
-                </div>
-                <div className="col-lg-3 ml-5 featureimgout1">
-                    <h1 className="setsize1">{clen}</h1>
-                    <h3 className="featurename">Total Recruiters</h3>
-                </div>
-                <div className="col-lg-3 ml-5 featureimgout1">
-                    <h1 className="setsize1">{placedlen}</h1>
-                    <h3 className="featurename">Job Offered</h3>
-                </div>
-            </div>
-
-
-            <div className="clientmainpage">
+            <div className="clientmainpage container-fluid">
                 <div className="clientmain row">
                     <h1 className="clientheader"><b>Our Recruiters</b></h1>
                     <div className="col-lg-3 col-md-6">

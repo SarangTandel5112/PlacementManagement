@@ -4,29 +4,31 @@ import { Link } from "react-router-dom";
 import Header from "./Header";
 import Studentnavbottom from "./Studentnavbottom";
 import Footer from "./Footer";
-axios.defaults.withCredentials=true;
+axios.defaults.withCredentials = true;
 function Front() {
 
-  
+
   return (
     <div>
       <Header path="/studentHome" />
       <Studentnavbottom />
-      <div className="row container-fluid">
-        <div className="container-fluid text stdmain">
-          <h1>
-            <b>Get Placed In Best Company....</b>
-          </h1>
+      <div className="stdmain ">
+        <img className="img-fluid" src="../Photos/182.jpg"/>
+      </div>
+      <div className="stdtext text">
+        <h1 className="">
+          <b>Get Placed In Best Company....</b>
+        </h1>
 
-          <br />
-          <Link to="/jobs">
-            <button className="btn btn-large btn-dark btn-width">View Companies</button>
-          </Link>
-        </div>
-        {/* <div className="col-lg-8 container-fluid">
+        <br />
+        <Link to="/jobs">
+          <button className="btn btn-large btn-light btn-width">View Companies</button>
+        </Link>
+      </div>
+      {/* <div className="col-lg-8 container-fluid">
           <img className="img-fluid" alt="coding" src="../../Photos/18.jpg" />
         </div> */}
-      </div>
+
 
       {/* <div className="row stuhomecomp">
         <h1 className="centertext"> <b>Currently Hiring...</b></h1>
