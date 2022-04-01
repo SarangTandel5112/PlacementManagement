@@ -15,7 +15,7 @@ export default function Tpodashboard() {
     const [creqlen, setsceqlen] = useState(0)
     async function fetchdata() {
         try {
-            axios.get("/tpodata").then((res) => { setslen(res.data.slen); setclen(res.data.clen);setplacedlen(res.data.placedlen) });
+            axios.get(`${process.env.REACT_APP_API_CALL}/tpodata`).then((res) => { setslen(res.data.slen); setclen(res.data.clen);setplacedlen(res.data.placedlen) });
             const studentdata1 = await axios.post(`${process.env.REACT_APP_API_CALL}/studentrequesttpo`);
             setsreqlen(studentdata1.data.user.length)
             const response = await axios.post(`${process.env.REACT_APP_API_CALL}/getIncomingRequest`);
