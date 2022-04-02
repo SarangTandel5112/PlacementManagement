@@ -25,7 +25,7 @@ function Tpodetails() {
 
   const acceptJobRequest = (job_id) => {
     axios
-      .post("/AcceptJobRequest", {
+      .post(`${process.env.REACT_APP_API_CALL}/AcceptJobRequest`, {
         job_id,
       })
       .then((res) => {
@@ -48,7 +48,7 @@ function Tpodetails() {
 
   const rejectJobRequest = (job_id) => {
     axios
-      .post("/RejectJobRequest", {
+      .post(`${process.env.REACT_APP_API_CALL}/RejectJobRequest`, {
         job_id,
       })
       .then((res) => {

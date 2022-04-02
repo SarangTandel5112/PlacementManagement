@@ -5,17 +5,7 @@ import Header from "./Header";
 import Tponavbottom from "./Tponavbottom";
 
 function Tpoalldetails() {
-  // const [requestJobs, setRequestJobs] = useState([]);
-
-  /* const fetchJob = async () => {
-    const response = await axios.post("/tpoRequestedJobs");
-
-    setRequestJobs(response.data.data);
-  };
-
-  useEffect(() => {
-    fetchJob();
-  }, []); */
+  
 
   return (
     <div>
