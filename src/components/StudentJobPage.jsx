@@ -18,7 +18,7 @@ function Details() {
 
   var a = new Date();
   const fetchJob = async () => {
-    const response = await axios.post("/getAvailableJobForStudent");
+    const response = await axios.post(`${process.env.REACT_APP_API_CALL}/getAvailableJobForStudent`);
     console.log(response.data)
 
     setJobs(response.data.alljob);
