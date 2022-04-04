@@ -10,6 +10,11 @@
 }
 
 
+.loginformout{
+
+   
+}
+
 .loginimg{
     background-repeat: no-repeat;
     background-position: center;
@@ -40,16 +45,7 @@
     text-align: center;
 }
 
-.email1{
-    width: 400px;
-}
 
-.password1{
-    width: 400px;
-}
-.logbtn{
-    width: 400px;
-}
 
 .heading{
     padding:2% 0% ;
@@ -79,12 +75,12 @@
 }
 
 .lform{
-    
     margin: 0% 35%;
 }
 
 .rform{
-    padding: 0% 35%;
+    /* padding: 0% 30%; */
+    /* float: left; */
 }
 
 .rbtn{
