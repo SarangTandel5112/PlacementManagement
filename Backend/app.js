@@ -34,7 +34,7 @@ app.use(session({
   resave: false,
   saveUninitialized: false,
   cookie:{user:"Punit"}
-  
+    
 }));
 //For json
 // app.use(bodyParser.json());
