@@ -1,12 +1,19 @@
 .registerform{
-    padding: 1% 30%;
-    background-image:url("../Photos/chex1.png") ;
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    text-align: center;
-   
+    padding: 1% 20%; 
+    text-align: center; 
+    margin: 0% 5%;
 }
+
+
+.logofile{
+    text-align: left;
+}
+/* body{
+    background-image:url("../Photos/chex1.png")  ;
+    background-position: center;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+} */
 
 .fname, .lname, .email, .phno, .password{
     padding: 1% 0%;

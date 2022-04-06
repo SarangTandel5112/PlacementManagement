@@ -1,19 +1,36 @@
 .loginform{
-    padding: 7% 35%;    
+   /* margin-top: 5%; */
+    
+    padding: 5% 0%;     
+}
+
+
+.loginbg{
     background-position: center;
-    background-size: cover;
     background-repeat: no-repeat;
     background-image: url("../Photos/chex1.png");
-    display: block;
-    margin: auto;
-     
+    background-size: 100% 100%;
+
+}
+
+.lform{
+    /* margin: 0% 35%; */
+      
 }
 
 
 .loginformout{
-
-   
+    margin: 0% 18%;
+    padding: 3% 12%;
+    border: 2px solid black;  
+    border-radius: 15px;
+    /* background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0, 0.4); 
+    color: white; */
 }
+
+
+
 
 .loginimg{
     background-repeat: no-repeat;
@@ -46,6 +63,10 @@
 }
 
 
+.compregister{
+    border: 2px solid red;
+}
+
 
 .heading{
     padding:2% 0% ;
@@ -74,9 +95,6 @@
     float: left;
 }
 
-.lform{
-    margin: 0% 35%;
-}
 
 .rform{
     /* padding: 0% 30%; */

@@ -91,28 +91,40 @@ function Login() {
   }
   const { email, password } = formdata;
   return (
+    
+    <div className="loginform loginbg container-fluid ">
+      <div className="loginformout">
 
-    <div className="loginform container-fluid full-height">
+        <form className="lform" >
+        <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+						<input class="input100" type="text" name="email" />
+						<span class="focus-input100"></span>
+						<span class="label-input100">Email</span>
+					</div>
 
-
-      <form className="lform" >
-        <div className="loginformout">
           <h1 className="heading main-heading">Login to The Account</h1>
-          <div className="d-block ">
+          <div class="input-group mb-2  ">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id=""><i class="fas fa-user"></i></span>
+            </div>
             <input
               type="text"
-              className="form-control my-1"
+              className="form-control  fontawesome-user "
               value={email}
               name="email"
-              placeholder="Email"
+              placeholder="Email "
               onChange={stateChange}
               required
             />
           </div>
-          <div className="d-block ">
+
+          <div class="input-group mu-1">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id=""><i class="fas fa-lock"></i></span>
+            </div>
             <input
               type="password"
-              className="form-control my-1"
+              className="form-control "
               value={password}
               name="password"
               placeholder="Password"
@@ -120,6 +132,7 @@ function Login() {
               required
             />
           </div>
+         
           <p className="errstatus">{wrong}</p>
 
           <div className="option">
@@ -169,12 +182,14 @@ function Login() {
           <div className="rform ">
             <p className="signup">Need an Account ?</p>
             <div className="form-row">
-              <div className="">
+              <div className="col-lg-6 mb-2">
                 <Link to="/registercompany">
-                  <button className="btn-primary btn-sm mr-2 regbtn">Register Company</button>
+                  <button className="btn-primary col-lg-12 btn-sm mr-2 regbtn">Register Company</button>
                 </Link>
+              </div>
+              <div className="col-lg-6 mb-2">
                 <Link to="/Studentregister">
-                  <button className="btn-primary btn-sm regbtn">Register Student</button>
+                  <button className="btn-primary col-lg-12 btn-sm regbtn">Register Student</button>
                 </Link>
               </div>
               {/* <Link to="/registercompany">
@@ -199,8 +214,9 @@ function Login() {
             </div>
 
           </div>
-        </div>
-      </form>
+
+        </form>
+      </div>
 
     </div >
   );
