@@ -1,27 +1,39 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { Link, useHistory } from "react-router-dom";
-
-
+import { GoogleLogin, GoogleLogout } from 'react-google-login';
+const clientId = "731329382498-6bm4vrpjhuc2d9pm56jtb1pggsvkf49f.apps.googleusercontent.com"
 function Login() {
+  const [showloginButton, setShowloginButton] = useState(true);
+  const [showlogoutButton, setShowlogoutButton] = useState(false);
+  const onLoginSuccess = (res) => {
+      console.log('Login Success:', res.profileObj);
+      setShowloginButton(false);
+      setShowlogoutButton(true);
+  };
+  const onLoginFailure = (res) => {
+    console.log('Login Failed:', res);
+};
+const onSignoutSuccess = () => {
+  alert("You have been logged out successfully");
+  console.clear();
+  setShowloginButton(true);
+  setShowlogoutButton(false);
+};
+
   const [formdata, setformdata] = useState({
     email: "",
     password: "",
     type: "",
   });
-
   const history = useHistory();
-
   const [wrong, setvalue] = useState("");
-
   function stateChange(event) {
     setformdata({ ...formdata, [event.target.name]: [event.target.value] });
   }
-
   function submitData(event) {
     event.preventDefault();
     const finaldata = formdata;
-
     axios
       .post("/login", finaldata, {
         headers: {
@@ -57,32 +69,6 @@ function Login() {
           history.push("/tpo")
         }
 
-        // if (formdata.type[0] === "company") {
-        //   localStorage.setItem(
-        //     "company_id",
-        //     response.data.user[0]._id.toString()
-        //   );
-        //   history.push("/companyDashboard");
-        // }
-
-        // if (formdata.type[0] === "student") {
-        //   localStorage.setItem(
-        //     "student_id",
-        //     response.data.user[0]._id.toString()
-        //   );
-        //   localStorage.setItem(
-        //     "student_email",
-        //     response.data.user[0].email.toString()
-        //   );
-        //   history.push("/");
-        // }
-
-
-        // if (formdata.type[0] === "tpo") {
-        //   history.push("/tpo");
-        // }
-
-
       })
 
       .catch(() => {
@@ -91,40 +77,54 @@ function Login() {
   }
   const { email, password } = formdata;
   return (
-    
+
     <div className="loginform loginbg container-fluid ">
+      {/* { showloginButton ?
+                <GoogleLogin
+                    clientId={clientId}
+                    buttonText="Sign In"
+                    onSuccess={onLoginSuccess}
+                    onFailure={onLoginFailure}
+                    cookiePolicy={'single_host_origin'}
+                    isSignedIn={true}
+                /> : null}
+
+            { showlogoutButton ?
+                <GoogleLogout
+                    clientId={clientId}
+                    buttonText="Sign Out"
+                    onLogoutSuccess={onSignoutSuccess}
+                >
+                </GoogleLogout> : null
+            } */}
       <div className="loginformout">
 
         <form className="lform" >
-        <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-						<input class="input100" type="text" name="email" />
-						<span class="focus-input100"></span>
-						<span class="label-input100">Email</span>
-					</div>
+          
 
           <h1 className="heading main-heading">Login to The Account</h1>
-          <div class="input-group mb-2  ">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id=""><i class="fas fa-user"></i></span>
-            </div>
+          <div class="input-group mb-2 ">    
+          <div class="input-group-prepend">
+            <span class="input-group-text" id=""><i class="fas fa-envelope"></i></span>
+          </div>        
             <input
               type="text"
-              className="form-control  fontawesome-user "
+              className="form-control "
+              placeholder="Email"
               value={email}
-              name="email"
-              placeholder="Email "
+              name="email"             
               onChange={stateChange}
               required
             />
           </div>
 
-          <div class="input-group mu-1">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id=""><i class="fas fa-lock"></i></span>
-            </div>
+          <div class="input-group mb-2 ">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id=""><i class="fas fa-lock"></i></span>
+          </div>
             <input
               type="password"
-              className="form-control "
+              className="form-control"
               value={password}
               name="password"
               placeholder="Password"
@@ -132,7 +132,7 @@ function Login() {
               required
             />
           </div>
-         
+
           <p className="errstatus">{wrong}</p>
 
           <div className="option">

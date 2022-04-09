@@ -9,7 +9,6 @@ const fileUpload=require("express-fileupload");
 const { tpoRequestedJobs } = require("./Controllers/JobController");
 
 
-
 // const multer = require("multer");
 const app = express();
 // const crypto = require("crypto");
@@ -22,6 +21,8 @@ mongoose.connect("mongodb://localhost:27017/placementDB", {
 app.use(cookieParser())
 app.use(fileUpload())
 
+
+
 app.use(cors({
   origin: 'http://localhost:3000',
   methods: ['POST', 'PUT', 'GET', 'OPTIONS', 'HEAD'],
@@ -33,8 +34,7 @@ app.use(session({
   secret: 'keyboard cat',
   resave: false,
   saveUninitialized: false,
-  cookie:{user:"Punit"}
-    
+  cookie:{user:"Punit"}    
 }));
 //For json
 // app.use(bodyParser.json());

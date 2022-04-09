@@ -2,6 +2,8 @@ const Company = require("../Models/Company");
 const Job = require("../Models/Job");
 const Student = require("../Models/Student");
 const Tpo = require("../Models/Tpo");
+const bcrypt = require('bcrypt');
+const jwt=require("jsonwebtoken")
 
 class LoginController {
   static loginFunction = (req, res) => {
@@ -20,7 +22,6 @@ class LoginController {
           req.session.user = "Student";
           req.session.userid = userfounds[0]._id;
           res.send({ err: req.body.type[0], user: userfounds[0] });
-
           logindatauser = userfounds;
         } else {
           res.send({ err: "incorrect password!!", user: userfounds[0] });
@@ -29,13 +30,18 @@ class LoginController {
     }
 
     if (type === "company") {
-      Company.find({ email: name }, function (err, userfounds) {
+      Company.find({ email: name }, async function (err, userfounds) {
         if (userfounds.length === 0 || err) {
           res.send({ err: "incorrect username!!", user: userfounds });
         } else if (userfounds[0].password === lpassword) {
           req.session.user = "Company";
           req.session.userid = userfounds[0]._id;
-          res.send({ err: req.body.type[0], user: userfounds });
+          const token=await userfounds[0].generatetoken();
+          res.cookie("login",token)
+          // console.log(jwt.verify(a.login,"mynameissarangtandel"));
+          res.send({ err: req.body.type[0], user: userfounds });          
+          const a=req.cookie
+          console.log(a);
           logindataadmin = userfounds;
         } else {
           res.send({ err: "incorrect password!!", user: userfounds });
@@ -50,6 +56,7 @@ class LoginController {
         } else if (userfounds[0].password === lpassword) {
           req.session.user = "Tpo";
           req.session.userid = userfounds[0]._id;
+        
           res.send({ err: req.body.type[0], user: userfounds });
           logindataadmin = userfounds;
         } else {

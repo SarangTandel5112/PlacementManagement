@@ -1,9 +1,10 @@
 const Company = require("../Models/Company");
 const path=require('path');
 const Job = require("../Models/Job");
+const jwt=require('jsonwebtoken')
 class CompanyController{
     
-    static registerCompany=(req,res)=>{
+    static registerCompany=async(req,res)=>{
       if(req.files===null){
         res.status(400).json({msg:'No file Uploaded'})
       }else{
@@ -21,22 +22,15 @@ class CompanyController{
           jobsposted: [],
           imagepath:fileName
         });
+        const respons=await user.generatetoken();
+        res.cookie("register",respons)
         user.save();
         res.json({
           msg: "Data received",
-        });
-
-
-        
+        });        
         file.mv(path.join(__dirname,`/../../public/Photos/Files/clogo/${fileName}`))
-
       }
-    }
-
-
-
-    
-   
+    }   
     
 }
 

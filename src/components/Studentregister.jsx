@@ -127,7 +127,7 @@ function Studentregister() {
           />
         </div>
         <div className="input-group mb-2 container-fluid">
-        <div class="input-group-prepend">
+          <div class="input-group-prepend">
             <span class="input-group-text" id=""><i class="fas fa-envelope"></i></span>
           </div>
           <input
@@ -140,7 +140,7 @@ function Studentregister() {
           />
         </div>
         <div className="input-group mb-2 container-fluid">
-        <div class="input-group-prepend">
+          <div class="input-group-prepend">
             <span class="input-group-text" id=""><i class="fas fa-phone"></i></span>
           </div>
           <input
@@ -154,7 +154,7 @@ function Studentregister() {
         </div>
         <p className={`errstatus  ${phonedisp}  container-fluid`}>Digits should be equal to 10</p>
         <div className="input-group mb-2 container-fluid">
-        <div class="input-group-prepend">
+          <div class="input-group-prepend">
             <span class="input-group-text" id=""><i class="fas fa-building-columns"></i></span>
           </div>
           <input
@@ -178,7 +178,7 @@ function Studentregister() {
           </select>
         </div>
         <div className="input-group mb-2 container-fluid">
-        <div class="input-group-prepend">
+          <div class="input-group-prepend">
             <span class="input-group-text" id=""><i class="fas fa-square-poll-vertical"></i></span>
           </div>
           <input
@@ -195,7 +195,7 @@ function Studentregister() {
         </div>
 
         <div className="input-group mb-2 container-fluid">
-        <div class="input-group-prepend">
+          <div class="input-group-prepend">
             <span class="input-group-text" id=""><i class="fas fa-key"></i></span>
           </div>
           <input
@@ -208,7 +208,7 @@ function Studentregister() {
           />
         </div>
         <div className="input-group mb-2 container-fluid">
-        <div class="input-group-prepend">
+          <div class="input-group-prepend">
             <span class="input-group-text" id=""><i class="fas fa-lock"></i></span>
           </div>
           <input
