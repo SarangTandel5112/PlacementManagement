@@ -6,6 +6,10 @@ const bcrypt = require('bcrypt');
 const jwt=require("jsonwebtoken")
 
 class LoginController {
+
+
+
+
   static loginFunction = (req, res) => {
     let logindatauser = [];
     let logindataadmin = [];
@@ -36,12 +40,12 @@ class LoginController {
         } else if (userfounds[0].password === lpassword) {
           req.session.user = "Company";
           req.session.userid = userfounds[0]._id;
-          const token=await userfounds[0].generatetoken();
-          res.cookie("login",token)
-          // console.log(jwt.verify(a.login,"mynameissarangtandel"));
+          // const token=await userfounds[0].generatetoken();
+          // res.cookie("login",token)
+          const a=await jwt.sign({email:userfounds[0].email,type:"Company",id:userfounds[0]._id},"mynameissarangtandel",{expiresIn: "4h"})
+          // console.log(a);
+          res.cookie("login",a)
           res.send({ err: req.body.type[0], user: userfounds });          
-          const a=req.cookie
-          console.log(a);
           logindataadmin = userfounds;
         } else {
           res.send({ err: "incorrect password!!", user: userfounds });
@@ -134,8 +138,13 @@ class LoginController {
     });
   };
   static isloggedin = (req, res) => {
+    const a=req.cookies.login
+    // console.log(a);
+    const user=(jwt.verify(a,"mynameissarangtandel"));
+    console.log(user);
     if (req.session.userid) {
-      res.json({ loggedin: true, user: req.session.user });
+      res.json({ loggedin: true, user: req.session.user ,user1:user.type});
+
     } else {
       res.json({ loggedin: false });
     }

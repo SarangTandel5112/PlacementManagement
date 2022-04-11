@@ -76,6 +76,8 @@ router.post("/setplacementstatus",isAuth ,isCompany, JobControlller.setplacement
 //Company Routes
 // router.post("/register", CompanyController.registerCompany);
 router.post("/registerCompany",CompanyController.registerCompany);
+router.post("/otpverify",CompanyController.otpverify)
+router.get("/verify/:id",CompanyController.emailverify)
 
 
 

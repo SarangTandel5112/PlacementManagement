@@ -55,25 +55,14 @@ function Register() {
 
         })
         history.push("/login")
-
-
-
-
       } catch (err) {
         console.log(err)
       }
-
-
     }
-
-
-
-
   }
-
-
   const [disabled, setdisabled] = useState(false)
   const [phonedisp, setphonedisp] = useState("d-none")
+  const [verify, setverify] = useState(false)
   function handleChange(event) {
     if (event.target.name === "phno") {
       if (event.target.value.length !== 10) {
@@ -89,8 +78,18 @@ function Register() {
     setformdata({ ...formdata, [event.target.name]: [event.target.value] });
   }
   function handleFileChange(event) {
-
+    
     setfile(event.target.files[0])
+  }
+
+  async function changeVerify(event) {  
+    setverify(true)  
+    const res=await axios.post("/otpverify",{number:event.target.value})
+    
+  }
+
+  function changenumber() {
+    setverify(false)
   }
 
   const { password, password1 } = formdata;
@@ -139,19 +138,48 @@ function Register() {
             required
           />
         </div>
-        <div className="input-group mb-2 container-fluid">
-          <div class="input-group-prepend">
-            <span class="input-group-text" id=""><i class="fas fa-phone"></i></span>
+
+        {verify === false ?
+          <div className="input-group mb-2 container-fluid">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id=""><i class="fas fa-phone"></i></span>
+            </div>
+            <input
+              type="number"
+              className="phno1 form-control"
+              name="phno"
+              value={formdata.phno}
+              onChange={handleChange}
+              placeholder="Phone Number"
+              required
+            />
+            <button className="btn btn-primary " value={formdata.phno} onClick={changeVerify}>Verify</button>
           </div>
-          <input
-            type="number"
-            className="phno1 form-control"
-            name="phno"
-            onChange={handleChange}
-            placeholder="Phone Number"
-            required
-          />
-        </div>
+          :
+          <div className="input-group mb-2 container-fluid">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id=""><i class="fas fa-phone"></i></span>
+            </div>
+            <div class="input-group-prepend">
+              <input type="number" value={formdata.phno} disabled="true" />
+            </div>
+            <div class="input-group-prepend">
+              <button className="ml-2 mr-2 btn btn-primary" onClick={changenumber}>Change Number</button>
+            </div>
+            <input
+              type="number"
+              className="phno1 form-control"
+              name="otp"
+              placeholder="Enter OTP"
+              required
+            />
+            <div class="input-group-prepend">
+              <button className="ml-2 btn btn-primary">Verify</button>
+            </div>
+          </div>
+
+        }
+
         <p className={`errstatus  ${phonedisp}  container-fluid`}>Digits should be equal to 10</p>
         <div className="input-group mb-2 container-fluid">
           <div class="input-group-prepend">
@@ -165,6 +193,7 @@ function Register() {
             placeholder="Company CEO"
             required
           />
+
         </div>
         <div className="input-group mb-2 container-fluid">
           <div class="input-group-prepend">

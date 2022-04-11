@@ -12,20 +12,15 @@ function Header(props) {
     const loginres=await axios.get("/isloggedin");
     
     if(loginres.data.loggedin){
-      setisLoggedin(true);
-      
-    
 
-      
+      setisLoggedin(true); 
+      if(loginres.data.user1=="Company"){
+        history.push("/companyDashboard") 
+      }     
     }else{
       setisLoggedin(false);
-
-      history.push("/")
-      
-      
-     
+      history.push("/")     
     }
-
   }
   useEffect(() => {
     logincheck()
@@ -94,14 +89,8 @@ function Header(props) {
                 </form>
               </li> */}
 
-              <li className="nav-item">
-                
-               
-                 {isLoggedin?<Logoutbtn/>:<Loginbtncomp/>}   
-                  
-
-                
-                 
+              <li className="nav-item">               
+                 {isLoggedin?<Logoutbtn/>:<Loginbtncomp/>}                    
               </li>
             </ul>
           </div>
