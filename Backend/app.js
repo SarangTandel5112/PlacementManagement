@@ -1,3 +1,5 @@
+const path = require('path')
+require('dotenv').config({ path: path.resolve(__dirname, '.env') })
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
@@ -5,6 +7,9 @@ const Route = require("./Routes/Route");
 const session = require('express-session');
 const cookieParser=require("cookie-parser")
 const cors=require('cors')
+
+
+
 const fileUpload=require("express-fileupload");
 const { tpoRequestedJobs } = require("./Controllers/JobController");
 
@@ -20,6 +25,7 @@ mongoose.connect("mongodb://localhost:27017/placementDB", {
 }).then("Connected to MongoDb");
 app.use(cookieParser())
 app.use(fileUpload())
+
 
 
 
@@ -44,8 +50,8 @@ app.use(express.json())
 app.use(express.urlencoded({extended:false}));
 app.use("/", Route);
 
-
-
 app.listen(5000, () => {
-  console.log("Server started at port 5000");
+  console.log("Server started at port 5000")
+  ;
+  
 });

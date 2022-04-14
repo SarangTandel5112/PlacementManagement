@@ -302,7 +302,16 @@ Link {
   width: auto;
 }
 
+.phnoerr{
+  position: absolute;
+  margin-bottom:-36px; 
+  color: red;
+  border: 2px solid red;
+}
 
+.veri{
+  color: green;
+}
 
 .tpodata{
   padding-bottom: 8%;

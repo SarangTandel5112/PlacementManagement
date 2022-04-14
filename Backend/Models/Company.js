@@ -19,7 +19,7 @@ const companyschema = new Schema({
       }
     }]
   });
-
+  
   companyschema.methods.generatetoken=async function(){
     try {
       const token=jwt.sign({_id:this._id},"mynameissarangtandel")   

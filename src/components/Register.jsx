@@ -63,35 +63,75 @@ function Register() {
   const [disabled, setdisabled] = useState(false)
   const [phonedisp, setphonedisp] = useState("d-none")
   const [verify, setverify] = useState(false)
-  function handleChange(event) {
+  const [emailverify, setemailverify] = useState(true)
+  const [finalotp, setfinalotp] = useState()
+  const [numberlen, setnumberlen] = useState(false)
+  const [otpstatus, setotpstatus] = useState()
+  const [confirmpass, setconfirmpass] = useState(true)
+  async function verifyDigits(event) {
     if (event.target.name === "phno") {
       if (event.target.value.length !== 10) {
         setdisabled(true)
         setphonedisp("d-inline")
-
-      } else {
+      }
+      else {
         setdisabled(false);
         setphonedisp("d-none")
       }
+    }
+  }
+  async function verifyEmailWithDB(event) {
+    if (event.target.name === "email") {
+      let emailreg = /[A-Za-z0-1]*@ddu.ac.in/;
+      if (!emailreg.test(event.target.value)) {
+        setemailverify(false)
+        return alert("Email Should Be DDU Email")
+      }
+      const res = await axios.post("/checkemail", { email: event.target.value })
+      setemailverify(res.data.data)
 
+    }
+  }
+  async function handleChange(event) {
+    if (event.target.name === "phno") {
+      if (event.target.value.length !== 10) {
+        setnumberlen(false)
+      } else {
+        setnumberlen(true)
+      }
     }
     setformdata({ ...formdata, [event.target.name]: [event.target.value] });
   }
   function handleFileChange(event) {
-    
     setfile(event.target.files[0])
   }
 
-  async function changeVerify(event) {  
-    setverify(true)  
-    const res=await axios.post("/otpverify",{number:event.target.value})
-    
+  function checkConfirm(event) {
+    if (event.target.value == formdata.password) {
+      setconfirmpass(true)
+    }
+    else {
+      setconfirmpass(false)
+    }
   }
 
+  async function changeVerify(event) {
+    setverify(true)
+    const res = await axios.post("/otpverify", { number: event.target.value })
+  }
+
+  async function confirmOtp(event) {
+    const otpcheck = await axios.post("/checkotp", { phno: formdata.phno[0], otp: event.target.value })
+    // alert(formdata.phno)
+    setotpstatus(otpcheck.data.status)
+    setverify(false)
+  }
   function changenumber() {
     setverify(false)
   }
-
+  function setotp(event) {
+    setfinalotp(event.target.value)
+  }
   const { password, password1 } = formdata;
   return (
     <div className="loginbg">
@@ -134,12 +174,30 @@ function Register() {
             className="lname1 form-control"
             name="email"
             onChange={handleChange}
+            onBlur={verifyEmailWithDB}
             placeholder="Company Email"
             required
           />
         </div>
+        {emailverify === true ? <div></div> : <div className="errstatus d-inline">Email Already Exists</div>}
+        {verify === false ? (otpstatus == true) ? <div className="input-group mb-2 container-fluid">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id=""><i class="fas fa-phone"></i></span>
+          </div>
+          <input
+            type="number"
+            className="phno1 form-control"
+            name="phno"
+            value={formdata.phno}
+            onChange={handleChange}
+            onBlur={verifyDigits}
+            placeholder="Phone Number"
+            disabled
+            required
+          />
+          <div class="input-group-prepend"><span class="input-group-text" id=""><i className="fas veri fa-check ml-1 mt-1"></i></span></div>
 
-        {verify === false ?
+        </div> :
           <div className="input-group mb-2 container-fluid">
             <div class="input-group-prepend">
               <span class="input-group-text" id=""><i class="fas fa-phone"></i></span>
@@ -150,10 +208,11 @@ function Register() {
               name="phno"
               value={formdata.phno}
               onChange={handleChange}
+              onBlur={verifyDigits}
               placeholder="Phone Number"
               required
             />
-            <button className="btn btn-primary " value={formdata.phno} onClick={changeVerify}>Verify</button>
+            {numberlen === true ? <button className="btn btn-primary " value={formdata.phno} onClick={changeVerify}>Verify</button> : <button className="btn btn-primary " disabled value={formdata.phno} onClick={changeVerify}>Verify</button>}
           </div>
           :
           <div className="input-group mb-2 container-fluid">
@@ -171,11 +230,13 @@ function Register() {
               className="phno1 form-control"
               name="otp"
               placeholder="Enter OTP"
+              onChange={setotp}
               required
             />
             <div class="input-group-prepend">
-              <button className="ml-2 btn btn-primary">Verify</button>
+              <button className="ml-2 btn btn-primary" type="button" onClick={confirmOtp} value={finalotp}  >Verify</button>
             </div>
+            {/* {otpstatus == true ? <p>Verified</p> : <p>Not Verified</p>} */}
           </div>
 
         }
@@ -193,8 +254,8 @@ function Register() {
             placeholder="Company CEO"
             required
           />
-
         </div>
+
         <div className="input-group mb-2 container-fluid">
           <div class="input-group-prepend">
             <span class="input-group-text" id=""><i class="fas fa-user"></i></span>
@@ -244,26 +305,38 @@ function Register() {
             name="password1"
             onChange={handleChange}
             placeholder="Confirm Password"
+            onBlur={checkConfirm}
             required
           />
         </div>
+        {confirmpass == true ? <p></p> : <p>Password And Confirm Password Does not match</p>}
 
         <div className="container-fluid logofile">
           <label htmlFor="fielInput">Upload Logo : </label>
           <input type="file" name="file" className="lname form-control" onChange={handleFileChange} id="fileInput" />
 
         </div>
+        {(otpstatus == true && emailverify == true) ?
+          <div className="container-fluid">
+            <input
+              type="submit"
+              className="btn-primary btn-lg accbtn mt-3 form-control"
+              value="Create Account"
+              name="Log in"
 
-        <div className="container-fluid">
-          <input
-            type="submit"
-            className="btn-primary btn-lg accbtn mt-3 form-control"
-            value="Create Account"
-            name="Log in"
-            disabled={disabled}
-          />
-        </div>
-
+            />
+          </div>
+          :
+          <div className="container-fluid">
+            <input
+              type="submit"
+              className="btn-primary btn-lg accbtn mt-3 form-control"
+              value="Create Account"
+              name="Log in"
+              disabled={true}
+            />
+          </div>
+        }
       </form>
     </div>
   );

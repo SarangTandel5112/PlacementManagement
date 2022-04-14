@@ -1,4 +1,6 @@
 const express=require("express");
+const dotenv=require('dotenv');
+dotenv.config()
 const router =express.Router(); 
 const isAuth = (req,res,next)=>{
     if(req.session.userid){
@@ -40,7 +42,7 @@ const JobControlller = require("../Controllers/JobController");
 const CompanyController=require("../Controllers/CompanyController");
 const TpoController=require("../Controllers/TpoController");
 const LoginController=require("../Controllers/LoginController");
-
+const Otpverify=require("../Controllers/Otpverify")
 
 
 // Student Routes
@@ -76,9 +78,13 @@ router.post("/setplacementstatus",isAuth ,isCompany, JobControlller.setplacement
 //Company Routes
 // router.post("/register", CompanyController.registerCompany);
 router.post("/registerCompany",CompanyController.registerCompany);
-router.post("/otpverify",CompanyController.otpverify)
 router.get("/verify/:id",CompanyController.emailverify)
+router.post("/checkemail",CompanyController.checkemail)
 
+
+//OtpVerify
+router.post("/otpverify",Otpverify.otpverify)
+router.post("/checkotp",Otpverify.checkotp)
 
 
 // router.post("/companypost",isAuth, CompanyController.companyPost);

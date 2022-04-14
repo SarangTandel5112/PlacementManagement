@@ -1,25 +1,23 @@
 import axios from "axios";
-import React ,{useEffect,useState}from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import Loginbtncomp from "./Loginbtncomp";
 import Logoutbtn from "./Logoutbtn";
 
 function Header(props) {
-  const history=useHistory();
+  const history = useHistory();
   const [isLoggedin, setisLoggedin] = useState(true);
-  let logincheck = async()=>{
+  let logincheck = async () => {
 
-    const loginres=await axios.get("/isloggedin");
-    
-    if(loginres.data.loggedin){
+    const loginres = await axios.get("/isloggedin");
 
-      setisLoggedin(true); 
-      if(loginres.data.user1=="Company"){
-        history.push("/companyDashboard") 
-      }     
-    }else{
+    if (loginres.data.loggedin) {
+
+      setisLoggedin(true);
+      
+    } else {
       setisLoggedin(false);
-      history.push("/")     
+     
     }
   }
   useEffect(() => {
@@ -27,11 +25,13 @@ function Header(props) {
     // eslint-disable-next-line
   }, [])
   
+ 
+
   return (
     <div className="frontpage">
       <section id="title navcolor">
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark" >
-          <button 
+          <button
             className="navbar-toggler "
             type="button"
             data-toggle="collapse"
@@ -89,8 +89,8 @@ function Header(props) {
                 </form>
               </li> */}
 
-              <li className="nav-item">               
-                 {isLoggedin?<Logoutbtn/>:<Loginbtncomp/>}                    
+              <li className="nav-item">
+                {isLoggedin ? <Logoutbtn /> : <Loginbtncomp />}
               </li>
             </ul>
           </div>

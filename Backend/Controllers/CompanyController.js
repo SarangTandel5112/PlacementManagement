@@ -1,7 +1,8 @@
 const Company = require("../Models/Company");
 const path = require('path');
 const nodemailer = require('nodemailer');
-const jwt = require("jsonwebtoken")
+const jwt = require("jsonwebtoken");
+const Unverifiedcompany = require("../Models/UnverifiedCompany");
 
 class CompanyController {
   static registerCompany = async (req, res) => {
@@ -11,7 +12,7 @@ class CompanyController {
       } else {
         const file = req.files.file;
         const fileName = Date.now() + file.name;
-        const user = new Company({
+        const user = new Unverifiedcompany({
           name: req.body.name,
           email: req.body.email,
           number: req.body.phno,
@@ -22,19 +23,20 @@ class CompanyController {
           jobsposted: [],
           imagepath: fileName
         });
+        user.save();
         try {
-          const a = jwt.sign({ ...user }, "mynameissarangtandel")
-          // console.log(jwt.verify(a, "mynameissarangtandel"));
+          const a = jwt.sign({ ...user }, process.env.SECRET_KEY)
+          console.log(jwt.verify(a,process.env.SECRET_KEY ));
           try {
             let mailTransporter = nodemailer.createTransport({
               service: 'gmail',
               auth: {
-                user: 'sarang.tandel.sa@gmail.com',
-                pass: 'Sarang@5112'
+                user: process.env.EMAIL,
+                pass: process.env.EMAIL_PASS
               }
             });
             let mailDetails = {
-              from: 'sarang.tandel.sa@gmail.com',
+              from: process.env.EMAIL,
               to: user.email,
               subject: 'Verification of your account',
               html: `<h1 style="text-align: center;">Verify Your Account</h1> http://localhost:5000/verify/${a}           
@@ -42,7 +44,7 @@ class CompanyController {
             };
             mailTransporter.sendMail(mailDetails, function (err, data) {
               if (err) {
-                console.log('Error Occurs');
+                console.log(err)
               } else {
                 console.log('Email sent successfully');
               }
@@ -54,7 +56,6 @@ class CompanyController {
         catch (error) {
           console.log("error in token");
         }
-
         // user.save();
         res.json({
           msg: "Data received",
@@ -66,19 +67,36 @@ class CompanyController {
       console.log(error);
     }
   }
-  static otpverify = async (req, res) => {
-    console.log(req.body.number);
-  }
-
-  static emailverify=async(req,res)=>{
+  
+  static emailverify = async (req, res) => {
     try {
-      const data=req.params.id
-      const user=(jwt.verify(data,"mynameissarangtandel"));
+      const data = req.params.id
+      const user = (jwt.verify(data, "mynameissarangtandel"));
       console.log(user._doc);
-       res.send("Thank you for verifing")
+      const verified = new Company({
+        ...user._doc
+      })
+      verified.save();
+      res.redirect("http://localhost:3000/login")
     } catch (error) {
       console.log("error occurs in data verify");
-    }    
+    }
   }
+
+  static checkemail = async (req, res) => {
+    const result = req.body.email;
+    const isMatch = await Company.findOne({ email: result })
+
+    if (isMatch) {
+      // console.log("mailID alrerady exist!");
+      res.send({ data: false })
+    }
+
+    else {
+      // console.log("continue");
+      res.send({ data: true })
+    }
+  }
+
 }
 module.exports = CompanyController;

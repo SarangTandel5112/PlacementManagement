@@ -4,20 +4,14 @@ import { Link, useHistory } from "react-router-dom";
 
  function Tponavbottom() {
     const history=useHistory();
-    let logincheck = async()=>{
-  
-      const loginres=await axios.get("/isloggedin");
-      
+    let logincheck = async()=>{  
+      const loginres=await axios.get("/isloggedin");      
        if(loginres.data.user==="Company"){
            history.push("/companyDashboard")
        }else if(loginres.data.user==="Student"){
            history.push("/studentHome")
-       }
-        
-        
-       
-      }
-  
+       }       
+      } 
     
     useEffect(() => {
       logincheck()
