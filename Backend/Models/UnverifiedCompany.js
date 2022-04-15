@@ -19,5 +19,5 @@ const unverifiedcompanyschema = new Schema({
     }]
   });
 
-  const Unverifiedcompany = mongoose.model("Unverifieduser", unverifiedcompanyschema);
+  const Unverifiedcompany = mongoose.model("UnverifiedCompany", unverifiedcompanyschema);
   module.exports=Unverifiedcompany;

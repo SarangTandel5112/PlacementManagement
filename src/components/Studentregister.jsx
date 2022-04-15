@@ -58,40 +58,77 @@ function Studentregister() {
         console.log(err)
       }
     }
-
   }
-
   const [disabled, setdisabled] = useState(false)
-  const [display, setdisplay] = useState("d-none")
   const [phonedisp, setphonedisp] = useState("d-none")
-  function handleChange(event) {
+  const [emailverify, setemailverify] = useState(true)
+  const [verify, setverify] = useState(false)
+  const [finalotp, setfinalotp] = useState()
+  const [numberlen, setnumberlen] = useState(false)
+  const [otpstatus, setotpstatus] = useState()
+  const [confirmpass, setconfirmpass] = useState(true)
+  const [dduemail, setdduemail] = useState(true)
+
+  async function verifyDigits(event) {
     if (event.target.name === "phno") {
       if (event.target.value.length !== 10) {
         setdisabled(true)
         setphonedisp("d-inline")
-
-      } else {
+      }
+      else {
         setdisabled(false);
         setphonedisp("d-none")
       }
-
     }
+  }
+  async function changeVerify(event) {
+    setverify(true)
+    const res = await axios.post("/otpverify", { number: event.target.value })
+  }
 
+  async function confirmOtp(event) {
+    const otpcheck = await axios.post("/checkotp", { phno: formdata.phno[0], otp: event.target.value })
+    // alert(formdata.phno)
+    setotpstatus(otpcheck.data.status)
+    setverify(false)
+  }
+  function changenumber() {
+    setverify(false)
+  }
+  function setotp(event) {
+    setfinalotp(event.target.value)
+  }
+
+  function handleChange(event) {
+    if (event.target.name === "phno") {
+      if (event.target.value.length !== 10) {
+        setnumberlen(false)
+      } else {
+        setnumberlen(true)
+      }
+    }
     setformdata({ ...formdata, [event.target.name]: [event.target.value] });
   }
   function handleFileChange(event) {
-
     setfile(event.target.files[0])
-
-
-
-
-
-
+  }
+  async function checkmail(event) {
+    if (event.target.name === "email") {
+      let emailreg = /[A-Za-z0-1]*@ddu.ac.in/;
+      if (!emailreg.test(event.target.value)) {
+        setemailverify(false)
+        return 0;//email not from ddu
+      }
+      else {
+        setemailverify(true)
+        const stdmail = await axios.post("/checkstudentmail", { email: event.target.value })
+        console.log(stdmail.data);
+        setdduemail(stdmail.data.mailstatus)
+      }
+    }
   }
 
   const { password, password1 } = formdata;
-
   return (
     <div className="loginbg">
 
@@ -134,24 +171,75 @@ function Studentregister() {
             type="email"
             className="lname1 form-control"
             name="email"
+            onBlur={checkmail}
             onChange={handleChange}
             placeholder="Student Email"
             required
           />
         </div>
-        <div className="input-group mb-2 container-fluid">
-          <div class="input-group-prepend">
-            <span class="input-group-text" id=""><i class="fas fa-phone"></i></span>
+        {emailverify == true ? <p></p> : <p>Enter Your DDU email</p>}
+        {dduemail == true ? <p></p> : <p className="">Email already Exist</p>}
+        {verify === false ? (otpstatus == true) ?
+          <div className="input-group mb-2 container-fluid">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id=""><i class="fas fa-phone"></i></span>
+            </div>
+            <input
+              type="number"
+              className="phno1 form-control"
+              name="phno"
+              value={formdata.phno}
+              onChange={handleChange}
+              onBlur={verifyDigits}
+              placeholder="Phone Number"
+              disabled
+              required
+            />
+            <div class="input-group-prepend"><span class="input-group-text" id=""><i className="fas veri fa-check ml-1 mt-1"></i></span></div>
+
+          </div> :
+          <div className="input-group mb-2 container-fluid">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id=""><i class="fas fa-phone"></i></span>
+            </div>
+            <input
+              type="number"
+              className="phno1 form-control"
+              name="phno"
+              value={formdata.phno}
+              onChange={handleChange}
+              onBlur={verifyDigits}
+              placeholder="Phone Number"
+              required
+            />
+            {numberlen === true ? <button className="btn btn-primary " value={formdata.phno} onClick={changeVerify}>Verify</button> : <button className="btn btn-primary " disabled value={formdata.phno} onClick={changeVerify}>Verify</button>}
           </div>
-          <input
-            type="number"
-            className="phno1 form-control"
-            name="phno"
-            onChange={handleChange}
-            placeholder="Phone Number"
-            required
-          />
-        </div>
+          :
+          <div className="input-group mb-2 container-fluid">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id=""><i class="fas fa-phone"></i></span>
+            </div>
+            <div class="input-group-prepend">
+              <input type="number" value={formdata.phno} disabled="true" />
+            </div>
+            <div class="input-group-prepend">
+              <button className="ml-2 mr-2 btn btn-primary" onClick={changenumber}>Change Number</button>
+            </div>
+            <input
+              type="number"
+              className="phno1 form-control"
+              name="otp"
+              placeholder="Enter OTP"
+              onChange={setotp}
+              required
+            />
+            <div class="input-group-prepend">
+              <button className="ml-2 btn btn-primary" type="button" onClick={confirmOtp} value={finalotp}  >Verify</button>
+            </div>
+            {/* {otpstatus == true ? <p>Verified</p> : <p>Not Verified</p>} */}
+          </div>
+
+        }
         <p className={`errstatus  ${phonedisp}  container-fluid`}>Digits should be equal to 10</p>
         <div className="input-group mb-2 container-fluid">
           <div class="input-group-prepend">
@@ -226,15 +314,26 @@ function Studentregister() {
           <input type="file" name="file" className="lname form-control mb-4" onChange={handleFileChange} id="fileInput" />
 
         </div>
-        <div className="container-fluid">
-          <input
-            type="submit"
-            className="btn-primary btn-lg accbtn form-control"
-            value="Create Account"
-            name="Log in"
-            disabled={disabled}
-          />
-        </div>
+        {(otpstatus == true && dduemail) ?
+          <div className="container-fluid">
+            <input
+              type="submit"
+              className="btn-primary btn-lg accbtn form-control"
+              value="Create Account"
+              name="Log in"
+            />
+          </div>
+          :
+          <div className="container-fluid">
+            <input
+              type="submit"
+              className="btn-primary btn-lg accbtn form-control"
+              value="Create Account"
+              name="Log in"
+              disabled
+            />
+          </div>
+        }
       </form>
     </div>
   );

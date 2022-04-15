@@ -11,13 +11,13 @@ class Otpverify {
             const otp = otpGenerator.generate(6, { digits: true, lowerCaseAlphabets: false, alphabets: false, upperCaseAlphabets: false, upperCase: false, specialChars: false });
             const client = require('twilio')(accountSid, authToken);
             console.log(otp, req.body.number);
-            // const message = await client.messages
-            //   .create({
-            //     from: '+14154814311',
-            //     body: `Ala Taro OTP le ${otp}`,
-            //     to: "+91" + req.body.number
-            //   })
-            // console.log(message);
+            const message = await client.messages
+              .create({
+                from: '+14154814311',
+                body: `Ala Taro OTP le ${otp}`,
+                to: "+91" + req.body.number
+              })
+            console.log(message);
             console.log(otp);
             const no = await Otp.find({ number: req.body.number })
             if (no.length === 0) {
@@ -52,7 +52,6 @@ class Otpverify {
             console.log("error in otp check",error);
         }
     }
-
 }
 
 module.exports = Otpverify;

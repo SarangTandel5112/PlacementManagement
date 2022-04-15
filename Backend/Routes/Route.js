@@ -49,14 +49,13 @@ const Otpverify=require("../Controllers/Otpverify")
 router.post("/registerstudent",StudentController.register);
 router.post("/getStudentData",isAuth, StudentController.getStudentData);
 router.post("/updateStudentProfile", isAuth,StudentController.updateStudentProfile);
-router.post("/addStudent", StudentController.addStudent);
 router.post("/studentmyapplies",isAuth,isStudent,  StudentController.studentmyapplies);
 router.post("/applyforcompany",isAuth, isStudent,StudentController.applyforcompany);
+router.post("/checkstudentmail",StudentController.checkstdmail);
 router.post("/getfulldetails",isAuth,isStudent, JobControlller.getFulldetails);
 router.post("/getAvailableJobForStudent", isAuth,isStudent,JobControlller.getAvailableJobForStudent);
 router.post("/settimestatus",isAuth,isStudent, JobControlller.settimestatus);
-
-
+router.get("/verifystudent/:id",StudentController.emailverifystudent);
 
 // Job Rotues
 

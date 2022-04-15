@@ -20,7 +20,6 @@ function Register() {
   });
   const [file, setfile] = useState(" ")
 
-
   async function submitform(event) {
 
     event.preventDefault();
@@ -46,13 +45,11 @@ function Register() {
       formData.append("hr", finaldata.hr);
       formData.append("address", finaldata.address);
       formData.append("password", finaldata.password);
-
       try {
         await axios.post("/registerCompany", formData, {
           headers: {
             'Content-Type': 'multipart/formdata'
           }
-
         })
         history.push("/login")
       } catch (err) {
@@ -68,6 +65,7 @@ function Register() {
   const [numberlen, setnumberlen] = useState(false)
   const [otpstatus, setotpstatus] = useState()
   const [confirmpass, setconfirmpass] = useState(true)
+  const [dduemail, setdduemail] = useState(true)
   async function verifyDigits(event) {
     if (event.target.name === "phno") {
       if (event.target.value.length !== 10) {
@@ -82,14 +80,8 @@ function Register() {
   }
   async function verifyEmailWithDB(event) {
     if (event.target.name === "email") {
-      let emailreg = /[A-Za-z0-1]*@ddu.ac.in/;
-      if (!emailreg.test(event.target.value)) {
-        setemailverify(false)
-        return alert("Email Should Be DDU Email")
-      }
       const res = await axios.post("/checkemail", { email: event.target.value })
       setemailverify(res.data.data)
-
     }
   }
   async function handleChange(event) {
@@ -180,24 +172,25 @@ function Register() {
           />
         </div>
         {emailverify === true ? <div></div> : <div className="errstatus d-inline">Email Already Exists</div>}
-        {verify === false ? (otpstatus == true) ? <div className="input-group mb-2 container-fluid">
-          <div class="input-group-prepend">
-            <span class="input-group-text" id=""><i class="fas fa-phone"></i></span>
-          </div>
-          <input
-            type="number"
-            className="phno1 form-control"
-            name="phno"
-            value={formdata.phno}
-            onChange={handleChange}
-            onBlur={verifyDigits}
-            placeholder="Phone Number"
-            disabled
-            required
-          />
-          <div class="input-group-prepend"><span class="input-group-text" id=""><i className="fas veri fa-check ml-1 mt-1"></i></span></div>
+        {verify === false ? (otpstatus == true) ?
+          <div className="input-group mb-2 container-fluid">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id=""><i class="fas fa-phone"></i></span>
+            </div>
+            <input
+              type="number"
+              className="phno1 form-control"
+              name="phno"
+              value={formdata.phno}
+              onChange={handleChange}
+              onBlur={verifyDigits}
+              placeholder="Phone Number"
+              disabled
+              required
+            />
+            <div class="input-group-prepend"><span class="input-group-text" id=""><i className="fas veri fa-check ml-1 mt-1"></i></span></div>
 
-        </div> :
+          </div> :
           <div className="input-group mb-2 container-fluid">
             <div class="input-group-prepend">
               <span class="input-group-text" id=""><i class="fas fa-phone"></i></span>

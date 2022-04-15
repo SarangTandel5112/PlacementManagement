@@ -9,7 +9,8 @@ class CompanyController {
     try {
       if (req.files === null) {
         res.status(400).json({ msg: 'No file Uploaded' })
-      } else {
+      }
+      else {
         const file = req.files.file;
         const fileName = Date.now() + file.name;
         const user = new Unverifiedcompany({
@@ -25,8 +26,7 @@ class CompanyController {
         });
         user.save();
         try {
-          const a = jwt.sign({ ...user }, process.env.SECRET_KEY)
-          console.log(jwt.verify(a,process.env.SECRET_KEY ));
+          const a = await jwt.sign({ ...user }, process.env.SECRET_KEY)
           try {
             let mailTransporter = nodemailer.createTransport({
               service: 'gmail',
@@ -56,7 +56,6 @@ class CompanyController {
         catch (error) {
           console.log("error in token");
         }
-        // user.save();
         res.json({
           msg: "Data received",
         });
@@ -67,16 +66,26 @@ class CompanyController {
       console.log(error);
     }
   }
-  
+
   static emailverify = async (req, res) => {
     try {
       const data = req.params.id
-      const user = (jwt.verify(data, "mynameissarangtandel"));
-      console.log(user._doc);
-      const verified = new Company({
-        ...user._doc
-      })
-      verified.save();
+      const user = await jwt.verify(data, process.env.SECRET_KEY);
+      const checkuser = await Company.findOne({ _id: user._doc._id })
+      if (checkuser) {
+        res.send("you are verified please login")
+      }
+      else {
+        const verified = new Company({
+          ...user._doc
+        })
+        verified.save();
+      }
+      Unverifiedcompany.remove({ _id: user._doc._id }, (err) => {
+        if (err) {
+          console.log(err);
+        }
+      });
       res.redirect("http://localhost:3000/login")
     } catch (error) {
       console.log("error occurs in data verify");
@@ -88,15 +97,13 @@ class CompanyController {
     const isMatch = await Company.findOne({ email: result })
 
     if (isMatch) {
-      // console.log("mailID alrerady exist!");
+      console.log("mailID alrerady exist!");
       res.send({ data: false })
     }
-
     else {
-      // console.log("continue");
+      console.log("continue");
       res.send({ data: true })
     }
   }
-
 }
 module.exports = CompanyController;

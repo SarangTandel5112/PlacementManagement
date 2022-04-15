@@ -5,11 +5,9 @@ import { useEffect, useState } from "react";
 // import TpoHeader from "./TpoHeader";
 // import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
 import Navbarbottom from "./Navbarbottom"
 import Footer from './Footer'
 import Header from "./Header";
-
 
 function Home() {
     const [slen, setslen] = useState(0);
