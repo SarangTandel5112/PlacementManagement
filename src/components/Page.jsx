@@ -27,6 +27,7 @@ import Appliedstudentdetails from "./Appliedstudentdetails";
 import { TpoStudentdetails } from "./TpoStudentdetails";
 import { Tpocompanydetails } from "./Tpocompanydetails";
 import Tpoplacedstudent from "./Tpoplacedstudent";
+import Forgotpassword from "./ForgotPassword";
 
 
 function Page() {
@@ -115,6 +116,9 @@ function Page() {
       </Switch>
       <Switch>
         <Route exact path="/tpo/placedstudent" component={Tpoplacedstudent} />
+      </Switch>
+      <Switch>
+        <Route exact path="/forgotpassord" component={Forgotpassword} />
       </Switch>
 
     </Router>

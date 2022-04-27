@@ -41,9 +41,7 @@ export default function Tpoplacedstudent() {
                             <td>{std.studentName}</td>
                             <td>{std.jobtitle}</td>
                             <td>{std.ctc}</td>
-                            <td>{std.companyname}</td>
-                            
-                            
+                            <td>{std.companyname}</td>                             
                         </tr>
                     ))}
                 </tbody>

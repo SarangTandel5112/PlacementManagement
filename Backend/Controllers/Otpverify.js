@@ -17,7 +17,7 @@ class Otpverify {
                 body: `Ala Taro OTP le ${otp}`,
                 to: "+91" + req.body.number
               })
-            console.log(message);
+            // console.log(message);
             console.log(otp);
             const no = await Otp.find({ number: req.body.number })
             if (no.length === 0) {

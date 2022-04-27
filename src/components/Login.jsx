@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import axios from "axios";
 import { Link, useHistory } from "react-router-dom";
 
+
 function Login() {
- 
 
   const [formdata, setformdata] = useState({
     email: "",
@@ -27,17 +27,17 @@ function Login() {
       })
       .then((response) => {
         var check = response.data.err;
-
-
         if (check === "incorrect username!!") {
           setvalue(check);
-        } else if (check === "incorrect password!!") {
+        }
+        else if (check === "incorrect password!!") {
+          setvalue(check);
+        }
+        else if (check === "Please Verify Your Email!!") {
           setvalue(check);
         }
         else if (check === "student") {
           if (response.data.user.status === "Accpted") {
-
-
             history.push("/studentHome");
           } else if (response.data.user.status === "Rejected") {
             setvalue("Your Request Is Rejected By TPO! Kindly Ask Them")
@@ -84,28 +84,28 @@ function Login() {
       <div className="loginformout">
 
         <form className="lform" >
-          
+
 
           <h1 className="heading main-heading">Login to The Account</h1>
-          <div class="input-group mb-2 ">    
-          <div class="input-group-prepend">
-            <span class="input-group-text" id=""><i class="fas fa-envelope"></i></span>
-          </div>        
+          <div class="input-group mb-2 ">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id=""><i class="fas fa-envelope"></i></span>
+            </div>
             <input
               type="text"
               className="form-control "
               placeholder="Email"
               value={email}
-              name="email"             
+              name="email"
               onChange={stateChange}
               required
             />
           </div>
 
           <div class="input-group mb-2 ">
-          <div class="input-group-prepend">
-            <span class="input-group-text" id=""><i class="fas fa-lock"></i></span>
-          </div>
+            <div class="input-group-prepend">
+              <span class="input-group-text" id=""><i class="fas fa-lock"></i></span>
+            </div>
             <input
               type="password"
               className="form-control"
@@ -118,7 +118,9 @@ function Login() {
           </div>
 
           <p className="errstatus">{wrong}</p>
-
+          <Link to="/forgotpassord">
+            <a className="forgotpass">Forgot Password ?</a>
+          </Link>
           <div className="option">
             <h5 className="">Login As :</h5>
             <input
@@ -176,25 +178,7 @@ function Login() {
                   <button className="btn-primary col-lg-12 btn-sm regbtn">Register Student</button>
                 </Link>
               </div>
-              {/* <Link to="/registercompany">
-                <input
-                  type="submit"
-                  className="btn-primary  btn-sm regbtn mr-2"
-                  value="Register Company"
-                  name="Register Company"
-                />
-              </Link>
-
-              <Link to="/Studentregister">
-                <input
-                  type="submit"
-                  className="btn-primary btn-sm regbtn"
-                  value="Register Student"
-                  name="Register Student"
-                />
-              </Link> */}
-
-
+              
             </div>
 
           </div>

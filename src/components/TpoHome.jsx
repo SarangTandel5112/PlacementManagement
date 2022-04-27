@@ -19,8 +19,8 @@ function Tpoalldetails() {
 
   return (
     <div>
-         <Header path="/tpo" />
-      <Tponavbottom/>
+      <Header path="/tpo" />
+      <Tponavbottom />
 
       <div className="row container-fluid">
         <div className="col-lg-4 container-fluid text">

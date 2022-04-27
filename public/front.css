@@ -313,6 +313,10 @@ Link {
   color: green;
 }
 
+.forgotpass{
+  float: right;
+}
+
 .tpodata{
   padding-bottom: 8%;
   

@@ -93,16 +93,20 @@ class CompanyController {
   }
 
   static checkemail = async (req, res) => {
-    const result = req.body.email;
-    const isMatch = await Company.findOne({ email: result })
-
-    if (isMatch) {
-      console.log("mailID alrerady exist!");
-      res.send({ data: false })
+    try {
+      const result = req.body.email;
+      const isMatch = await Company.findOne({ email: result })
+      if (isMatch) {
+        console.log("mailID alrerady exist!");
+        res.send({ data: false })
+      }
+      else {
+        console.log("continue");
+        res.send({ data: true })
+      }
     }
-    else {
-      console.log("continue");
-      res.send({ data: true })
+    catch (error) {
+      console.log(error);
     }
   }
 }

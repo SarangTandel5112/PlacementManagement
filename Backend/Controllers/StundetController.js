@@ -85,7 +85,6 @@ class StudentController {
   static studentreqtpo = (req, res) => {
     Student.find({ status: "Pending" }, (err, studentfound) => {
       res.send({ user: studentfound });
-
     })
   }
 
@@ -101,7 +100,6 @@ class StudentController {
           if (err) {
             res.json({ status: "error" });
           }
-
         }
         // res.json()
       )
@@ -167,7 +165,6 @@ class StudentController {
       for (let i = 0; i < userfound[0].myapply.length; i++) {
         let jobfound = await Job.find({ _id: userfound[0].myapply[i].jobid })
         senddata.push(jobfound[0])
-
       }
     }
     catch (err) {
@@ -202,11 +199,9 @@ class StudentController {
     try {
       const std = await Student.findOne({ email: req.body.email })
       if (std) {
-        console.log("f");
         res.send({ mailstatus: false })
       }
       else {
-        console.log("t");
         res.send({ mailstatus: true })
       }
     } catch (error) {

@@ -46,6 +46,7 @@ function Register() {
       formData.append("address", finaldata.address);
       formData.append("password", finaldata.password);
       try {
+        console.log(formData);
         await axios.post("/registerCompany", formData, {
           headers: {
             'Content-Type': 'multipart/formdata'

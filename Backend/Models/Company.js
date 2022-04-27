@@ -29,6 +29,5 @@ const companyschema = new Schema({
       console.log("error in token");     
     }    
   }
-
   const Company = mongoose.model("Company", companyschema);
   module.exports=Company;

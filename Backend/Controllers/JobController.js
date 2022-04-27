@@ -21,7 +21,6 @@ class JobControlller {
           ctcRange: req.body.ctcRange,
           minimumCriteria: req.body.minimumCriteria,
           jobLocation: req.body.jobLocation,
-          numberOfOpening: req.body.numberOfOpening,
           branch: req.body.branch,
           companyWebsite: req.body.companyWebsite,
           status: "waiting",
@@ -37,16 +36,7 @@ class JobControlller {
         userfound[0].jobsposted.push(newJob._id);
         userfound[0].save();
       })
-
       res.json({ status: 'OK' })
-
-
-
-
-
-
-
-
     }
   }
   static getIncomingRequest = (req, res) => {
@@ -66,27 +56,20 @@ class JobControlller {
   }
 
   static getAvailableJobForStudent = async (req, res) => {
-    let student=await Student.findById(req.session.userid);
-    let stubranch=student.branch;
-    let stucgpa=student.cgpa;
-    
-    
-
+    let student = await Student.findById(req.session.userid);
+    let stubranch = student.branch;
+    let stucgpa = student.cgpa;
     Job.find(
-      { status: "accepted", timestatus: "active",branch: stubranch},
+      { status: "accepted", timestatus: "active", branch: stubranch },
       function (err, jobfound) {
         if (err) {
           res.json({ status: "error" });
         } else {
           Student.find({ _id: req.session.userid }, (err, userfound) => {
             console.log(jobfound)
-            console.log(jobfound)
-            jobfound=jobfound.filter((job)=>{return stucgpa>job.minimumCriteria})
+            jobfound = jobfound.filter((job) => { return stucgpa > job.minimumCriteria })
             res.send({ alljob: jobfound, oneuser: userfound[0].myapply });
-
           })
-
-
         }
       }
     );
@@ -98,7 +81,7 @@ class JobControlller {
       { status: "accepted" },
       function (err, success) {
         if (err) {
-          res.json({ status: "error", error: err });
+          res.json({ status: "error", error: err });    
         } else {
           res.json({ status: "OK" });
         }
@@ -168,7 +151,7 @@ class JobControlller {
     Job.find({ _id: req.body.id }, (err, userfound) => {
       try {
         Student.find({ _id: req.session.userid }, (err, stdfound) => {
-          let data=(stdfound[0].myapply).map(a=>a.jobid)
+          let data = (stdfound[0].myapply).map(a => a.jobid)
           res.send({ "oneuser": userfound[0], "userdetails": data })
 
         })
@@ -189,41 +172,41 @@ class JobControlller {
   static getappliedstudent = async (req, res) => {
     const senddata = [];
     const jobfound = await Job.find({ _id: req.body.id })
-    
+
     for (let i = 0; i < jobfound[0].candidates.length; i++) {
       // console.log(jobfound[0].candidates)
       const std = await Student.find({ _id: jobfound[0].candidates[i].studentid })
       console.log(jobfound[0].candidates[i])
-      let object={
-        stddetails:std[0],
-        placementstatus:jobfound[0].candidates[i].status
+      let object = {
+        stddetails: std[0],
+        placementstatus: jobfound[0].candidates[i].status
 
       }
       senddata.push(object)
     }
-    res.send({ stddata: senddata ,})
+    res.send({ stddata: senddata, })
   }
 
-  static setplacementstatus=async(req,res)=>{
-       
-       let jobfound= await Job.findById(req.body.jobid);
-       console.log(jobfound.candidates)
-       for(let i=0;i<jobfound.candidates.length;i++){
-         if(jobfound.candidates[i].studentid===req.body.studentid){
-           jobfound.candidates[i].status=true;
-         }
-       }
-       jobfound.save();
-       let stdfound=await Student.findById(req.body.studentid);
-       for(let i=0;i<stdfound.myapply.length;i++){
-         if(stdfound.myapply[i].jobid===req.body.jobid){
-          stdfound.myapply[i].status=true;
-         }
-       }
-       stdfound.save()
-       
-       
-       res.json({msg:true})
+  static setplacementstatus = async (req, res) => {
+
+    let jobfound = await Job.findById(req.body.jobid);
+    console.log(jobfound.candidates)
+    for (let i = 0; i < jobfound.candidates.length; i++) {
+      if (jobfound.candidates[i].studentid === req.body.studentid) {
+        jobfound.candidates[i].status = true;
+      }
+    }
+    jobfound.save();
+    let stdfound = await Student.findById(req.body.studentid);
+    for (let i = 0; i < stdfound.myapply.length; i++) {
+      if (stdfound.myapply[i].jobid === req.body.jobid) {
+        stdfound.myapply[i].status = true;
+      }
+    }
+    stdfound.save()
+
+
+    res.json({ msg: true })
 
   }
 

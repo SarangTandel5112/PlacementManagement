@@ -4,6 +4,8 @@ const Student = require("../Models/Student");
 const Tpo = require("../Models/Tpo");
 const bcrypt = require('bcrypt');
 const jwt = require("jsonwebtoken")
+const Unverifiedstudent = require("../Models/Unverifiedstudent");
+const Unverifiedcompany = require("../Models/UnverifiedCompany");
 
 class LoginController {
   static loginFunction = (req, res) => {
@@ -13,13 +15,23 @@ class LoginController {
       let type = req.body.type[0];
       if (type === "student") {
         try {
-          Student.find({ email: name }, function (err, userfounds) {
+          Student.find({ email: name }, async function (err, userfounds) {
             if (userfounds.length === 0 || err) {
-              res.send({ err: "incorrect username!!", user: userfounds[0] });
+              Unverifiedstudent.find({ email: name }, (err, unverified) => {
+                if (unverified.length != 0) {
+                  console.log("verify your email");
+                  res.send({ err: "Please Verify Your Email!!", user: unverified });
+                }
+                else {
+                  res.send({ err: "incorrect username!!", user: userfounds });
+                }
+              })
             }
             else if (userfounds[0].password === lpassword) {
               req.session.user = "Student";
               req.session.userid = userfounds[0]._id;
+              const a = await jwt.sign({ id: userfounds[0]._id, email: userfounds[0].email, type: "Student" }, process.env.SECRET_KEY)
+              res.cookie("login", a)
               res.send({ err: req.body.type[0], user: userfounds[0] });
             } else {
               res.send({ err: "incorrect password!!", user: userfounds[0] });
@@ -32,38 +44,53 @@ class LoginController {
       }
 
       if (type === "company") {
-        Company.find({ email: name }, async function (err, userfounds) {
-          if (userfounds.length === 0 || err) {
-            res.send({ err: "incorrect username!!", user: userfounds });
-          } else if (userfounds[0].password === lpassword) {
-            req.session.user = "Company";
-            req.session.userid = userfounds[0]._id;
-            // const token=await userfounds[0].generatetoken();
-            // res.cookie("login",token)
-            const a = await jwt.sign({ email: userfounds[0].email, type: "Company", id: userfounds[0]._id }, "mynameissarangtandel", { expiresIn: "4h" })
-            // console.log(a);
-            res.cookie("login", a)
-            res.send({ err: req.body.type[0], user: userfounds });
-
-          } else {
-            res.send({ err: "incorrect password!!", user: userfounds });
-          }
-        });
+        try {
+          Company.find({ email: name }, async function (err, userfounds) {
+            if (userfounds.length === 0 || err) {
+              Unverifiedcompany.find({ email: name }, (err, unverified) => {
+                if (unverified.length != 0) {
+                  console.log("verify your email");
+                  res.send({ err: "Please Verify Your Email!!", user: unverified });
+                }
+                else {
+                  res.send({ err: "incorrect username!!", user: userfounds });
+                }
+              })
+            }
+            else if (userfounds[0].password === lpassword) {
+              req.session.user = "Company";
+              req.session.userid = userfounds[0]._id;
+              const a = await jwt.sign({ id: userfounds[0]._id, email: userfounds[0].email, type: "Company" }, process.env.SECRET_KEY)
+              res.cookie("login", a)
+              res.send({ err: req.body.type[0], user: userfounds });
+            }
+            else {
+              res.send({ err: "incorrect password!!", user: userfounds });
+            }
+          });
+        }
+        catch (error) {
+          console.log("error in company signin", error);
+        }
       }
 
       if (type === "tpo") {
-        Tpo.find({ email: name }, function (err, userfounds) {
-          if (userfounds.length === 0 || err) {
-            res.send({ err: "incorrect username!!", user: userfounds });
-          } else if (userfounds[0].password === lpassword) {
-            req.session.user = "Tpo";
-            req.session.userid = userfounds[0]._id;
-
-            res.send({ err: req.body.type[0], user: userfounds });
-          } else {
-            res.send({ err: "incorrect password!!", user: userfounds });
-          }
-        });
+        try {
+          Tpo.find({ email: name }, function (err, userfounds) {
+            if (userfounds.length === 0 || err) {
+              res.send({ err: "incorrect username!!", user: userfounds });
+            } else if (userfounds[0].password === lpassword) {
+              req.session.user = "Tpo";
+              req.session.userid = userfounds[0]._id;
+              res.send({ err: req.body.type[0], user: userfounds });
+            } else {
+              res.send({ err: "incorrect password!!", user: userfounds });
+            }
+          });
+        }
+        catch (error) {
+          console.log("error in tpo login", error);
+        }
       }
     }
     catch (error) {
@@ -144,7 +171,7 @@ class LoginController {
     const a = req.cookies.login
     // console.log(a);
     const user = (jwt.verify(a, "mynameissarangtandel"));
-    console.log(user);
+    // console.log(user);
     if (req.session.userid) {
       res.json({ loggedin: true, user: req.session.user, user1: user.type });
 
@@ -168,7 +195,7 @@ class LoginController {
     res.send(students);
   };
   static getcompaniestpo = async (req, res) => {
-    let companies = await Company.find();
+      
     companies = companies.map((std) => {
       return {
         name: std.name,
@@ -227,7 +254,6 @@ class LoginController {
       };
       finalResult.push(obj);
     }
-
     res.send(finalResult);
   };
 }
