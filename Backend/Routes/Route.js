@@ -1,46 +1,45 @@
 const express = require("express");
-const dotenv = require('dotenv');
-dotenv.config()
+const dotenv = require("dotenv");
+dotenv.config();
 const router = express.Router();
 const isAuth = (req, res, next) => {
     if (req.session.userid) {
-        next()
+        next();
     } else {
-        res.json({ msg: "You Are UnAuthorised" })
+        res.json({ msg: "You Are UnAuthorised" });
     }
 
-}
+};
 const isStudent = (req, res, next) => {
     if (req.session.user === "Student") {
-        next()
+        next();
     } else {
-        res.json({ msg: "You Are Not Student" })
+        res.json({ msg: "You Are Not Student" });
     }
 
-}
+};
 const isCompany = (req, res, next) => {
     if (req.session.user == "Company") {
-        next()
+        next();
     } else {
-        res.json({ msg: "You Are Not Company" })
+        res.json({ msg: "You Are Not Company" });
     }
 
-}
+};
 const isTpo = (req, res, next) => {
     if (req.session.user == "Tpo") {
-        next()
+        next();
     } else {
-        res.json({ msg: "You Are Not Tpo" })
+        res.json({ msg: "You Are Not Tpo" });
     }
 
-}
+};
 
 const StudentController = require("../Controllers/StundetController");
 const JobControlller = require("../Controllers/JobController");
 const CompanyController = require("../Controllers/CompanyController");
-const TpoController = require("../Controllers/TpoController");
 const LoginController = require("../Controllers/LoginController");
-const Otpverify = require("../Controllers/Otpverify")
+const Otpverify = require("../Controllers/Otpverify");
 
 
 // Student Routes
@@ -69,13 +68,13 @@ router.post("/setplacementstatus", isAuth, isCompany, JobControlller.setplacemen
 //Company Routes
 // router.post("/register", CompanyController.registerCompany);
 router.post("/registerCompany", CompanyController.registerCompany);
-router.get("/verify/:id", CompanyController.emailverify)
-router.post("/checkemail", CompanyController.checkemail)
+router.get("/verify/:id", CompanyController.emailverify);
+router.post("/checkemail", CompanyController.checkemail);
 
 
 //OtpVerify
-router.post("/otpverify", Otpverify.otpverify)
-router.post("/checkotp", Otpverify.checkotp)
+router.post("/otpverify", Otpverify.otpverify);
+router.post("/checkotp", Otpverify.checkotp);
 
 
 // router.post("/companypost",isAuth, CompanyController.companyPost);

@@ -12,12 +12,12 @@ const unverifiedcompanyschema = new Schema({
     password: String,
     imagepath:String,
     tokens:[{
-      token:{
-        type:String,
-        required:true
-      }
+        token:{
+            type:String,
+            required:true
+        }
     }]
-  });
+});
 
-  const Unverifiedcompany = mongoose.model("UnverifiedCompany", unverifiedcompanyschema);
-  module.exports=Unverifiedcompany;
+const Unverifiedcompany = mongoose.model("UnverifiedCompany", unverifiedcompanyschema);
+module.exports=Unverifiedcompany;
